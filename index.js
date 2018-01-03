@@ -1,3 +1,4 @@
-export def foo() {
+exports.foo = function() {
     console.log('Jive');
 }
+
