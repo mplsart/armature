@@ -4,9 +4,10 @@
   "description": "A collection of react components wrapping material-ui for mplsart ecosystem",
   "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "./node_modules/.bin/mocha --reporter spec",
     "build": "babel src --out-dir dist",
-    "prepublish": "npm run build"
+    "prepublish": "npm run build",
+    "start": "npm run build && node dist/index.js"
   },
   "repository": {
     "type": "git",
@@ -18,7 +19,12 @@
     "url": "https://github.com/mplsart/armature/issues"
   },
   "homepage": "https://github.com/mplsart/armature#readme",
-  "dependencies": {},
+  "dependencies": {
+    "material-ui": "^1.0.0-beta.29",
+    "material-ui-icons": "^1.0.0-beta.17",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
+  },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.21.0",
@@ -31,12 +37,14 @@
     "babel-preset-react-hmre": "^1.0.1",
     "babel-preset-stage-0": "^6.5.0",
     "babel-register": "^6.7.2",
+    "chai": "^4.1.2",
     "concurrently": "^2.2.0",
+    "enzyme": "^3.3.0",
     "eslint": "^3.3.1",
     "eslint-plugin-react": "^6.1.2",
-    "react": "^15.1.0",
-    "react-addons-css-transition-group": "^15.3.2",
-    "react-dom": "^15.1.0",
+    "mocha": "^5.0.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
     "webpack": "^2.2.1",
     "webpack-combine-loaders": "^2.0.0",
     "webpack-dev-middleware": "^1.2.0",

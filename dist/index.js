@@ -1,4 +1,7 @@
-"use strict";
+'use strict';
+
+var _require = require('./foobar'),
+    doubleUp = _require.doubleUp;
 
 module.exports = function (_ref) {
   var _ref$percent = _ref.percent,
@@ -6,5 +9,8 @@ module.exports = function (_ref) {
       amount = _ref.amount;
 
   var percentOff = percent / 100 * amount;
-  return percentOff;
+
+  console.log(doubleUp);
+
+  return percentOff * doubleUp(10);
 };
