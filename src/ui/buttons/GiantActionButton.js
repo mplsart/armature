@@ -20,7 +20,7 @@ const styles = theme => ({
 
 function GiantActionButton(props) {
   const { classes, children, ...rest } = props;
-  return (<Button raised color="primary" className={classes.button} {...rest}>{ children }</Button>);
+  return (<Button varient="raised" color="primary" className={classes.button} {...rest}>X{ children }</Button>);
 }
 
 GiantActionButton.propTypes = {

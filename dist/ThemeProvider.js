@@ -17,59 +17,51 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _styles = require('material-ui/styles');
 
-var _colors = require('./colors');
-
 var _context = require('./server/context');
+
+var _CssBaseline = require('material-ui/CssBaseline');
+
+var _CssBaseline2 = _interopRequireDefault(_CssBaseline);
+
+var _GlobalStyles = require('./GlobalStyles');
+
+var _GlobalStyles2 = _interopRequireDefault(_GlobalStyles);
+
+var _theme = require('./theme');
+
+var _theme2 = _interopRequireDefault(_theme);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 //See: https://material-ui-next.com/customization/themes/#configuration-variables for additional features
 
+// Note: This is currently only in use by Admin Client
 function ThemeProvider(_ref) {
   var children = _ref.children;
 
-  var muiTheme = (0, _styles.createMuiTheme)({
-    typography: {
-      fontFamily: '"Bryant", "Helvetica", "Arial", sans-serif',
-      button: {
-        fontWeight: 400,
-        textTransform: 'none',
-        fontSize: '1.25rem'
-      }
-    },
-    palette: {
-      contrastThreshold: 3,
-      tonalOffset: 0.2,
-      primary: _colors.blue,
-      accent: _colors.pink,
-      error: {
-        main: _colors.red[500]
-      }
-    },
-    appBarHeight: { 'default': 60, 'sm': 50 // TODO: Do we need/want different heights?
-    } });
 
   //https://github.com/mui-org/material-ui/issues/7627
-  console.log(process.browser);
-
   if (process.browser) {
     return _react2.default.createElement(
       _styles.MuiThemeProvider,
-      { theme: muiTheme },
+      { theme: _theme2.default },
+      _react2.default.createElement(_CssBaseline2.default, null),
+      _react2.default.createElement(_GlobalStyles2.default, null),
       children
     );
   } else {
+    console.log('This is still experimental, especially for next.js');
+
     // Server Rendering in Next.js
     var context = (0, _context.getContext)();
-    console.log('DA CONTEXt');
-    console.log(_context.getContext);
-
     return _react2.default.createElement(
       _reactJss.JssProvider,
       { registry: context.sheetsRegistry, jss: context.jss },
       _react2.default.createElement(
         _styles.MuiThemeProvider,
-        { theme: muiTheme, sheetsManager: context.sheetsManager },
+        { theme: _theme2.default, sheetsManager: context.sheetsManager },
+        _react2.default.createElement(_CssBaseline2.default, null),
+        _react2.default.createElement(_GlobalStyles2.default, null),
         children
       )
     );

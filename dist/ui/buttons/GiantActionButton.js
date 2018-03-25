@@ -48,7 +48,8 @@ function GiantActionButton(props) {
 
   return _react2.default.createElement(
     _Button2.default,
-    _extends({ raised: true, color: 'primary', className: classes.button }, rest),
+    _extends({ varient: 'raised', color: 'primary', className: classes.button }, rest),
+    'X',
     children
   );
 }
