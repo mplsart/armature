@@ -126,7 +126,7 @@ var AppBar = function (_React$Component) {
           classes = _props.classes,
           menuActive = _props.menuActive,
           titleComponents = _props.titleComponents,
-          leftComponents = _props.leftComponents;
+          rightComponents = _props.rightComponents;
 
 
       return _react2.default.createElement(
@@ -142,10 +142,9 @@ var AppBar = function (_React$Component) {
             _react2.default.createElement(
               _Typography2.default,
               { type: 'title', color: 'inherit', className: classes.title },
-              'xx',
               titleComponents
             ),
-            leftComponents
+            rightComponents
           )
         )
       );
@@ -159,7 +158,7 @@ AppBar.propTypes = {
   classes: _propTypes2.default.object.isRequired,
   menuActive: _propTypes2.default.bool,
   handleMenuToggle: _propTypes2.default.func,
-  leftComponents: _propTypes2.default.node,
+  rightComponents: _propTypes2.default.node,
   titleComponents: _propTypes2.default.node
 };
 

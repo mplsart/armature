@@ -66,7 +66,7 @@ class AppBar extends React.Component {
   };
 
   render() {
-    let { classes, menuActive, titleComponents, leftComponents } = this.props;
+    let { classes, menuActive, titleComponents, rightComponents } = this.props;
 
     return (
       <div className={ classes.fixedRoot }>
@@ -74,9 +74,9 @@ class AppBar extends React.Component {
           <Toolbar className={classes.toolBar}>
             <AppBarMenuIcon active={menuActive} handleMenuToggle={ this.handleClick.bind(this) }/>
             <Typography type="title" color="inherit" className={classes.title}>
-                xx{ titleComponents }
+                { titleComponents }
             </Typography>
-            { leftComponents }
+            { rightComponents }
           </Toolbar>
         </MUIAppBar>
       </div>
@@ -88,7 +88,7 @@ AppBar.propTypes = {
   classes: PropTypes.object.isRequired,
   menuActive: PropTypes.bool,
   handleMenuToggle: PropTypes.func,
-  leftComponents: PropTypes.node,
+  rightComponents: PropTypes.node,
   titleComponents: PropTypes.node
 };
 
