@@ -14,6 +14,10 @@ var _propTypes = require('prop-types');
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
+var _AppMenu = require('./AppMenu');
+
+var _AppMenu2 = _interopRequireDefault(_AppMenu);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -47,16 +51,25 @@ var AppShell = function (_React$Component) {
       var _props = this.props,
           children = _props.children,
           appBarComponent = _props.appBarComponent,
-          adminMenu = _props.adminMenu;
+          menuContentComponent = _props.menuContentComponent;
 
-      // menuActive={this.state.menuActive} handleMenuToggle={ this.handleSiteMenuToggle.bind(this) }
-      // menuActive={ this.state.menuActive } handleMenuToggle={ this.handleSiteMenuToggle }
+
+      var appBar = void 0,
+          mainMenu = void 0;
+
+      if (appBarComponent) {
+        appBar = _react2.default.createElement(this.props.appBarComponent, { menuActive: this.state.menuActive, handleMenuToggle: this.handleSiteMenuToggle.bind(this) });
+      }
+
+      if (menuContentComponent) {
+        mainMenu = _react2.default.createElement(_AppMenu2.default, { contentComponent: menuContentComponent, menuActive: this.state.menuActive, handleMenuToggle: this.handleSiteMenuToggle.bind(this) });
+      }
 
       return _react2.default.createElement(
         'div',
         null,
-        _react2.default.createElement(this.props.appBarComponent, { menuActive: this.state.menuActive, handleMenuToggle: this.handleSiteMenuToggle.bind(this) }),
-        _react2.default.createElement(this.props.adminMenuComponent, { menuActive: this.state.menuActive, handleMenuToggle: this.handleSiteMenuToggle.bind(this) }),
+        appBar,
+        mainMenu,
         children
       );
     }
