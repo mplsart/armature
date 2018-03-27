@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import AppMenu from './AppMenu';
 
 class AppShell extends React.Component {
   state = { menuActive: false }; // TODO: Eventually, drive this off the redux store
@@ -9,12 +10,22 @@ class AppShell extends React.Component {
   }
 
   render() {
-    let { children, appBarComponent, adminMenu } = this.props;
+    let { children, appBarComponent, menuContentComponent } = this.props;
+
+    let appBar, mainMenu;
+
+    if (appBarComponent) {
+      appBar = (<this.props.appBarComponent menuActive={ this.state.menuActive } handleMenuToggle={ this.handleSiteMenuToggle.bind(this) } />);
+    }
+
+    if (menuContentComponent) {
+      mainMenu = (<AppMenu contentComponent={ menuContentComponent } menuActive={ this.state.menuActive } handleMenuToggle={ this.handleSiteMenuToggle.bind(this) }/>);
+    }
 
     return (
       <div>
-        { <this.props.appBarComponent menuActive={ this.state.menuActive } handleMenuToggle={ this.handleSiteMenuToggle.bind(this) } /> }
-        { <this.props.adminMenuComponent menuActive={ this.state.menuActive } handleMenuToggle={ this.handleSiteMenuToggle.bind(this) }/> }
+        { appBar }
+        { mainMenu }
         { children }
       </div>
     );
