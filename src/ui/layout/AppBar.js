@@ -70,9 +70,6 @@ class AppBar extends React.Component {
   render() {
     let { classes, fluid, menuActive, titleComponents, rightComponents } = this.props;
 
-    console.log('is fluid?');
-    console.log(fluid);
-
     return (
       <div className={ classes.fixedRoot }>
         <MUIAppBar position="fixed" className={classes.appBar}>
