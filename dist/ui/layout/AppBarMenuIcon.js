@@ -66,7 +66,7 @@ var styles = function styles(theme) {
       '&.patty1': { top: 12 },
       '&.patty3': { top: -12 },
       '&.patty2.active': { backgroundColor: 'transparent' },
-      '&.patty1.active, &.patty3.active': { backgroundColor: '#0096BE' },
+      '&.patty1.active, &.patty3.active': { backgroundColor: theme.palette.primary[500] },
       '&.patty1.active': { top: 4, transform: 'rotate(45deg)' },
       '&.patty3.active': { top: -2, transform: 'rotate(-45deg)' }
     }

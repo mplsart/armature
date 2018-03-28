@@ -22,6 +22,18 @@ const muiTheme = createMuiTheme({
   },
 
   // Non Material UI variables
+  globalAppBar: {
+    title: {
+      color: '#dfdfdf',
+      '&:hover': {
+        textDecoration: 'none',
+        color: '#ffffff'
+      },
+    },
+    subtitle: {
+      color:blue[500]
+    }
+  },
   appBarHeight: {'default': 60, 'sm': 50}, // TODO: Do we need/want different heights?
 });
 

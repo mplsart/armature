@@ -46,6 +46,10 @@ const styles = theme => ({
     [theme.breakpoints.down('sm')]: {
       textAlign:'center',
     }
+  },
+  loader: {
+    height: '2px',
+    //display:'none'
   }
 });
 
@@ -72,12 +76,14 @@ class AppBar extends React.Component {
       <div className={ classes.fixedRoot }>
         <MUIAppBar position="fixed" className={classes.appBar}>
           <Toolbar className={classes.toolBar}>
+
             <AppBarMenuIcon active={menuActive} handleMenuToggle={ this.handleClick.bind(this) }/>
             <Typography type="title" color="inherit" className={classes.title}>
                 { titleComponents }
             </Typography>
             { rightComponents }
           </Toolbar>
+
         </MUIAppBar>
       </div>
     );

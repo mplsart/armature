@@ -87,7 +87,11 @@ var styles = function styles(theme) {
       color: '#dfdfdf',
       marginTop: '2px' }, theme.breakpoints.down('sm'), {
       textAlign: 'center'
-    })
+    }),
+    loader: {
+      height: '2px'
+      //display:'none'
+    }
   };
 };
 
