@@ -5,9 +5,7 @@ import MUIAppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
 import AppBarMenuIcon from './AppBarMenuIcon';
-import IconButton from 'material-ui/IconButton';
-import MenuIcon from 'material-ui-icons/Menu';
-import AccountCircle from 'material-ui-icons/AccountCircle';
+import {Grid, Row, Col} from 'armature/dist/grid';
 
 const styles = theme => ({
   fixedRoot: { // Placeholder that pushesdown the content
@@ -70,20 +68,24 @@ class AppBar extends React.Component {
   };
 
   render() {
-    let { classes, menuActive, titleComponents, rightComponents } = this.props;
+    let { classes, fluid, menuActive, titleComponents, rightComponents } = this.props;
+
+    console.log('is fluid?');
+    console.log(fluid);
 
     return (
       <div className={ classes.fixedRoot }>
         <MUIAppBar position="fixed" className={classes.appBar}>
-          <Toolbar className={classes.toolBar}>
+          <Grid fluid={fluid}>
+            <Toolbar className={classes.toolBar}>
 
-            <AppBarMenuIcon active={menuActive} handleMenuToggle={ this.handleClick.bind(this) }/>
-            <Typography type="title" color="inherit" className={classes.title}>
-                { titleComponents }
-            </Typography>
-            { rightComponents }
-          </Toolbar>
-
+              <AppBarMenuIcon active={menuActive} handleMenuToggle={ this.handleClick.bind(this) }/>
+              <Typography type="title" color="inherit" className={classes.title}>
+                  { titleComponents }
+              </Typography>
+              { rightComponents }
+            </Toolbar>
+            </Grid>
         </MUIAppBar>
       </div>
     );
@@ -95,7 +97,8 @@ AppBar.propTypes = {
   menuActive: PropTypes.bool,
   handleMenuToggle: PropTypes.func,
   rightComponents: PropTypes.node,
-  titleComponents: PropTypes.node
+  titleComponents: PropTypes.node,
+  fluid: PropTypes.bool
 };
 
 export default withStyles(styles)(AppBar);

@@ -32,17 +32,7 @@ var _AppBarMenuIcon = require('./AppBarMenuIcon');
 
 var _AppBarMenuIcon2 = _interopRequireDefault(_AppBarMenuIcon);
 
-var _IconButton = require('material-ui/IconButton');
-
-var _IconButton2 = _interopRequireDefault(_IconButton);
-
-var _Menu = require('material-ui-icons/Menu');
-
-var _Menu2 = _interopRequireDefault(_Menu);
-
-var _AccountCircle = require('material-ui-icons/AccountCircle');
-
-var _AccountCircle2 = _interopRequireDefault(_AccountCircle);
+var _grid = require('armature/dist/grid');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -128,10 +118,14 @@ var AppBar = function (_React$Component) {
     value: function render() {
       var _props = this.props,
           classes = _props.classes,
+          fluid = _props.fluid,
           menuActive = _props.menuActive,
           titleComponents = _props.titleComponents,
           rightComponents = _props.rightComponents;
 
+
+      console.log('is fluid?');
+      console.log(fluid);
 
       return _react2.default.createElement(
         'div',
@@ -140,15 +134,19 @@ var AppBar = function (_React$Component) {
           _AppBar2.default,
           { position: 'fixed', className: classes.appBar },
           _react2.default.createElement(
-            _Toolbar2.default,
-            { className: classes.toolBar },
-            _react2.default.createElement(_AppBarMenuIcon2.default, { active: menuActive, handleMenuToggle: this.handleClick.bind(this) }),
+            _grid.Grid,
+            { fluid: fluid },
             _react2.default.createElement(
-              _Typography2.default,
-              { type: 'title', color: 'inherit', className: classes.title },
-              titleComponents
-            ),
-            rightComponents
+              _Toolbar2.default,
+              { className: classes.toolBar },
+              _react2.default.createElement(_AppBarMenuIcon2.default, { active: menuActive, handleMenuToggle: this.handleClick.bind(this) }),
+              _react2.default.createElement(
+                _Typography2.default,
+                { type: 'title', color: 'inherit', className: classes.title },
+                titleComponents
+              ),
+              rightComponents
+            )
           )
         )
       );
@@ -163,7 +161,8 @@ AppBar.propTypes = {
   menuActive: _propTypes2.default.bool,
   handleMenuToggle: _propTypes2.default.func,
   rightComponents: _propTypes2.default.node,
-  titleComponents: _propTypes2.default.node
+  titleComponents: _propTypes2.default.node,
+  fluid: _propTypes2.default.bool
 };
 
 exports.default = (0, _styles.withStyles)(styles)(AppBar);
