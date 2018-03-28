@@ -124,9 +124,6 @@ var AppBar = function (_React$Component) {
           rightComponents = _props.rightComponents;
 
 
-      console.log('is fluid?');
-      console.log(fluid);
-
       return _react2.default.createElement(
         'div',
         { className: classes.fixedRoot },
