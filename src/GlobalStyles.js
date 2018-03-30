@@ -4,11 +4,9 @@ import { withStyles } from 'material-ui/styles';
 const globalStyles = (theme) => {
   return {
     '@global': {
-      'html': {
-        'font-family': 'sans-serif',
+      'body': {
         '-webkit-font-smoothing': 'unset',
         '-moz-osx-font-smoothing': 'unset',
-        ...theme.typography.body2
       },
       'a': {
         color: theme.palette.primary[500],

@@ -10,9 +10,23 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _styles = require('material-ui/styles');
 
+var _classnames = require('classnames');
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+var _LegacyCardBase = require('./LegacyCardBase');
+
+var _LegacyCardBase2 = _interopRequireDefault(_LegacyCardBase);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -20,51 +34,36 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var globalStyles = function globalStyles(theme) {
-  return {
-    '@global': {
-      'body': {
-        '-webkit-font-smoothing': 'unset',
-        '-moz-osx-font-smoothing': 'unset'
-      },
-      'a': {
-        color: theme.palette.primary[500],
-        textDecoration: 'none',
-        '&:hover': {
-          textDecoration: 'underline'
-        }
-      }
-    }
-  };
+var styles = function styles(theme) {
+  return {};
 };
 
-var GlobalStyles = function (_React$Component) {
-  _inherits(GlobalStyles, _React$Component);
+var LegacyAdvertCard = function (_React$Component) {
+  _inherits(LegacyAdvertCard, _React$Component);
 
-  function GlobalStyles() {
-    _classCallCheck(this, GlobalStyles);
+  function LegacyAdvertCard() {
+    _classCallCheck(this, LegacyAdvertCard);
 
-    return _possibleConstructorReturn(this, (GlobalStyles.__proto__ || Object.getPrototypeOf(GlobalStyles)).apply(this, arguments));
+    return _possibleConstructorReturn(this, (LegacyAdvertCard.__proto__ || Object.getPrototypeOf(LegacyAdvertCard)).apply(this, arguments));
   }
 
-  _createClass(GlobalStyles, [{
-    key: 'componentDidMount',
-
-    // Double Check if this is in use for server rendering.
-    value: function componentDidMount() {
-      var jssStyles = document.getElementById('jss-server-side');
-      if (jssStyles && jssStyles.parentNode) {
-        jssStyles.parentNode.removeChild(jssStyles);
-      }
-    }
-  }, {
+  _createClass(LegacyAdvertCard, [{
     key: 'render',
     value: function render() {
-      return null;
+      var _props = this.props,
+          classes = _props.classes,
+          rest = _objectWithoutProperties(_props, ['classes']);
+
+      return _react2.default.createElement(_LegacyCardBase2.default, rest);
     }
   }]);
 
-  return GlobalStyles;
+  return LegacyAdvertCard;
 }(_react2.default.Component);
 
-exports.default = (0, _styles.withStyles)(globalStyles)(GlobalStyles);
+LegacyAdvertCard.propTypes = {
+  classes: _propTypes2.default.object,
+  variant: _propTypes2.default.string // TODO: one of 'big'
+};
+
+exports.default = (0, _styles.withStyles)(styles)(LegacyAdvertCard);
