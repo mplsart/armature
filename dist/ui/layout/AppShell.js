@@ -20,6 +20,8 @@ var _AppMenu2 = _interopRequireDefault(_AppMenu);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -40,8 +42,20 @@ var AppShell = function (_React$Component) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = AppShell.__proto__ || Object.getPrototypeOf(AppShell)).call.apply(_ref, [this].concat(args))), _this), _this.state = { menuActive: false }, _this.handleSiteMenuToggle = function () {
-      _this.setState({ menuActive: !_this.state.menuActive });
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = AppShell.__proto__ || Object.getPrototypeOf(AppShell)).call.apply(_ref, [this].concat(args))), _this), _this.state = { menuActive: false }, _this.handleSiteMenuToggle = function (_ref2) {
+      var force = _ref2.force,
+          rest = _objectWithoutProperties(_ref2, ['force']);
+
+      var menuActiveNext = void 0;
+      if (force !== undefined) {
+        menuActiveNext = force;
+      } else {
+        menuActiveNext = !_this.state.menuActive;
+      }
+      _this.setState({ menuActive: menuActiveNext });
+
+      // Callback?
+      _this.props.handleSiteMenuToggle();
     }, _temp), _possibleConstructorReturn(_this, _ret);
   } // TODO: Eventually, drive this off the redux store
 
@@ -51,8 +65,10 @@ var AppShell = function (_React$Component) {
       var _props = this.props,
           children = _props.children,
           appBarComponent = _props.appBarComponent,
-          menuContentComponent = _props.menuContentComponent;
+          menuContentComponent = _props.menuContentComponent,
+          menuActive = _props.menuActive;
 
+      // TODO: Create a constructor to house the initial state of this.props.menuActive
 
       var appBar = void 0,
           mainMenu = void 0;
@@ -62,7 +78,8 @@ var AppShell = function (_React$Component) {
       }
 
       if (menuContentComponent) {
-        mainMenu = _react2.default.createElement(_AppMenu2.default, { contentComponent: menuContentComponent, menuActive: this.state.menuActive, handleMenuToggle: this.handleSiteMenuToggle.bind(this) });
+        var menuContent = _react2.default.createElement(this.props.menuContentComponent, { menuActive: this.state.menuActive, handleMenuToggle: this.handleSiteMenuToggle.bind(this) });
+        mainMenu = _react2.default.createElement(_AppMenu2.default, { contentComponent: menuContent, menuActive: this.state.menuActive, handleMenuToggle: this.handleSiteMenuToggle.bind(this) });
       }
 
       return _react2.default.createElement(
@@ -78,4 +95,11 @@ var AppShell = function (_React$Component) {
   return AppShell;
 }(_react2.default.Component);
 
+AppShell.propTypes = {
+  children: _propTypes2.default.node,
+  appBarComponent: _propTypes2.default.any, // This is technically a class? hmm...
+  menuContentComponent: _propTypes2.default.any, // This is technically a class? hmm...
+  menuActive: _propTypes2.default.bool,
+  handleSiteMenuToggle: _propTypes2.default.func
+};
 exports.default = AppShell;

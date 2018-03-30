@@ -103,8 +103,8 @@ var AppBar = function (_React$Component) {
       anchorEl: null,
       open: false,
       menuActive: _this.props.menuActive
-    }, _this.handleClick = function () {
-      _this.props.handleMenuToggle();
+    }, _this.handleClick = function (e) {
+      _this.props.handleMenuToggle(e);
     }, _this.handleRequestClose = function () {
       _this.props.handleMenuToggle();
     }, _temp), _possibleConstructorReturn(_this, _ret);

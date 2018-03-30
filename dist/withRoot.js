@@ -56,11 +56,9 @@ function withRoot(Component) {
       key: 'componentDidMount',
       value: function componentDidMount() {
         // Remove the server-side injected CSS.
-        console.log('Attempt to remove injected styles...');
         var jssStyles = document.querySelector('#jss-server-side');
         if (jssStyles && jssStyles.parentNode) {
           jssStyles.parentNode.removeChild(jssStyles);
-          console.log('yeah, remove??');
         }
       }
     }, {

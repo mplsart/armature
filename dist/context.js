@@ -25,20 +25,20 @@ function createPageContext() {
     // The standard class name generator.
     generateClassName: (0, _styles.createGenerateClassName)()
   };
-}
-//import muiTheme from 'armature/dist/theme';
-// Context for Next.js
+} // Material-UI context for use with JssProvider for SSR
+// Note: if you use `npm link <localpath>` => className missmatch thing. Use `npm install <localpath>`
 
 /* eslint-disable no-underscore-dangle */
 
 function getPageContext() {
   // Make sure to create a new context for every server-side request so that data
   // isn't shared between connections (which would be bad).
+
   if (!process.browser) {
     return createPageContext();
   }
 
-  // Reuse context on the client-side.
+  // Reuse context on the client-side. Next.js leverages this
   if (!global.__INIT_MATERIAL_UI__) {
     global.__INIT_MATERIAL_UI__ = createPageContext();
   }

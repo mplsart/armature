@@ -8,8 +8,10 @@ import { withStyles } from 'material-ui/styles';
 import classNames from 'classnames';
 import Drawer from 'material-ui/Drawer';
 
+// TODO: Run this off of the theme
 const drawerWidth = 300;
 
+// TODO: Eval what of these is even being used...
 const styles = theme => ({
   drawerPaper: {
     backgroundColor:'#000',
@@ -22,76 +24,50 @@ const styles = theme => ({
     }),
     flex:'none'
   },
-  drawerPaperClose: {
-    width: 60,
-    overflowX: 'hidden',
-    transition: theme.transitions.create('width', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-  },
   drawerInner: {
     // Make the items inside not wrap when transitioning:
     width: drawerWidth,
-  },
-  content: {
-    width: '100%',
-    flexGrow: 1,
-    backgroundColor: theme.palette.background.default,
-    padding: 24,
-    height: 'calc(100% - 56px)',
-    marginTop: theme.appBarHeight.default,
-    [theme.breakpoints.up('sm')]: {
-      height: 'calc(100% - 64px)',
-      marginTop: theme.appBarHeight.sm,
-    },
+    padding: theme.spacing.unit * 2,
+    paddingTop: 0,
   },
   modal: {
     top:theme.appBarHeight.sm,
     [theme.breakpoints.up('sm')]: {
-        top:theme.appBarHeight.default,
+      top:theme.appBarHeight.default,
     }
   },
   modalBackdrop: {
     top:theme.appBarHeight.sm,
     [theme.breakpoints.up('sm')]: {
-        top:theme.appBarHeight.default,
+      top:theme.appBarHeight.default,
     }
   }
 });
 
-class AppMenu extends React.Component {
-  state = {
-    open: this.props.menuActive,
-  };
-
-  render() {
-    const { classes, contentComponent, handleMenuToggle, menuActive} = this.props;
-
-    return (
-      <div className={classes.root}>
-        <div className={classes.appFrame}>
-          <Drawer
-            ModalProps={{
-              keepMounted: true, // Better open performance on mobile.
-              BackdropProps: {className: classes.modalBackdrop}
-            }}
-            classes={{
-              paper: classNames(classes.drawerPaper, !menuActive && classes.drawerPaperClose),
-              modal: classNames(classes.modal)
-            }}
-            open={ menuActive }
-            onClose={handleMenuToggle}
-          >
-            <div className={classes.drawerInner}>
-                { contentComponent }
-            </div>
-          </Drawer>
-        </div>
+const AppMenu = ({ classes, contentComponent, handleMenuToggle, menuActive}) => {
+  return (
+    <div className={classes.root}>
+      <div className={classes.appFrame}>
+        <Drawer
+          ModalProps={{
+            keepMounted: true, // Better open performance on mobile.
+            BackdropProps: {className: classes.modalBackdrop}
+          }}
+          classes={{
+            paper: classNames(classes.drawerPaper),
+            modal: classNames(classes.modal)
+          }}
+          open={ menuActive }
+          onClose={handleMenuToggle}
+        >
+          <div className={classes.drawerInner}>
+            { contentComponent }
+          </div>
+        </Drawer>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 AppMenu.propTypes = {
   classes: PropTypes.object.isRequired,

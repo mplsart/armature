@@ -21,13 +21,13 @@
   "homepage": "https://github.com/mplsart/armature#readme",
   "dependencies": {
     "classnames": "^2.2.5",
-    "jss": "^9.8.1",
-    "material-ui": "^1.0.0-beta.38",
-    "material-ui-icons": "^1.0.0-beta.36",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.7"
   },
+ "peerDependencies": {
+    "material-ui": "^1.0.0-beta.38"
+   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.21.0",

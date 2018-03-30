@@ -58,8 +58,8 @@ class AppBar extends React.Component {
     menuActive: this.props.menuActive
   };
 
-  handleClick = () => {
-    this.props.handleMenuToggle();
+  handleClick = (e) => {
+    this.props.handleMenuToggle(e);
   };
 
   // This may not be used?
