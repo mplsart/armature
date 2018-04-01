@@ -4,7 +4,7 @@ import { withStyles } from 'material-ui/styles';
 const globalStyles = (theme) => {
   return {
     '@global': {
-      'body': {
+      'body, html': {
         '-webkit-font-smoothing': 'unset',
         '-moz-osx-font-smoothing': 'unset',
       },

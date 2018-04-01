@@ -4,19 +4,17 @@ import { withStyles } from 'material-ui/styles';
 import classnames from 'classnames';
 import LegacyCardBase from './LegacyCardBase';
 
-
-const styles = (theme) => ({
-
-});
-
 class LegacyWrittenArticleCard extends React.Component {
   render() {
     let {classes, resource, ...rest} = this.props;
+
+    let href = resource.permalink;
     return (
       <LegacyCardBase
         {...rest}
         title={resource.title}
-        content={<div>{ resource.summary} <b><a href="#">Read More</a></b></div>}
+        href={href}
+        content={<div>{ resource.summary} <b><this.props.linkClass to={href}>Read More</this.props.linkClass></b></div>}
       />
     );
   }
@@ -27,4 +25,4 @@ LegacyWrittenArticleCard.propTypes = {
   resource: PropTypes.object
 };
 
-export default withStyles(styles)(LegacyWrittenArticleCard);
+export default LegacyWrittenArticleCard;

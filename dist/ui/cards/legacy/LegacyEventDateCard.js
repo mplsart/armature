@@ -66,7 +66,8 @@ var LegacyEventDateCard = function (_React$Component) {
 
       return _react2.default.createElement(_LegacyCardBase2.default, _extends({
         title: resource.name,
-        content: content
+        content: content,
+        href: 'notdefinedyet/LegacyEventDateCard'
       }, rest));
     }
   }]);

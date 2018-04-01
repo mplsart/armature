@@ -23,7 +23,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var globalStyles = function globalStyles(theme) {
   return {
     '@global': {
-      'body': {
+      'body, html': {
         '-webkit-font-smoothing': 'unset',
         '-moz-osx-font-smoothing': 'unset'
       },
