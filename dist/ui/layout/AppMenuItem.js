@@ -18,10 +18,6 @@ var _styles = require('material-ui/styles');
 
 var _List = require('material-ui/List');
 
-var _classnames = require('classnames');
-
-var _classnames2 = _interopRequireDefault(_classnames);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; } // A Wrapper class for menu items
@@ -35,7 +31,8 @@ var styles = function styles(theme) {
       fontSize: 18,
       padding: theme.spacing.unit,
       '&:hover': {
-        color: theme.palette.primary[900]
+        color: theme.palette.primary[900],
+        textDecoration: 'none'
       }
     }
   };

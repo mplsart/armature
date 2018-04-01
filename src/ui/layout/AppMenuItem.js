@@ -2,9 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
-import { ListItem, /* ListItemIcon, ListItemText */ } from 'material-ui/List';
-import classNames from 'classnames';
-
+import { ListItem } from 'material-ui/List';
 
 const styles = theme => ({
   listItem: {
@@ -13,7 +11,8 @@ const styles = theme => ({
     fontSize: 18,
     padding: theme.spacing.unit,
     '&:hover': {
-      color: theme.palette.primary[900]
+      color: theme.palette.primary[900],
+      textDecoration: 'none'
     }
   },
 });

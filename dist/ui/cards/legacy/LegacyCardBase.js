@@ -48,7 +48,7 @@ var styles = function styles(theme) {
       'background-color': '#fff',
       'transition': 'box-shadow .25s',
       'border-radius': '2px'
-    }, _defineProperty(_card, 'margin', '8px'), _defineProperty(_card, 'transition', 'box-shadow .25s'), _defineProperty(_card, 'box-shadow', '0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12)'), _defineProperty(_card, '&:hover', {
+    }, _defineProperty(_card, 'margin', theme.spacing.unit * 2), _defineProperty(_card, 'transition', 'box-shadow .25s'), _defineProperty(_card, 'box-shadow', '0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12)'), _defineProperty(_card, '&:hover', {
       'transition': 'box-shadow .25s',
       'box-shadow': '0 8px 17px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)'
     }), _card),
@@ -74,6 +74,9 @@ var styles = function styles(theme) {
       'color': '#000',
       'font-weight': 100
     }),
+    cardDetailLarge: {
+      'font-size': '16px'
+    },
 
     cardImage: {
       '& a': {
@@ -101,28 +104,59 @@ var styles = function styles(theme) {
   };
 };
 
-var LegacyCard = function (_React$Component) {
-  _inherits(LegacyCard, _React$Component);
+var LegacyCardBase = function (_React$Component) {
+  _inherits(LegacyCardBase, _React$Component);
 
-  function LegacyCard() {
-    _classCallCheck(this, LegacyCard);
+  function LegacyCardBase() {
+    _classCallCheck(this, LegacyCardBase);
 
-    return _possibleConstructorReturn(this, (LegacyCard.__proto__ || Object.getPrototypeOf(LegacyCard)).apply(this, arguments));
+    return _possibleConstructorReturn(this, (LegacyCardBase.__proto__ || Object.getPrototypeOf(LegacyCardBase)).apply(this, arguments));
   }
 
-  _createClass(LegacyCard, [{
+  _createClass(LegacyCardBase, [{
     key: 'render',
     value: function render() {
       var _props = this.props,
           classes = _props.classes,
           title = _props.title,
           content = _props.content,
+          imageResource = _props.imageResource,
+          linkClassProps = _props.linkClassProps,
           variant = _props.variant;
 
 
       var rootClasses = [classes.card];
+      var image = void 0,
+          image_url = void 0;
 
-      var image = void 0;
+      // Determine Image
+      if (typeof imageResource == 'string') {
+        image_url = imageResource;
+        image = _react2.default.createElement(
+          this.props.linkClass,
+          _extends({
+            title: title
+          }, linkClassProps),
+          _react2.default.createElement('img', { src: image_url, alt: title })
+        );
+      } else {
+        if (variant == 'large' && imageResource.versions.CARD_LARGE) {
+          image_url = imageResource.versions.CARD_LARGE.url;
+        } else if (imageResource.versions.CARD_SMALL) {
+          image_url = imageResource.versions.CARD_SMALL.url;
+        }
+
+        if (image_url) {
+          image = _react2.default.createElement(
+            this.props.linkClass,
+            _extends({
+              title: title
+            }, linkClassProps),
+            _react2.default.createElement('img', { src: image_url, alt: title })
+          );
+        }
+      }
+
       return _react2.default.createElement(
         'div',
         { className: (0, _classnames2.default)(rootClasses) },
@@ -135,31 +169,24 @@ var LegacyCard = function (_React$Component) {
             _react2.default.createElement(
               'div',
               { className: classes.cardImage },
-              _react2.default.createElement(
-                'a',
-                {
-                  title: title,
-                  style: { 'padding': '52.57% 0 0 0' },
-                  href: '/events/illoshow-at-solid-state-vinyl-records', 'data-reactid': '65' },
-                _react2.default.createElement('img', { src: 'https://storage.googleapis.com/cdn.mplsart.com/file_container/RmlsZUNvbnRhaW5lch4fMTYzNTAwMDE/card_small.png' })
-              )
+              image
             )
           ),
-          _react2.default.createElement(
+          (title || content) && _react2.default.createElement(
             'div',
             { className: classes.cardContent },
-            _react2.default.createElement(
+            title && _react2.default.createElement(
               'div',
               { className: classes.cardTitle },
               _react2.default.createElement(
-                'a',
-                { href: '#' },
+                this.props.linkClass,
+                linkClassProps,
                 title
               )
             ),
-            _react2.default.createElement(
+            content && _react2.default.createElement(
               'div',
-              { className: classes.cardDetail },
+              { className: (0, _classnames2.default)(classes.cardDetail, variant == 'large' && classes.cardDetailLarge) },
               content
             )
           )
@@ -168,15 +195,22 @@ var LegacyCard = function (_React$Component) {
     }
   }]);
 
-  return LegacyCard;
+  return LegacyCardBase;
 }(_react2.default.Component);
 
-LegacyCard.propTypes = {
+LegacyCardBase.propTypes = {
   classes: _propTypes2.default.object,
-  variant: _propTypes2.default.string, // TODO: one of 'big'
+  variant: _propTypes2.default.oneOf(['large', 'small']),
   title: _propTypes2.default.string,
-  content: _propTypes2.default.node
-
+  content: _propTypes2.default.node,
+  linkClass: _propTypes2.default.func,
+  linkClassProps: _propTypes2.default.object,
+  //href: PropTypes.string,
+  imageResource: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.object, _propTypes2.default.node])
 };
 
-exports.default = (0, _styles.withStyles)(styles)(LegacyCard);
+LegacyCardBase.defaultProps = {
+  variant: 'small'
+};
+
+exports.default = (0, _styles.withStyles)(styles)(LegacyCardBase);
