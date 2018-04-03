@@ -43,7 +43,7 @@ var styles = function styles(theme) {
       marginRight: 2 * theme.spacing.unit,
       height: theme.appBarHeight.default,
       width: 60
-    }), _defineProperty(_menuButtonJazzy, '&:hover, &.active', {
+    }), _defineProperty(_menuButtonJazzy, '&:hover', {
       backgroundColor: '#333'
     }), _menuButtonJazzy),
     menuButtonJazzyLink: {

@@ -139,7 +139,7 @@ var LegacyCardBase = function (_React$Component) {
           }, linkClassProps),
           _react2.default.createElement('img', { src: image_url, alt: title })
         );
-      } else {
+      } else if (imageResource && imageResource.versions) {
         if (variant == 'large' && imageResource.versions.CARD_LARGE) {
           image_url = imageResource.versions.CARD_LARGE.url;
         } else if (imageResource.versions.CARD_SMALL) {

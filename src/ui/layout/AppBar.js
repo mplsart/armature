@@ -26,6 +26,12 @@ const styles = theme => ({
     }
   },
 
+  gridContainer: {
+    // When the grid isn't fluid, but is small enough, hide the gutter padding
+    [theme.breakpoints.down('md')]: {
+      paddingLeft:0, // Alternately, we could be fluid at medium
+    }
+  },
   toolBar: {
     minHeight: theme.appBarHeight.sm,
     [theme.breakpoints.up('sm')]: {
@@ -73,7 +79,7 @@ class AppBar extends React.Component {
     return (
       <div className={ classes.fixedRoot }>
         <MUIAppBar position="fixed" className={classes.appBar}>
-          <Grid fluid={fluid}>
+          <Grid fluid={fluid} className={classes.gridContainer}>
             <Toolbar className={classes.toolBar}>
 
               <AppBarMenuIcon active={menuActive} handleMenuToggle={ this.handleClick.bind(this) }/>
