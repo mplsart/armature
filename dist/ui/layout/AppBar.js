@@ -62,6 +62,9 @@ var styles = function styles(theme) {
       minHeight: theme.appBarHeight.default
     }),
 
+    gridContainer: _defineProperty({}, theme.breakpoints.down('md'), {
+      paddingLeft: 0 // Alternately, we could be fluid at medium
+    }),
     toolBar: _defineProperty({
       minHeight: theme.appBarHeight.sm
     }, theme.breakpoints.up('sm'), {
@@ -132,7 +135,7 @@ var AppBar = function (_React$Component) {
           { position: 'fixed', className: classes.appBar },
           _react2.default.createElement(
             _grid.Grid,
-            { fluid: fluid },
+            { fluid: fluid, className: classes.gridContainer },
             _react2.default.createElement(
               _Toolbar2.default,
               { className: classes.toolBar },

@@ -19,7 +19,8 @@ const styles = theme => ({
       height: theme.appBarHeight.default,
       width:60,
     },
-    '&:hover, &.active' : {
+    //'&:hover, &.active' : {
+    '&:hover' : {
       backgroundColor: '#333',
     },
   },

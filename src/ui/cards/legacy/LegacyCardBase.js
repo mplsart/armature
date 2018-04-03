@@ -97,7 +97,7 @@ class LegacyCardBase extends React.Component {
             <img src={image_url} alt={title} />
           </this.props.linkClass>);
     }
-    else {
+    else if (imageResource && imageResource.versions) {
       if (variant == 'large' && imageResource.versions.CARD_LARGE) {
         image_url = imageResource.versions.CARD_LARGE.url;
       }
