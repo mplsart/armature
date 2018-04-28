@@ -4,6 +4,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = undefined;
+var _jsxFileName = 'src/containers/Root.js';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -41,10 +42,19 @@ var oot = function (_React$Component) {
     value: function render() {
       return _react2.default.createElement(
         _ThemeProvider2.default,
-        null,
+        {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 7
+          }
+        },
         _react2.default.createElement(
           'div',
-          { style: { border: '10px solid red' } },
+          { style: { border: '10px solid red' }, __source: {
+              fileName: _jsxFileName,
+              lineNumber: 7
+            }
+          },
           this.props.children
         )
       );

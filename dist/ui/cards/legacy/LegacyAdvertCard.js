@@ -3,6 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+var _jsxFileName = 'src/ui/cards/legacy/LegacyAdvertCard.js';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -146,8 +147,17 @@ var LegacyCardBase = function (_React$Component) {
           _extends({
             title: title,
             style: { 'padding': scale_factor + '% 0 0 0' }
-          }, linkClassProps),
-          _react2.default.createElement('img', { src: image_url, alt: title })
+          }, linkClassProps, {
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 103
+            }
+          }),
+          _react2.default.createElement('img', { src: image_url, alt: title, __source: {
+              fileName: _jsxFileName,
+              lineNumber: 107
+            }
+          })
         );
       } else {
         if (variant == 'large' && imageResource.versions.CARD_LARGE) {
@@ -161,29 +171,58 @@ var LegacyCardBase = function (_React$Component) {
             _extends({
               title: title,
               style: { 'padding': scale_factor + '% 0 0 0' }
-            }, linkClassProps),
-            _react2.default.createElement('img', { src: image_url, alt: title })
+            }, linkClassProps, {
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 119
+              }
+            }),
+            _react2.default.createElement('img', { src: image_url, alt: title, __source: {
+                fileName: _jsxFileName,
+                lineNumber: 123
+              }
+            })
           );
         }
       }
 
       return _react2.default.createElement(
         'div',
-        { className: (0, _classnames2.default)(rootClasses) },
+        { className: (0, _classnames2.default)(rootClasses), __source: {
+            fileName: _jsxFileName,
+            lineNumber: 131
+          }
+        },
         _react2.default.createElement(
           'div',
-          { className: classes.cardContainer },
+          { className: classes.cardContainer, __source: {
+              fileName: _jsxFileName,
+              lineNumber: 132
+            }
+          },
           _react2.default.createElement(
             'div',
-            { className: 'card-header' },
+            { className: 'card-header', __source: {
+                fileName: _jsxFileName,
+                lineNumber: 133
+              }
+            },
             _react2.default.createElement(
               'div',
-              { className: classes.cardImage },
+              { className: classes.cardImage, __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 134
+                }
+              },
               image
             ),
             _react2.default.createElement(
               'div',
-              { className: classes.sponsorText },
+              { className: classes.sponsorText, __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 135
+                }
+              },
               resource.advert_type_label || 'advertisement'
             )
           )

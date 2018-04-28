@@ -6,6 +6,8 @@ Object.defineProperty(exports, "__esModule", {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
+var _jsxFileName = 'src/ui/buttons/SocialButton.js';
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -56,10 +58,25 @@ var SocialButton = function SocialButton(_ref) {
     temp.component = component;
   }
 
+  var icon = service;
+  // TODO: If we you touch this code again, make this a map...
+  if (service == 'youtube') {
+    icon = 'youtube-play';
+  }
+
   return _react2.default.createElement(
     temp.component,
-    _extends({ className: (0, _classnames2.default)(classes.root) }, rest),
-    _react2.default.createElement('i', { className: 'fa fa-' + service })
+    _extends({ className: (0, _classnames2.default)(classes.root) }, rest, {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 38
+      }
+    }),
+    _react2.default.createElement('i', { className: 'fa fa-' + icon, __source: {
+        fileName: _jsxFileName,
+        lineNumber: 39
+      }
+    })
   );
 };
 

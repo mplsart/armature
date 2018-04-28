@@ -4,6 +4,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = undefined;
+var _jsxFileName = 'src/ui/lightbox/SlideshowLightboxDemo.js';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -47,7 +48,7 @@ var SlideshowLightboxDemo = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (SlideshowLightboxDemo.__proto__ || Object.getPrototypeOf(SlideshowLightboxDemo)).call(this));
 
-    _this.state = { index: 0, isOpen: true };
+    _this.state = { index: 0, isOpen: false };
 
     _this.openLightbox = _this.openLightbox.bind(_this);
     _this.closeLightbox = _this.closeLightbox.bind(_this);
@@ -99,13 +100,21 @@ var SlideshowLightboxDemo = function (_React$Component) {
           onMovePrevRequest: this.movePrev,
           onMoveNextRequest: this.moveNext,
           onImageLoadError: _SlideshowLightbox2.default.onImageLoadError,
-          animationOnKeyInput: true
+          animationOnKeyInput: true,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 65
+          }
         });
       }
 
       return _react2.default.createElement(
         'button',
-        { onClick: this.openLightbox },
+        { onClick: this.openLightbox, __source: {
+            fileName: _jsxFileName,
+            lineNumber: 80
+          }
+        },
         'open'
       );
     }

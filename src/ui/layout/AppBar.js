@@ -5,7 +5,7 @@ import MUIAppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
 import AppBarMenuIcon from './AppBarMenuIcon';
-import {Grid, Row, Col} from 'armature/dist/grid';
+import {Grid, Row, Col} from '../../grid';
 
 const styles = theme => ({
   fixedRoot: { // Placeholder that pushesdown the content

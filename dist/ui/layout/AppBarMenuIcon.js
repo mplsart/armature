@@ -3,6 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+var _jsxFileName = 'src/ui/layout/AppBarMenuIcon.js';
 
 var _react = require('react');
 
@@ -80,23 +81,43 @@ function HamburgerMenu(_ref) {
 
   return _react2.default.createElement(
     _IconButton2.default,
-    { onClick: handleMenuToggle, className: (0, _classnames2.default)(classes.menuButtonJazzy, active && 'active'), color: 'default', 'aria-label': 'Menu' },
+    { onClick: handleMenuToggle, className: (0, _classnames2.default)(classes.menuButtonJazzy, active && 'active'), color: 'default', 'aria-label': 'Menu', __source: {
+        fileName: _jsxFileName,
+        lineNumber: 55
+      }
+    },
     _react2.default.createElement(
       'a',
-      { className: classes.menuButtonJazzyLink, id: 'side_nav_toggle', title: 'Show Menu' },
+      { className: classes.menuButtonJazzyLink, id: 'side_nav_toggle', title: 'Show Menu', __source: {
+          fileName: _jsxFileName,
+          lineNumber: 56
+        }
+      },
       _react2.default.createElement(
         'span',
-        { className: (0, _classnames2.default)(classes.menuButtonJazzyPatty, 'patty1', active && 'active') },
+        { className: (0, _classnames2.default)(classes.menuButtonJazzyPatty, 'patty1', active && 'active'), __source: {
+            fileName: _jsxFileName,
+            lineNumber: 57
+          }
+        },
         '\xA0'
       ),
       _react2.default.createElement(
         'span',
-        { className: (0, _classnames2.default)(classes.menuButtonJazzyPatty, 'patty2', active && 'active') },
+        { className: (0, _classnames2.default)(classes.menuButtonJazzyPatty, 'patty2', active && 'active'), __source: {
+            fileName: _jsxFileName,
+            lineNumber: 58
+          }
+        },
         '\xA0'
       ),
       _react2.default.createElement(
         'span',
-        { className: (0, _classnames2.default)(classes.menuButtonJazzyPatty, 'patty3', active && 'active') },
+        { className: (0, _classnames2.default)(classes.menuButtonJazzyPatty, 'patty3', active && 'active'), __source: {
+            fileName: _jsxFileName,
+            lineNumber: 59
+          }
+        },
         '\xA0'
       )
     )

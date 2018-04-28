@@ -6,6 +6,8 @@ Object.defineProperty(exports, "__esModule", {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
+var _jsxFileName = 'src/ui/cards/legacy/LegacyEventCard.js';
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = require('react');
@@ -99,30 +101,56 @@ var LegacyEventCard = function (_React$Component) {
         if (venue.multiple_locations_label) {
           addressNodes = _react2.default.createElement(
             'div',
-            null,
+            {
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 48
+              }
+            },
             _react2.default.createElement(
               'div',
-              { className: 'card-detail event-venue-name' },
+              { className: 'card-detail event-venue-name', __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 49
+                }
+              },
               'Various Locations'
             ),
             _react2.default.createElement(
               'div',
-              { className: 'card-detail event-address' },
+              { className: 'card-detail event-address', __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 50
+                }
+              },
               venue.multiple_locations_label
             )
           );
         } else {
           addressNodes = _react2.default.createElement(
             'div',
-            null,
+            {
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 55
+              }
+            },
             _react2.default.createElement(
               'div',
-              { className: 'card-detail event-venue-name' },
+              { className: 'card-detail event-venue-name', __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 56
+                }
+              },
               venue.name
             ),
             _react2.default.createElement(
               'div',
-              { className: 'card-detail event-address' },
+              { className: 'card-detail event-address', __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 57
+                }
+              },
               venue.address + ', ' + venue.city
             )
           );
@@ -138,20 +166,37 @@ var LegacyEventCard = function (_React$Component) {
         start_only: event_date_resource.category == 'performance',
         label: label,
         is_user_central_timezone: browser_timezone == CENTRAL_TIMEZONE,
-        today_end_date_utc: _momentTimezone2.default.utc((0, _momentTimezone2.default)().tz(CENTRAL_TIMEZONE).hour(9).minute(0).second(0))
+        today_end_date_utc: _momentTimezone2.default.utc((0, _momentTimezone2.default)().tz(CENTRAL_TIMEZONE).hour(9).minute(0).second(0)),
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 67
+        }
       });
 
       var content = _react2.default.createElement(
         'div',
-        null,
+        {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 78
+          }
+        },
         _react2.default.createElement(
           'div',
-          { className: classes.eventDate },
+          { className: classes.eventDate, __source: {
+              fileName: _jsxFileName,
+              lineNumber: 79
+            }
+          },
           dateNodes
         ),
         _react2.default.createElement(
           'div',
-          { className: classes.eventAddress },
+          { className: classes.eventAddress, __source: {
+              fileName: _jsxFileName,
+              lineNumber: 80
+            }
+          },
           addressNodes
         )
       );
@@ -159,7 +204,12 @@ var LegacyEventCard = function (_React$Component) {
       return _react2.default.createElement(_LegacyCardBase2.default, _extends({
         title: event_resource.name,
         content: content
-      }, rest));
+      }, rest, {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 85
+        }
+      }));
     }
   }]);
 

@@ -28,9 +28,15 @@ const SocialButton = ({classes, component, service, ...rest}) => {
     temp.component = component;
   }
 
+  let icon = service;
+  // TODO: If we you touch this code again, make this a map...
+  if (service == 'youtube') {
+    icon = 'youtube-play';
+  }
+
   return (
     <temp.component className={classnames(classes.root)} {...rest}>
-      <i className={`fa fa-${service}`}></i>
+      <i className={`fa fa-${icon}`}></i>
     </temp.component>
   );
 };

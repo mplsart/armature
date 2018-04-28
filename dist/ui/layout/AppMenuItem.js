@@ -3,6 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+var _jsxFileName = 'src/ui/layout/AppMenuItem.js';
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; // A Wrapper class for menu items
 
@@ -45,7 +46,12 @@ var AppMenuItem = function AppMenuItem(_ref) {
 
   return _react2.default.createElement(
     _List.ListItem,
-    _extends({ button: true, className: classes.listItem }, rest),
+    _extends({ button: true, className: classes.listItem }, rest, {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 22
+      }
+    }),
     children
   );
 };

@@ -4,6 +4,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = exports.CENTRAL_TIMEZONE = undefined;
+var _jsxFileName = 'src/utils/dates/LegacyNiceDate.js';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -93,7 +94,12 @@ var NiceDate = function (_Component) {
 
       return _react2.default.createElement(
         'span',
-        null,
+        {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 57
+          }
+        },
         display_str,
         ' ',
         this.props.label

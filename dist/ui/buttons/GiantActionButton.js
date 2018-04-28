@@ -6,6 +6,8 @@ Object.defineProperty(exports, "__esModule", {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
+var _jsxFileName = 'src/ui/buttons/GiantActionButton.js';
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -48,8 +50,12 @@ function GiantActionButton(props) {
 
   return _react2.default.createElement(
     _Button2.default,
-    _extends({ varient: 'raised', color: 'primary', className: classes.button }, rest),
-    'X',
+    _extends({ variant: 'raised', color: 'primary', className: classes.button }, rest, {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 23
+      }
+    }),
     children
   );
 }

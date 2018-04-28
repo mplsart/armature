@@ -3,6 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+var _jsxFileName = 'src/ui/layout/AppMenu.js';
 
 var _react = require('react');
 
@@ -72,10 +73,18 @@ var AppMenu = function AppMenu(_ref) {
 
   return _react2.default.createElement(
     'div',
-    { className: classes.root },
+    { className: classes.root, __source: {
+        fileName: _jsxFileName,
+        lineNumber: 49
+      }
+    },
     _react2.default.createElement(
       'div',
-      { className: classes.appFrame },
+      { className: classes.appFrame, __source: {
+          fileName: _jsxFileName,
+          lineNumber: 50
+        }
+      },
       _react2.default.createElement(
         _Drawer2.default,
         {
@@ -88,11 +97,19 @@ var AppMenu = function AppMenu(_ref) {
             modal: (0, _classnames2.default)(classes.modal)
           },
           open: menuActive,
-          onClose: handleMenuToggle
+          onClose: handleMenuToggle,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 51
+          }
         },
         _react2.default.createElement(
           'div',
-          { className: classes.drawerInner },
+          { className: classes.drawerInner, __source: {
+              fileName: _jsxFileName,
+              lineNumber: 63
+            }
+          },
           contentComponent
         )
       )

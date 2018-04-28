@@ -3,6 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+var _jsxFileName = 'src/ui/layout/AppBar.js';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -32,7 +33,7 @@ var _AppBarMenuIcon = require('./AppBarMenuIcon');
 
 var _AppBarMenuIcon2 = _interopRequireDefault(_AppBarMenuIcon);
 
-var _grid = require('armature/dist/grid');
+var _grid = require('../../grid');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -129,20 +130,44 @@ var AppBar = function (_React$Component) {
 
       return _react2.default.createElement(
         'div',
-        { className: classes.fixedRoot },
+        { className: classes.fixedRoot, __source: {
+            fileName: _jsxFileName,
+            lineNumber: 80
+          }
+        },
         _react2.default.createElement(
           _AppBar2.default,
-          { position: 'fixed', className: classes.appBar },
+          { position: 'fixed', className: classes.appBar, __source: {
+              fileName: _jsxFileName,
+              lineNumber: 81
+            }
+          },
           _react2.default.createElement(
             _grid.Grid,
-            { fluid: fluid, className: classes.gridContainer },
+            { fluid: fluid, className: classes.gridContainer, __source: {
+                fileName: _jsxFileName,
+                lineNumber: 82
+              }
+            },
             _react2.default.createElement(
               _Toolbar2.default,
-              { className: classes.toolBar },
-              _react2.default.createElement(_AppBarMenuIcon2.default, { active: menuActive, handleMenuToggle: this.handleClick.bind(this) }),
+              { className: classes.toolBar, __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 83
+                }
+              },
+              _react2.default.createElement(_AppBarMenuIcon2.default, { active: menuActive, handleMenuToggle: this.handleClick.bind(this), __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 85
+                }
+              }),
               _react2.default.createElement(
                 _Typography2.default,
-                { type: 'title', color: 'inherit', className: classes.title },
+                { type: 'title', color: 'inherit', className: classes.title, __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 86
+                  }
+                },
                 titleComponents
               ),
               rightComponents

@@ -3,6 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+var _jsxFileName = 'src/ui/lightbox/SlideshowLightbox.js';
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -1584,7 +1585,11 @@ var SlideshowLightbox = function (_React$Component) {
             src: imageSrc,
             key: imageSrc + keyEndings[srcType],
             alt: typeof imageTitle === 'string' ? imageTitle : (0, _utils.translate)('Image'),
-            draggable: false
+            draggable: false,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 1423
+            }
           }));
         }
       };
@@ -1608,7 +1613,12 @@ var SlideshowLightbox = function (_React$Component) {
 
       return _react2.default.createElement(
         'div',
-        null,
+        {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 1458
+          }
+        },
         'Inner SlideshowLightbox',
         _react2.default.createElement(
           _Dialog2.default,
@@ -1616,7 +1626,11 @@ var SlideshowLightbox = function (_React$Component) {
             open: true,
             onExit: clickOutsideToClose ? this.requestClose : undefined,
             fullScreen: true,
-            fullWidth: true
+            fullWidth: true,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 1461
+            }
           },
           _react2.default.createElement(
             'div',
@@ -1630,12 +1644,20 @@ var SlideshowLightbox = function (_React$Component) {
               onTouchMove: this.handleTouchMove,
               tabIndex: '-1' // Enables key handlers on div
               , onKeyDown: this.handleKeyInput,
-              onKeyUp: this.handleKeyInput
+              onKeyUp: this.handleKeyInput,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 1467
+              }
             },
             _react2.default.createElement(
               'div',
               {
-                className: (0, _classnames2.default)('ril-inner', classes.inner)
+                className: (0, _classnames2.default)('ril-inner', classes.inner),
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 1479
+                }
               },
               images
             ),
@@ -1646,6 +1668,10 @@ var SlideshowLightbox = function (_React$Component) {
               'aria-label': this.props.prevLabel,
 
               onClick: !this.isAnimating() ? this.requestMovePrev : undefined // Ignore clicks during animation
+              , __source: {
+                fileName: _jsxFileName,
+                lineNumber: 1486
+              }
             }),
             nextSrc && _react2.default.createElement('a', { // Move to previous image button
               type: 'button',
@@ -1653,32 +1679,64 @@ var SlideshowLightbox = function (_React$Component) {
               key: 'next',
               'aria-label': this.props.nextLabel,
               onClick: !this.isAnimating() ? this.requestMoveNext : undefined // Ignore clicks during animation
+              , __source: {
+                fileName: _jsxFileName,
+                lineNumber: 1497
+              }
             }),
             _react2.default.createElement(
               'div',
-              { className: (0, _classnames2.default)('ril-toolbar', classes.toolbar) },
+              { className: (0, _classnames2.default)('ril-toolbar', classes.toolbar), __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 1507
+                }
+              },
               _react2.default.createElement(
                 'ul',
-                { className: (0, _classnames2.default)('ril-toolbar-left', classes.toolbarSide, classes.toolbarLeftSide) },
+                { className: (0, _classnames2.default)('ril-toolbar-left', classes.toolbarSide, classes.toolbarLeftSide), __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 1510
+                  }
+                },
                 _react2.default.createElement(
                   'li',
-                  { className: (0, _classnames2.default)('ril-toolbar__item', classes.toolbarItem) },
+                  { className: (0, _classnames2.default)('ril-toolbar__item', classes.toolbarItem), __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 1511
+                    }
+                  },
                   _react2.default.createElement(
                     'span',
-                    { className: (0, _classnames2.default)('ril-toolbar__item__child', classes.toolbarItemChild) },
+                    { className: (0, _classnames2.default)('ril-toolbar__item__child', classes.toolbarItemChild), __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 1512
+                      }
+                    },
                     'Image Gallery'
                   )
                 )
               ),
               _react2.default.createElement(
                 'ul',
-                { className: (0, _classnames2.default)('ril-toolbar-left', classes.toolbarSide, classes.toolbarLeftSide) },
+                { className: (0, _classnames2.default)('ril-toolbar-left', classes.toolbarSide, classes.toolbarLeftSide), __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 1518
+                  }
+                },
                 _react2.default.createElement(
                   'li',
-                  { className: (0, _classnames2.default)('ril-toolbar__item', classes.toolbarItem) },
+                  { className: (0, _classnames2.default)('ril-toolbar__item', classes.toolbarItem), __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 1519
+                    }
+                  },
                   _react2.default.createElement('a', {
                     className: (0, _classnames2.default)('ril-toolbar__item__child', classes.builtinButton, classes.toolbarItemChild, classes.closeButton),
                     onClick: !this.isAnimating() ? this.requestClose : undefined // Ignore clicks during animation
+                    , __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 1520
+                    }
                   })
                 )
               )

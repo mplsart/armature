@@ -25,7 +25,7 @@ export default class SlideshowLightboxDemo extends React.Component {
   constructor() {
     super();
 
-    this.state = { index: 0, isOpen: true, };
+    this.state = { index: 0, isOpen: false, };
 
     this.openLightbox = this.openLightbox.bind(this);
     this.closeLightbox = this.closeLightbox.bind(this);

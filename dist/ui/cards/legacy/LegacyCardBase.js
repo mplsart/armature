@@ -3,6 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+var _jsxFileName = 'src/ui/cards/legacy/LegacyCardBase.js';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -136,8 +137,17 @@ var LegacyCardBase = function (_React$Component) {
           this.props.linkClass,
           _extends({
             title: title
-          }, linkClassProps),
-          _react2.default.createElement('img', { src: image_url, alt: title })
+          }, linkClassProps, {
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 94
+            }
+          }),
+          _react2.default.createElement('img', { src: image_url, alt: title, __source: {
+              fileName: _jsxFileName,
+              lineNumber: 97
+            }
+          })
         );
       } else if (imageResource && imageResource.versions) {
         if (variant == 'large' && imageResource.versions.CARD_LARGE) {
@@ -151,42 +161,84 @@ var LegacyCardBase = function (_React$Component) {
             this.props.linkClass,
             _extends({
               title: title
-            }, linkClassProps),
-            _react2.default.createElement('img', { src: image_url, alt: title })
+            }, linkClassProps, {
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 110
+              }
+            }),
+            _react2.default.createElement('img', { src: image_url, alt: title, __source: {
+                fileName: _jsxFileName,
+                lineNumber: 113
+              }
+            })
           );
         }
       }
 
       return _react2.default.createElement(
         'div',
-        { className: (0, _classnames2.default)(rootClasses) },
+        { className: (0, _classnames2.default)(rootClasses), __source: {
+            fileName: _jsxFileName,
+            lineNumber: 121
+          }
+        },
         _react2.default.createElement(
           'div',
-          { className: classes.cardContainer },
+          { className: classes.cardContainer, __source: {
+              fileName: _jsxFileName,
+              lineNumber: 122
+            }
+          },
           _react2.default.createElement(
             'div',
-            { className: 'card-header' },
+            { className: 'card-header', __source: {
+                fileName: _jsxFileName,
+                lineNumber: 123
+              }
+            },
             _react2.default.createElement(
               'div',
-              { className: classes.cardImage },
+              { className: classes.cardImage, __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 124
+                }
+              },
               image
             )
           ),
           (title || content) && _react2.default.createElement(
             'div',
-            { className: classes.cardContent },
+            { className: classes.cardContent, __source: {
+                fileName: _jsxFileName,
+                lineNumber: 127
+              }
+            },
             title && _react2.default.createElement(
               'div',
-              { className: classes.cardTitle },
+              { className: classes.cardTitle, __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 128
+                }
+              },
               _react2.default.createElement(
                 this.props.linkClass,
-                linkClassProps,
+                _extends({}, linkClassProps, {
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 128
+                  }
+                }),
                 title
               )
             ),
             content && _react2.default.createElement(
               'div',
-              { className: (0, _classnames2.default)(classes.cardDetail, variant == 'large' && classes.cardDetailLarge) },
+              { className: (0, _classnames2.default)(classes.cardDetail, variant == 'large' && classes.cardDetailLarge), __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 129
+                }
+              },
               content
             )
           )

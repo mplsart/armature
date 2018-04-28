@@ -3,6 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+var _jsxFileName = 'src/ThemeProvider.js';
 exports.default = ThemeProvider;
 
 var _react = require('react');
@@ -44,9 +45,23 @@ function ThemeProvider(_ref) {
   if (process.browser) {
     return _react2.default.createElement(
       _styles.MuiThemeProvider,
-      { theme: _theme2.default },
-      _react2.default.createElement(_CssBaseline2.default, null),
-      _react2.default.createElement(_GlobalStyles2.default, null),
+      { theme: _theme2.default, __source: {
+          fileName: _jsxFileName,
+          lineNumber: 17
+        }
+      },
+      _react2.default.createElement(_CssBaseline2.default, {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 18
+        }
+      }),
+      _react2.default.createElement(_GlobalStyles2.default, {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 19
+        }
+      }),
       children
     );
   } else {
@@ -56,12 +71,30 @@ function ThemeProvider(_ref) {
     var context = (0, _context.getContext)();
     return _react2.default.createElement(
       _reactJss.JssProvider,
-      { registry: context.sheetsRegistry, jss: context.jss },
+      { registry: context.sheetsRegistry, jss: context.jss, __source: {
+          fileName: _jsxFileName,
+          lineNumber: 29
+        }
+      },
       _react2.default.createElement(
         _styles.MuiThemeProvider,
-        { theme: _theme2.default, sheetsManager: context.sheetsManager },
-        _react2.default.createElement(_CssBaseline2.default, null),
-        _react2.default.createElement(_GlobalStyles2.default, null),
+        { theme: _theme2.default, sheetsManager: context.sheetsManager, __source: {
+            fileName: _jsxFileName,
+            lineNumber: 30
+          }
+        },
+        _react2.default.createElement(_CssBaseline2.default, {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 31
+          }
+        }),
+        _react2.default.createElement(_GlobalStyles2.default, {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 32
+          }
+        }),
         children
       )
     );

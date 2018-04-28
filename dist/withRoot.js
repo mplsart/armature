@@ -4,6 +4,10 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _jsxFileName = 'src/withRoot.js';
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = require('react');
@@ -69,11 +73,30 @@ function withRoot(Component) {
           _styles.MuiThemeProvider,
           {
             theme: this.pageContext.theme,
-            sheetsManager: this.pageContext.sheetsManager
+            sheetsManager: this.pageContext.sheetsManager,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 29
+            }
           },
-          _react2.default.createElement(_CssBaseline2.default, null),
-          _react2.default.createElement(_GlobalStyles2.default, null),
-          _react2.default.createElement(Component, this.props)
+          _react2.default.createElement(_CssBaseline2.default, {
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 33
+            }
+          }),
+          _react2.default.createElement(_GlobalStyles2.default, {
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 34
+            }
+          }),
+          _react2.default.createElement(Component, _extends({}, this.props, {
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 35
+            }
+          }))
         );
       }
     }]);

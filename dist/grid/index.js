@@ -7,6 +7,8 @@ exports.Col = exports.Row = exports.Grid = undefined;
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
+var _jsxFileName = 'src/grid/index.js';
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -79,7 +81,12 @@ function _Grid(_ref) {
 
   return _react2.default.createElement(
     'div',
-    _extends({ className: (0, _classnames2.default)(containerClass, className) }, rest),
+    _extends({ className: (0, _classnames2.default)(containerClass, className) }, rest, {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 49
+      }
+    }),
     children
   );
 }
@@ -100,7 +107,12 @@ function _Row(_ref2) {
 
   return _react2.default.createElement(
     _Grid3.default,
-    _extends({ spacing: Number(theme.spacing.unit * 2), container: true, className: (0, _classnames2.default)(classes.typeContainer, className) }, rest),
+    _extends({ spacing: Number(theme.spacing.unit * 2), container: true, className: (0, _classnames2.default)(classes.typeContainer, className) }, rest, {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 61
+      }
+    }),
     children
   );
 }
@@ -120,7 +132,11 @@ function _Col(props) {
 
   return _react2.default.createElement(
     _Grid3.default,
-    _extends({ item: true }, rest, { className: (0, _classnames2.default)(classes.typeItem, className) }),
+    _extends({ item: true }, rest, { className: (0, _classnames2.default)(classes.typeItem, className), __source: {
+        fileName: _jsxFileName,
+        lineNumber: 73
+      }
+    }),
     children
   );
 }
