@@ -34,19 +34,32 @@ const styles = (theme) => {
         width: theme.breakpoints.width('lg')
       },
     },
-
+    alignRight: { marginRight: 0 },
+    alignLeft: { marginLeft: 0 },
     typeContainer: {},
     typeItem : {}
   }
 }
 
-function _Grid({classes, theme, className, children, fluid, ...rest}) {
-  let containerClass = classes.legacyContainer
-  if (fluid) {
-    containerClass = classes.fluidContainer;
-  }
+function _Grid({classes, align, theme, className, children, fluid, ...rest}) {
+  let classNamesX = [className];
 
-  return (<div className={classNames(containerClass, className)} {...rest}>{ children }</div>)
+  if (fluid) {
+    classNamesX.push(classes.fluidContainer);
+  }
+  else {
+    classNamesX.push(classes.legacyContainer);
+
+    if (align) {
+      if (align == 'right') {
+        classNamesX.push(classes.alignRight);
+      }
+      else if (align == 'left') {
+        classNamesX.push(classes.alignLeft);
+      }
+    }
+  }
+  return (<div className={classNames(classNamesX)} {...rest}>{ children }</div>)
 }
 // prop definitions
 _Grid.propTypes = {
@@ -54,6 +67,7 @@ _Grid.propTypes = {
   children: PropTypes.node,
   classes: PropTypes.object,
   fluid: PropTypes.bool,
+  align: PropTypes.oneOf(['left', 'right'])
 };
 
 
