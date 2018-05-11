@@ -79,7 +79,6 @@ class VenueAutocomplete extends React.Component {
   }
 
   handleTextChange(e) {
-    console.log('WHA T??');
     // Called when the user types
     let newState = {textValue: e.target.value};
 
@@ -96,7 +95,7 @@ class VenueAutocomplete extends React.Component {
   }
 
   render() {
-    let {classes, label, onChange, ...rest} = this.props;
+    let {classes, label, ...rest} = this.props;
     let {isSelected, selectedResource, suggestedResources, textValue} = this.state;
 
     // This is required to trigger controlled vs. uncontrolled
@@ -123,7 +122,7 @@ class VenueAutocomplete extends React.Component {
       <div>
         <FormControl fullWidth required>
           <InputLabel>{label}</InputLabel>
-          <Input {...rest} onChange={this.handleTextChange.bind(this)} />
+          <Input onChange={this.handleTextChange.bind(this)} {...rest}  />
         </FormControl>
         { suggestedResources.map((resource)=> {
           return (<li onClick={this.handleSelection.bind(this, resource)}>{resource.name}</li>);

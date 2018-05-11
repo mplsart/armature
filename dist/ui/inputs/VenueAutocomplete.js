@@ -128,7 +128,6 @@ var VenueAutocomplete = function (_React$Component) {
   }, {
     key: 'handleTextChange',
     value: function handleTextChange(e) {
-      console.log('WHA T??');
       // Called when the user types
       var newState = { textValue: e.target.value };
 
@@ -152,8 +151,7 @@ var VenueAutocomplete = function (_React$Component) {
       var _props = this.props,
           classes = _props.classes,
           label = _props.label,
-          onChange = _props.onChange,
-          rest = _objectWithoutProperties(_props, ['classes', 'label', 'onChange']);
+          rest = _objectWithoutProperties(_props, ['classes', 'label']);
 
       var _state = this.state,
           isSelected = _state.isSelected,
@@ -201,7 +199,7 @@ var VenueAutocomplete = function (_React$Component) {
             null,
             label
           ),
-          _react2.default.createElement(_Input2.default, _extends({}, rest, { onChange: this.handleTextChange.bind(this) }))
+          _react2.default.createElement(_Input2.default, _extends({ onChange: this.handleTextChange.bind(this) }, rest))
         ),
         suggestedResources.map(function (resource) {
           return _react2.default.createElement(
