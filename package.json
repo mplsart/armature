@@ -4,6 +4,7 @@
   "description": "A collection of react components wrapping material-ui for mplsart ecosystem",
   "main": "dist/index.js",
   "scripts": {
+    "dev": "nodemon babel src --out-dir dist",
     "test": "./node_modules/.bin/mocha --reporter spec",
     "build": "babel src --out-dir dist",
     "prepublish": "npm run build",
