@@ -32,6 +32,18 @@ var _classnames = require('classnames');
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
+var _Paper = require('material-ui/Paper');
+
+var _Paper2 = _interopRequireDefault(_Paper);
+
+var _Menu = require('material-ui/Menu');
+
+var _List = require('material-ui/List');
+
+var _reactAutosuggest = require('react-autosuggest');
+
+var _reactAutosuggest2 = _interopRequireDefault(_reactAutosuggest);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
@@ -45,19 +57,45 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var styles = function styles(theme) {
   return {
     avatar: {
-      height: 20,
-      width: 20,
-      fontSize: '.7rem',
       backgroundColor: '#' + theme.venues.default_color,
       '&.business': { backgroundColor: '#' + theme.venues.business.default_color },
       '&.gallery': { backgroundColor: '#' + theme.venues.gallery.default_color },
       '&.institution': { backgroundColor: '#' + theme.venues.institution.default_color },
       '&.popup': { backgroundColor: '#' + theme.venues.popup.default_color },
       '&.public': { backgroundColor: '#' + theme.venues.public.default_color },
-      '&.studios': { backgroundColor: '#' + theme.venues.studios.default_color }
+      '&.studios': { backgroundColor: '#' + theme.venues.studios.default_color },
+      '&.inputAdornment': { height: 20, width: 20, fontSize: '.7rem' }
+    },
+
+    container: {
+      flexGrow: 1,
+      position: 'relative'
+    },
+    suggestionsContainerOpen: {
+      position: 'absolute',
+      zIndex: 1,
+      marginTop: theme.spacing.unit,
+      left: 0,
+      right: 0
+    },
+    suggestion: {
+      display: 'block'
+    },
+    suggestionsList: {
+      margin: 0,
+      padding: 0,
+      listStyleType: 'none'
+    },
+
+    suggestionListFooterItem: {
+      backgroundColor: theme.palette.grey[100]
     }
   };
 };
+
+function getSuggestionValue(suggestion) {
+  return suggestion.name;
+}
 
 var VenueAutocomplete = function (_React$Component) {
   _inherits(VenueAutocomplete, _React$Component);
@@ -67,8 +105,29 @@ var VenueAutocomplete = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (VenueAutocomplete.__proto__ || Object.getPrototypeOf(VenueAutocomplete)).call(this, props));
 
+    _this.handleSuggestionsFetchRequested = function (_ref) {
+      var value = _ref.value;
+
+
+      _this.setState({
+        suggestedResources: _this.getSuggestions(value)
+      });
+    };
+
+    _this.handleSuggestionsClearRequested = function () {
+      var suggestedResources = [];
+      if (_this.state.selectedResource) {
+        suggestedResources.push(_this.state.selectedResource);
+      }
+
+      _this.setState({
+        suggestedResources: suggestedResources
+      });
+    };
+
     var state = {
       suggestedResources: [],
+      isFocused: false,
       isSelected: false,
       selectedResource: null,
       textValue: ''
@@ -76,9 +135,11 @@ var VenueAutocomplete = function (_React$Component) {
 
     // If there is an initial value, populate that
     if (props.value && _this.props.value.resource_id) {
-      state.selectedResource = props.value;
+      var resource = _this.props.value;
+      state.suggestedResources = [resource];
+      state.selectedResource = resource;
       state.isSelected = true;
-      state.textValue = props.value.name;
+      state.textValue = resource.name;
     }
 
     _this.state = state;
@@ -92,8 +153,110 @@ var VenueAutocomplete = function (_React$Component) {
       console.log(e);
     }
   }, {
+    key: 'renderSuggestionsContainer',
+    value: function renderSuggestionsContainer(_ref2) {
+      var containerProps = _ref2.containerProps,
+          children = _ref2.children,
+          query = _ref2.query;
+
+      var footer = void 0;
+      var classes = this.props.classes;
+
+      if (this.state.isFocused) {
+        footer = _react2.default.createElement(
+          _Menu.MenuItem,
+          { component: 'div', className: classes.suggestionListFooterItem, onClick: function onClick(e) {
+              return console.log(e);
+            } },
+          _react2.default.createElement(
+            'span',
+            null,
+            'Not seeing what you are looking for?'
+          ),
+          ' \xA0 ',
+          _react2.default.createElement(
+            'a',
+            { onClick: function onClick(e) {
+                return console.log(e);
+              } },
+            ' Create new Venue'
+          )
+        );
+      }
+
+      return _react2.default.createElement(
+        _Paper2.default,
+        _extends({}, containerProps, { square: true }),
+        children,
+        footer
+      );
+    }
+  }, {
+    key: 'renderSuggestion',
+    value: function renderSuggestion(resource, _ref3) {
+      var query = _ref3.query,
+          isHighlighted = _ref3.isHighlighted;
+
+      //const matches = match(suggestion.label, query);
+      //const parts = parse(suggestion.label, matches);
+
+      var classes = this.props.classes;
+
+      var avatar = void 0;
+      if (resource.primary_image_resource && resource.primary_image_resource.versions.THUMB.url) {
+        var src = resource.primary_image_resource.versions.THUMB.url || null;
+        avatar = _react2.default.createElement(_Avatar2.default, { className: (0, _classnames2.default)(classes.avatar, 'searchResult'), alt: resource.name, src: src });
+      }
+
+      if (!avatar) {
+        avatar = _react2.default.createElement(
+          _Avatar2.default,
+          { className: (0, _classnames2.default)(classes.avatar, resource.category, 'searchResult') },
+          resource.name[0]
+        );
+      }
+
+      return _react2.default.createElement(
+        _Menu.MenuItem,
+        { selected: isHighlighted, component: 'div' },
+        _react2.default.createElement(
+          _List.ListItemIcon,
+          { className: classes.icon },
+          avatar
+        ),
+        _react2.default.createElement(_List.ListItemText, {
+          classes: { primary: classes.primary },
+          primary: _react2.default.createElement(
+            'span',
+            null,
+            resource.name,
+            ' ',
+            resource.is_closed && _react2.default.createElement(
+              'span',
+              null,
+              '(closed)'
+            )
+          ),
+          secondary: _react2.default.createElement(
+            'span',
+            null,
+            resource.category,
+            ' - ',
+            resource.address,
+            ' - ',
+            resource.city
+          )
+        })
+      );
+    }
+  }, {
+    key: 'getSuggestions',
+    value: function getSuggestions(value) {
+      return this.state.suggestedResources;
+    }
+  }, {
     key: 'fetchSearchResults',
-    value: function fetchSearchResults(data) {
+    value: function fetchSearchResults(value) {
       // TODO: Look in cache for prior searches
       // TODO: Do timeout so we're not spamng the server
       // TODO: Scrub data field to be urlsafe
@@ -102,7 +265,7 @@ var VenueAutocomplete = function (_React$Component) {
       var errorCallback = this.handleSearchError.bind(this);
       var successCallback = this.searchResultsHandler.bind(this);
 
-      fetch('https://www.mplsart.com/api/venues?q=' + data).then(function (response) {
+      fetch('https://www.mplsart.com/api/venues?verbose=true&q=' + value).then(function (response) {
         if (!response.ok) {
           throw Error(response.statusText);
         }
@@ -122,8 +285,22 @@ var VenueAutocomplete = function (_React$Component) {
     }
   }, {
     key: 'handleSelection',
-    value: function handleSelection(resource, e) {
-      this.setState({ isSelected: true, selectedResource: resource, textValue: resource.name, suggestedResources: [] });
+    value: function handleSelection(e, _ref4) {
+      var suggestion = _ref4.suggestion;
+
+      var resource = suggestion;
+      this.setState({ isSelected: true, selectedResource: resource, textValue: resource.name, suggestedResources: [resource] });
+      this.props.onChange(resource);
+    }
+  }, {
+    key: 'handleTextFocus',
+    value: function handleTextFocus(e) {
+      this.setState({ isFocused: true });
+    }
+  }, {
+    key: 'handleTextBlur',
+    value: function handleTextBlur(e) {
+      this.setState({ isFocused: false });
     }
   }, {
     key: 'handleTextChange',
@@ -146,22 +323,18 @@ var VenueAutocomplete = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
-      var _this2 = this;
-
       var _props = this.props,
           classes = _props.classes,
-          label = _props.label,
-          rest = _objectWithoutProperties(_props, ['classes', 'label']);
+          rest = _objectWithoutProperties(_props, ['classes']);
 
       var _state = this.state,
           isSelected = _state.isSelected,
           selectedResource = _state.selectedResource,
-          suggestedResources = _state.suggestedResources,
           textValue = _state.textValue;
 
       // This is required to trigger controlled vs. uncontrolled
 
-      rest.value = textValue;
+      rest.value = textValue || '';
 
       // If there is a selection, decorate the input to refelect this
       if (isSelected) {
@@ -169,13 +342,13 @@ var VenueAutocomplete = function (_React$Component) {
         var avatar = void 0;
         if (selectedResource.primary_image_resource && selectedResource.primary_image_resource.versions.THUMB.url) {
           var src = selectedResource.primary_image_resource.versions.THUMB.url || null;
-          avatar = _react2.default.createElement(_Avatar2.default, { className: classes.avatar, alt: selectedResource.name, src: src });
+          avatar = _react2.default.createElement(_Avatar2.default, { className: (0, _classnames2.default)(classes.avatar, 'inputAdornment'), alt: selectedResource.name, src: src });
         }
 
         if (!avatar) {
           avatar = _react2.default.createElement(
             _Avatar2.default,
-            { className: (0, _classnames2.default)(classes.avatar, selectedResource.category) },
+            { className: (0, _classnames2.default)(classes.avatar, selectedResource.category, 'inputAdornment') },
             selectedResource.name[0]
           );
         }
@@ -187,6 +360,48 @@ var VenueAutocomplete = function (_React$Component) {
         );
         rest.value = selectedResource.name;
       }
+
+      var renderInput = function renderInput(inputProps) {
+        var label = inputProps.label,
+            classes = inputProps.classes,
+            rest = _objectWithoutProperties(inputProps, ['label', 'classes']);
+
+        return _react2.default.createElement(
+          _Form.FormControl,
+          { className: classes.FormControl, fullWidth: true, required: true },
+          _react2.default.createElement(
+            _Input.InputLabel,
+            null,
+            label
+          ),
+          _react2.default.createElement(_Input2.default, rest)
+        );
+      };
+
+      return _react2.default.createElement(_reactAutosuggest2.default, {
+        theme: {
+          container: classes.container,
+          suggestionsContainerOpen: classes.suggestionsContainerOpen,
+          suggestionsList: classes.suggestionsList,
+          suggestion: classes.suggestion
+        },
+        renderInputComponent: renderInput,
+        suggestions: this.state.suggestedResources,
+        onSuggestionsFetchRequested: this.handleSuggestionsFetchRequested,
+        onSuggestionsClearRequested: this.handleSuggestionsClearRequested,
+        renderSuggestionsContainer: this.renderSuggestionsContainer.bind(this),
+        onSuggestionSelected: this.handleSelection.bind(this),
+        getSuggestionValue: getSuggestionValue,
+        renderSuggestion: this.renderSuggestion.bind(this),
+        focusInputOnSuggestionClick: false,
+        inputProps: _extends({
+          classes: classes
+        }, rest, {
+          onChange: this.handleTextChange.bind(this),
+          onFocus: this.handleTextFocus.bind(this),
+          onBlur: this.handleTextBlur.bind(this)
+        })
+      });
 
       return _react2.default.createElement(
         'div',
@@ -200,14 +415,7 @@ var VenueAutocomplete = function (_React$Component) {
             label
           ),
           _react2.default.createElement(_Input2.default, _extends({ onChange: this.handleTextChange.bind(this) }, rest))
-        ),
-        suggestedResources.map(function (resource) {
-          return _react2.default.createElement(
-            'li',
-            { onClick: _this2.handleSelection.bind(_this2, resource) },
-            resource.name
-          );
-        })
+        )
       );
     }
   }]);
