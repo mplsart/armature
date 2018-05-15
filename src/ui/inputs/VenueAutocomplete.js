@@ -105,7 +105,9 @@ class VenueAutocomplete extends React.Component {
 
   let {classes} = this.props;
   let avatar;
-  if (resource.primary_image_resource && resource.primary_image_resource.versions.THUMB.url) {
+  if (resource.primary_image_resource
+    && resource.primary_image_resource.versions
+    && resource.primary_image_resource.versions.THUMB.url) {
     let src = resource.primary_image_resource.versions.THUMB.url || null;
     avatar = (<Avatar className={classNames(classes.avatar, 'searchResult')} alt={resource.name} src={src} />);
   }
@@ -144,7 +146,7 @@ class VenueAutocomplete extends React.Component {
     var errorCallback = this.handleSearchError.bind(this);
     var successCallback = this.searchResultsHandler.bind(this);
 
-    fetch('https://www.mplsart.com/api/venues?verbose=true&q=' + value)
+    fetch(this.props.apiHost + '/api/venues?verbose=true&q=' + value)
       .then((response) => {
         if (!response.ok) {
           throw Error(response.statusText);
@@ -209,7 +211,7 @@ class VenueAutocomplete extends React.Component {
   };
 
   render() {
-    let {classes, ...rest} = this.props;
+    let {classes, apiHost, ...rest} = this.props;
     let {isSelected, selectedResource, textValue} = this.state;
 
     // This is required to trigger controlled vs. uncontrolled
@@ -219,7 +221,10 @@ class VenueAutocomplete extends React.Component {
     if (isSelected) {
       // Determine src
       let avatar;
-      if (selectedResource.primary_image_resource && selectedResource.primary_image_resource.versions.THUMB.url) {
+      if (selectedResource.primary_image_resource
+        && selectedResource.primary_image_resource.versions
+        && selectedResource.primary_image_resource.versions.THUMB.url
+      ) {
         let src = selectedResource.primary_image_resource.versions.THUMB.url || null;
         avatar = (<Avatar className={classNames(classes.avatar, 'inputAdornment')} alt={selectedResource.name} src={src} />);
       }
@@ -285,7 +290,8 @@ VenueAutocomplete.propTypes = {
   classes: PropTypes.object,
   value: PropTypes.object,
   label: PropTypes.string,
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
+  apiHost: PropTypes.string
 };
 
 export default withStyles(styles)(VenueAutocomplete);

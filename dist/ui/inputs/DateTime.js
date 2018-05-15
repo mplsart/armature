@@ -49,7 +49,9 @@ var DateTimeInput = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (DateTimeInput.__proto__ || Object.getPrototypeOf(DateTimeInput)).call(this, props));
 
     var internalValue = (0, _moment2.default)(new Date(_this.props.value));
-    // Clean it ?
+    if (!internalValue.isValid()) {
+      internalValue = (0, _moment2.default)(new Date(props.defaultValue));
+    }
 
     _this.state = {
       internalValue: internalValue
@@ -60,15 +62,19 @@ var DateTimeInput = function (_React$Component) {
   _createClass(DateTimeInput, [{
     key: 'cleanDate',
     value: function cleanDate(val) {
-      //'2018-04-27T19:00'
-
       var date_obj = (0, _moment2.default)(new Date(val));
+      if (!date_obj.isValid()) {
+        date_obj = (0, _moment2.default)(new Date(this.props.defaultValue));
+      }
       return date_obj.format('YYYY-MM-DD');
     }
   }, {
     key: 'cleanTime',
     value: function cleanTime(val) {
       var date_obj = (0, _moment2.default)(new Date(val));
+      if (!date_obj.isValid()) {
+        date_obj = (0, _moment2.default)(new Date(this.props.defaultValue));
+      }
       return date_obj.format('HH:mm');
     }
   }, {
@@ -76,7 +82,6 @@ var DateTimeInput = function (_React$Component) {
     value: function handleDateChange(event) {
       var dateValue = event.target.value;
       var internalValue = this.state.internalValue;
-
       internalValue = (0, _moment2.default)(dateValue + 'T' + internalValue.format('HH:mm:ss'));
       this.setState({ internalValue: internalValue });
       this.props.onChange(internalValue.format('YYYY-MM-DDTHH:mm:ss'));
@@ -95,11 +100,11 @@ var DateTimeInput = function (_React$Component) {
     value: function render() {
       var _props = this.props,
           onChange = _props.onChange,
+          defaultValue = _props.defaultValue,
           label = _props.label,
-          rest = _objectWithoutProperties(_props, ['onChange', 'label']);
+          rest = _objectWithoutProperties(_props, ['onChange', 'defaultValue', 'label']);
 
       var value = this.state.internalValue;
-
       var controlStyle = {
         justifyContent: 'start',
         flexFlow: 'row'
@@ -113,8 +118,8 @@ var DateTimeInput = function (_React$Component) {
           null,
           label
         ),
-        _react2.default.createElement(_Input2.default, _extends({}, rest, { value: this.cleanDate(value), onChange: this.handleDateChange.bind(this), style: { alignSelf: 'flex-end', width: '50%' }, type: 'date' })),
-        _react2.default.createElement(_Input2.default, _extends({}, rest, { value: this.cleanTime(value), onChange: this.handleTimeChange.bind(this), inputProps: { step: 300 }, style: { alignSelf: 'flex-end', width: '45%' }, type: 'time' }))
+        _react2.default.createElement(_Input2.default, _extends({}, rest, { value: this.cleanDate(value), onChange: this.handleDateChange.bind(this), style: { alignSelf: 'flex-end', width: '50%', 'fontSize': '14px' }, type: 'date' })),
+        _react2.default.createElement(_Input2.default, _extends({}, rest, { value: this.cleanTime(value), onChange: this.handleTimeChange.bind(this), inputProps: { step: 300 }, style: { alignSelf: 'flex-end', width: '45%', 'fontSize': '14px' }, type: 'time' }))
       );
     }
   }]);
@@ -125,7 +130,10 @@ var DateTimeInput = function (_React$Component) {
 exports.default = DateTimeInput;
 
 
+DateTimeInput.defaultProps = { defaultValue: (0, _moment2.default)() };
+
 DateTimeInput.propTypes = {
   onChange: _propTypes2.default.func,
-  value: _propTypes2.default.string //'UTC: ISO: YYYY-MM-DDTHH:mm:ssZ'
+  value: _propTypes2.default.string, //'UTC: ISO: YYYY-MM-DDTHH:mm:ssZ'
+  defaultValue: _propTypes2.default.string //'UTC: ISO: YYYY-MM-DDTHH:mm:ssZ'
 };

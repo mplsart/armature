@@ -203,7 +203,7 @@ var VenueAutocomplete = function (_React$Component) {
       var classes = this.props.classes;
 
       var avatar = void 0;
-      if (resource.primary_image_resource && resource.primary_image_resource.versions.THUMB.url) {
+      if (resource.primary_image_resource && resource.primary_image_resource.versions && resource.primary_image_resource.versions.THUMB.url) {
         var src = resource.primary_image_resource.versions.THUMB.url || null;
         avatar = _react2.default.createElement(_Avatar2.default, { className: (0, _classnames2.default)(classes.avatar, 'searchResult'), alt: resource.name, src: src });
       }
@@ -265,7 +265,7 @@ var VenueAutocomplete = function (_React$Component) {
       var errorCallback = this.handleSearchError.bind(this);
       var successCallback = this.searchResultsHandler.bind(this);
 
-      fetch('https://www.mplsart.com/api/venues?verbose=true&q=' + value).then(function (response) {
+      fetch(this.props.apiHost + '/api/venues?verbose=true&q=' + value).then(function (response) {
         if (!response.ok) {
           throw Error(response.statusText);
         }
@@ -325,7 +325,8 @@ var VenueAutocomplete = function (_React$Component) {
     value: function render() {
       var _props = this.props,
           classes = _props.classes,
-          rest = _objectWithoutProperties(_props, ['classes']);
+          apiHost = _props.apiHost,
+          rest = _objectWithoutProperties(_props, ['classes', 'apiHost']);
 
       var _state = this.state,
           isSelected = _state.isSelected,
@@ -340,7 +341,7 @@ var VenueAutocomplete = function (_React$Component) {
       if (isSelected) {
         // Determine src
         var avatar = void 0;
-        if (selectedResource.primary_image_resource && selectedResource.primary_image_resource.versions.THUMB.url) {
+        if (selectedResource.primary_image_resource && selectedResource.primary_image_resource.versions && selectedResource.primary_image_resource.versions.THUMB.url) {
           var src = selectedResource.primary_image_resource.versions.THUMB.url || null;
           avatar = _react2.default.createElement(_Avatar2.default, { className: (0, _classnames2.default)(classes.avatar, 'inputAdornment'), alt: selectedResource.name, src: src });
         }
@@ -427,7 +428,8 @@ VenueAutocomplete.propTypes = {
   classes: _propTypes2.default.object,
   value: _propTypes2.default.object,
   label: _propTypes2.default.string,
-  onChange: _propTypes2.default.func
+  onChange: _propTypes2.default.func,
+  apiHost: _propTypes2.default.string
 };
 
 exports.default = (0, _styles.withStyles)(styles)(VenueAutocomplete);
