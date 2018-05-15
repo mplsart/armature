@@ -60,7 +60,8 @@ var styles = function styles(theme) {
     }), _defineProperty(_legacyContainer, theme.breakpoints.only('xl'), { // force width of lg
       width: theme.breakpoints.width('lg')
     }), _legacyContainer),
-
+    alignRight: { marginRight: 0 },
+    alignLeft: { marginLeft: 0 },
     typeContainer: {},
     typeItem: {}
   };
@@ -68,23 +69,34 @@ var styles = function styles(theme) {
 
 function _Grid(_ref) {
   var classes = _ref.classes,
+      align = _ref.align,
       theme = _ref.theme,
       className = _ref.className,
       children = _ref.children,
       fluid = _ref.fluid,
-      rest = _objectWithoutProperties(_ref, ['classes', 'theme', 'className', 'children', 'fluid']);
+      rest = _objectWithoutProperties(_ref, ['classes', 'align', 'theme', 'className', 'children', 'fluid']);
 
-  var containerClass = classes.legacyContainer;
+  var classNamesX = [className];
+
   if (fluid) {
-    containerClass = classes.fluidContainer;
-  }
+    classNamesX.push(classes.fluidContainer);
+  } else {
+    classNamesX.push(classes.legacyContainer);
 
+    if (align) {
+      if (align == 'right') {
+        classNamesX.push(classes.alignRight);
+      } else if (align == 'left') {
+        classNamesX.push(classes.alignLeft);
+      }
+    }
+  }
   return _react2.default.createElement(
     'div',
-    _extends({ className: (0, _classnames2.default)(containerClass, className) }, rest, {
+    _extends({ className: (0, _classnames2.default)(classNamesX) }, rest, {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 49
+        lineNumber: 62
       }
     }),
     children
@@ -95,7 +107,8 @@ _Grid.propTypes = {
   className: _propTypes2.default.string,
   children: _propTypes2.default.node,
   classes: _propTypes2.default.object,
-  fluid: _propTypes2.default.bool
+  fluid: _propTypes2.default.bool,
+  align: _propTypes2.default.oneOf(['left', 'right'])
 };
 
 function _Row(_ref2) {
@@ -110,7 +123,7 @@ function _Row(_ref2) {
     _extends({ spacing: Number(theme.spacing.unit * 2), container: true, className: (0, _classnames2.default)(classes.typeContainer, className) }, rest, {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 61
+        lineNumber: 75
       }
     }),
     children
@@ -134,7 +147,7 @@ function _Col(props) {
     _Grid3.default,
     _extends({ item: true }, rest, { className: (0, _classnames2.default)(classes.typeItem, className), __source: {
         fileName: _jsxFileName,
-        lineNumber: 73
+        lineNumber: 87
       }
     }),
     children
