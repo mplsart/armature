@@ -6,22 +6,22 @@ import MenuItem from 'material-ui/Menu/MenuItem';
 import CompactGalleryCard from '../../../src/ui/cards/CompactGalleryCard';
 
 const styles = theme => {
-  console.log(theme);
   return {
-  paper: {
-    padding: theme.spacing.unit,
-  },
-  popover: {
-    pointerEvents: 'none',
-  },
-  popperClose: {
-    pointerEvents: 'none',
-  },
-  flyoutContent: {
-    //width:'500px',
-    //height:'300px',
+    paper: {
+      padding: theme.spacing.unit,
+    },
+    popover: {
+      pointerEvents: 'none',
+    },
+    popperClose: {
+      pointerEvents: 'none',
+    },
+    flyoutContent: {
+      //width:'500px',
+      //height:'300px',
+    }
   }
-}};
+};
 
 class GalleryPopover extends React.Component {
   state = {

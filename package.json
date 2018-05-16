@@ -9,7 +9,8 @@
     "build": "babel src --out-dir dist",
     "prepublish": "npm run build",
     "start": "node docs/src/server.js",
-    "export": "next build && next export",
+    "export": "next build && next export && mv out/_next out/armature",
+    "docsyo": "cd out && python -m SimpleHTTPServer 8000",
     "deploy": "rm -rf node_modules/.cache && next build && next export && touch out/.nojekyll && git add out/ && git commit -m \"Deploy Next.js to gh-pages\" && git subtree push --prefix out origin gh-pages"
   },
   "repository": {
@@ -22,7 +23,9 @@
     "url": "https://github.com/mplsart/armature/issues"
   },
   "homepage": "https://github.com/mplsart/armature#readme",
-  "dependencies": {},
+  "dependencies": {
+    "react-autosuggest": "^9.3.4"
+  },
   "peerDependencies": {
     "material-ui": "^1.0.0-beta.39",
     "moment-timezone": "^0.5.14",
