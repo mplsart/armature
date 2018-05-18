@@ -11,7 +11,8 @@ module.exports = {
       '/ui/buttons': { page: '/ui/buttons'},
       '/ui/lightbox': { page: '/ui/lightbox'},
       '/ui/popovers': { page: '/ui/popovers'},
-      '/ui/inputs/autocomplete': { page: '/ui/inputs/autocomplete'}
+      '/ui/inputs/autocomplete': { page: '/ui/inputs/autocomplete'},
+      '/ui/inputs/datetime': { page: '/ui/inputs/datetime'}
     }
   }
 }

@@ -6,13 +6,6 @@ import withRedux from '../../../src/withRedux';
 import {initStore} from '../../../src/store';
 import VenueAutocomplete from '../../../src/ui/inputs/VenueAutocomplete';
 
-class ExternalLink extends React.Component {
-  render() {
-    let props = this.props;
-    return (<a {...props} />);
-  }
-}
-
 class Index extends React.Component {
   handleDefaultVenueChangeValue(resource) {
     console.log(resource);
