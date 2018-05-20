@@ -40,10 +40,11 @@ const styles = theme => ({
   },
 
   title: {
+    fontFamily: theme.fontFamily.accent,
     flex: 1,
     fontSize: '1.75rem',
     lineHeight: '1.75rem',
-    fontWeight: 100,
+    fontWeight: '100 !important',
     textAlign:'left',
     color: '#dfdfdf',
     marginTop: '2px', // I wish we could get rid of this...?

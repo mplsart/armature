@@ -29,6 +29,7 @@ class MyDocument extends Document {
           <link href="https://storage.googleapis.com/cdn.mplsart.com/assets/fonts/Bryant/WOFF/Bryant.css" rel="stylesheet" type="text/css" />
           <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+          <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400" />
         </Head>
         <body>
           <Main />

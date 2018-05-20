@@ -7,7 +7,8 @@ module.exports = {
   exportPathMap: function(defaultPathMap) {
     return {
       '/': { page: '/' },
-      '/typography': { page: '/typography' },
+      '/styles/typography': { page: '/styles/typography' },
+      '/styles/colors': { page: '/styles/typography' },
       '/ui/buttons': { page: '/ui/buttons'},
       '/ui/lightbox': { page: '/ui/lightbox'},
       '/ui/popovers': { page: '/ui/popovers'},
