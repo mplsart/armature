@@ -11,19 +11,11 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _styles = require('material-ui/styles');
-
-var _Popover = require('material-ui/Popover');
-
-var _Popover2 = _interopRequireDefault(_Popover);
+var _styles = require('@material-ui/core/styles');
 
 var _FlyoutBase = require('./FlyoutBase');
 
 var _FlyoutBase2 = _interopRequireDefault(_FlyoutBase);
-
-var _MenuItem = require('material-ui/Menu/MenuItem');
-
-var _MenuItem2 = _interopRequireDefault(_MenuItem);
 
 var _CompactGalleryCard = require('../../../src/ui/cards/CompactGalleryCard');
 
@@ -102,7 +94,7 @@ var GalleryPopover = function (_React$Component) {
         'span',
         { onMouseOver: this.handlePopoverOpen.bind(this), __source: {
             fileName: _jsxFileName,
-            lineNumber: 45
+            lineNumber: 43
           }
         },
         _react2.default.createElement(
@@ -113,18 +105,18 @@ var GalleryPopover = function (_React$Component) {
             onClose: this.handlePopoverClose.bind(this),
             flyoutContent: _react2.default.createElement(_CompactGalleryCard2.default, { resource: resource, __source: {
                 fileName: _jsxFileName,
-                lineNumber: 51
+                lineNumber: 49
               }
             }), __source: {
               fileName: _jsxFileName,
-              lineNumber: 46
+              lineNumber: 44
             }
           },
           _react2.default.createElement(
             'a',
             { href: '#', __source: {
                 fileName: _jsxFileName,
-                lineNumber: 51
+                lineNumber: 49
               }
             },
             children

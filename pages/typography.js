@@ -10,7 +10,7 @@ class Index extends React.Component {
     return (
       <PageBase>
         <p style={{ color: 'blue' }}>
-          hi there
+          Typography
         </p>
       </PageBase>
     );

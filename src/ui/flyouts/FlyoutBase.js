@@ -9,13 +9,10 @@ import debounce from 'lodash/debounce';
 import warning from 'warning';
 import classNames from 'classnames';
 import { Manager, Popper, Target } from 'react-popper';
-import { capitalize } from 'material-ui/utils/helpers';
+import { capitalize } from '@material-ui/core/utils/helpers';
 import RootRef from './RootRef';
-import Portal from 'material-ui/Portal';
-import common from 'material-ui/colors/common';
-import withStyles from 'material-ui/styles/withStyles';
-import Collapse from 'material-ui/transitions/Collapse';
-import ClickAwayListener from 'material-ui/utils/ClickAwayListener';
+import Portal from '@material-ui/core/Portal';
+import withStyles from '@material-ui/core/styles/withStyles';
 
 export const styles = theme => ({
   // Will be gone once we drop React 15.x support.

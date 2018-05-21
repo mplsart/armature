@@ -27,7 +27,7 @@
     "react-autosuggest": "^9.3.4"
   },
   "peerDependencies": {
-    "material-ui": "^1.0.0-beta.39",
+    "@material-ui/core": "^1.0.0",
     "moment-timezone": "^0.5.14",
     "react": "*",
     "react-dom": "*",
@@ -35,6 +35,7 @@
     "redux": "*"
   },
   "devDependencies": {
+    "@material-ui/core": "^1.0.0",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.21.0",
     "babel-eslint": "^7.1.1",
@@ -53,7 +54,6 @@
     "eslint": "^3.3.1",
     "eslint-plugin-react": "^6.1.2",
     "express": "^4.16.3",
-    "material-ui": "^1.0.0-beta.39",
     "mocha": "^5.0.0",
     "moment-timezone": "^0.5.14",
     "next": "^5.1.0",

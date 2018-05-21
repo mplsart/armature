@@ -7,7 +7,7 @@ exports.default = getPageContext;
 
 var _jss = require('jss');
 
-var _styles = require('material-ui/styles');
+var _styles = require('@material-ui/core/styles');
 
 var _theme = require('./theme');
 

@@ -1,8 +1,8 @@
 // A Wrapper class for menu items
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
-import { ListItem } from 'material-ui/List';
+import { withStyles } from '@material-ui/core/styles';
+import ListItem from '@material-ui/core/ListItem';
 
 const styles = theme => ({
   listItem: {

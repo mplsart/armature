@@ -1,13 +1,13 @@
 import React from 'react';
 import PageBase from '../../docs/src/layout/PageBase';
-import { withStyles } from 'material-ui/styles';
+import { withStyles } from '@material-ui/core/styles';
 import withRoot from '../../src/withRoot';
-import withRedux from '../../src/withRedux'
+import withRedux from '../../src/withRedux';
 import {initStore} from '../../src/store';
 import GiantActionButton from '../../src/ui/buttons/GiantActionButton';
 import SocialButton from '../../src/ui/buttons/SocialButton';
 import ListItemActionButton from '../../src/ui/buttons/ListItemActionButton';
-import Button from 'material-ui/Button';
+import Button from '@material-ui/core/Button';
 
 class ExternalLink extends React.Component {
   render() {

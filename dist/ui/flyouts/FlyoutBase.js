@@ -41,31 +41,19 @@ var _classnames2 = _interopRequireDefault(_classnames);
 
 var _reactPopper = require('react-popper');
 
-var _helpers = require('material-ui/utils/helpers');
+var _helpers = require('@material-ui/core/utils/helpers');
 
 var _RootRef = require('./RootRef');
 
 var _RootRef2 = _interopRequireDefault(_RootRef);
 
-var _Portal = require('material-ui/Portal');
+var _Portal = require('@material-ui/core/Portal');
 
 var _Portal2 = _interopRequireDefault(_Portal);
 
-var _common = require('material-ui/colors/common');
-
-var _common2 = _interopRequireDefault(_common);
-
-var _withStyles = require('material-ui/styles/withStyles');
+var _withStyles = require('@material-ui/core/styles/withStyles');
 
 var _withStyles2 = _interopRequireDefault(_withStyles);
-
-var _Collapse = require('material-ui/transitions/Collapse');
-
-var _Collapse2 = _interopRequireDefault(_Collapse);
-
-var _ClickAwayListener = require('material-ui/utils/ClickAwayListener');
-
-var _ClickAwayListener2 = _interopRequireDefault(_ClickAwayListener);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -397,12 +385,12 @@ var Tooltip = function (_React$Component) {
         }, other, {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 318
+            lineNumber: 315
           }
         }),
         _react2.default.createElement(_reactEventListener2.default, { target: 'window', onResize: this.handleResize, __source: {
             fileName: _jsxFileName,
-            lineNumber: 323
+            lineNumber: 320
           }
         }),
         _react2.default.createElement(
@@ -410,7 +398,7 @@ var Tooltip = function (_React$Component) {
           {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 324
+              lineNumber: 321
             }
           },
           function (_ref) {
@@ -424,7 +412,7 @@ var Tooltip = function (_React$Component) {
                 },
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 326
+                  lineNumber: 323
                 }
               },
               _react2.default.cloneElement(children, childrenProps)
@@ -436,7 +424,7 @@ var Tooltip = function (_React$Component) {
           {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 336
+              lineNumber: 333
             }
           },
           _react2.default.createElement(
@@ -451,7 +439,7 @@ var Tooltip = function (_React$Component) {
             }, PopperProps, {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 337
+                lineNumber: 334
               }
             }),
             function (_ref2) {
@@ -468,7 +456,7 @@ var Tooltip = function (_React$Component) {
                   }, restProps.style),
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 350
+                    lineNumber: 347
                   }
                 }),
                 _react2.default.createElement(
@@ -481,7 +469,7 @@ var Tooltip = function (_React$Component) {
                     className: (0, _classnames2.default)(classes.tooltip, _defineProperty({}, classes.open, open), _defineProperty({}, classes.touch, _this2.ignoreNonTouchEvents), classes['tooltipPlacement' + (0, _helpers.capitalize)(actualPlacement)]),
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 360
+                      lineNumber: 357
                     }
                   },
                   flyoutContent

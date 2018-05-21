@@ -23,9 +23,9 @@ var _classnames = require('classnames');
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _styles = require('material-ui/styles');
+var _styles = require('@material-ui/core/styles');
 
-var _Dialog = require('material-ui/Dialog');
+var _Dialog = require('@material-ui/core/Dialog');
 
 var _Dialog2 = _interopRequireDefault(_Dialog);
 

@@ -1,5 +1,5 @@
 // Define Theme properties
-import { createMuiTheme } from 'material-ui/styles';
+import { createMuiTheme } from '@material-ui/core/styles';
 import { blue, pink, red } from './colors';
 
 const defaultFontFamily = '"Roboto", "Helvetica", "Arial", sans-serif';

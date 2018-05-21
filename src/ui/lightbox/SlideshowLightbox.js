@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import { withStyles } from 'material-ui/styles';
-import Dialog from 'material-ui/Dialog';
+import { withStyles } from '@material-ui/core/styles';
+import Dialog from '@material-ui/core/Dialog';
 
 import { translate, getWindowWidth, getWindowHeight, getIEVersion} from './utils';
 

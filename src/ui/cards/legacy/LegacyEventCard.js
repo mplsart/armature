@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
-import classnames from 'classnames';
+import { withStyles } from '@material-ui/core/styles';
 import LegacyCardBase from './LegacyCardBase';
 import LegacyNiceDate from '../../../utils/dates/LegacyNiceDate';
 import moment from 'moment-timezone/builds/moment-timezone.min';

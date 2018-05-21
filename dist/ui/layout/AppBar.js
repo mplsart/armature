@@ -15,17 +15,17 @@ var _propTypes = require('prop-types');
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _styles = require('material-ui/styles');
+var _styles = require('@material-ui/core/styles');
 
-var _AppBar = require('material-ui/AppBar');
+var _AppBar = require('@material-ui/core/AppBar');
 
 var _AppBar2 = _interopRequireDefault(_AppBar);
 
-var _Toolbar = require('material-ui/Toolbar');
+var _Toolbar = require('@material-ui/core/Toolbar');
 
 var _Toolbar2 = _interopRequireDefault(_Toolbar);
 
-var _Typography = require('material-ui/Typography');
+var _Typography = require('@material-ui/core/Typography');
 
 var _Typography2 = _interopRequireDefault(_Typography);
 

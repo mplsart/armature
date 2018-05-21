@@ -16,9 +16,9 @@ var _propTypes = require('prop-types');
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _styles = require('material-ui/styles');
+var _styles = require('@material-ui/core/styles');
 
-var _Button = require('material-ui/Button');
+var _Button = require('@material-ui/core/Button');
 
 var _Button2 = _interopRequireDefault(_Button);
 

@@ -1,12 +1,12 @@
 import React from 'react';
 import PageBase from '../../../docs/src/layout/PageBase';
-import { withStyles } from 'material-ui/styles';
+import { withStyles } from '@material-ui/core/styles';
 import withRoot from '../../../src/withRoot';
-import withRedux from '../../../src/withRedux'
+import withRedux from '../../../src/withRedux';
 import {initStore} from '../../../src/store';
 import {Col, Row} from '../../../src/grid';
 import MarqueeCardBase from '../../../src/ui/cards/marquee/MarqueeCardBase';
-import Paper from 'material-ui/Paper';
+import Paper from '@material-ui/core/Paper';
 
 class Marquee extends React.Component {
   render() {

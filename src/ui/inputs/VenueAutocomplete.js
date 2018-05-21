@@ -1,13 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
-import Input, { InputLabel, InputAdornment} from 'material-ui/Input';
-import { FormControl } from 'material-ui/Form';
-import Avatar from 'material-ui/Avatar';
+import { withStyles } from '@material-ui/core/styles';
+import Input from '@material-ui/core/Input';
+import InputLabel from '@material-ui/core/InputLabel';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import FormControl from '@material-ui/core/FormControl';
+import Avatar from '@material-ui/core/Avatar';
 import classNames from 'classnames';
-import Paper from 'material-ui/Paper';
-import { MenuItem } from 'material-ui/Menu';
-import { ListItemIcon, ListItemText } from 'material-ui/List';
+import Paper from '@material-ui/core/Paper';
+import MenuItem from '@material-ui/core/MenuItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
 import Autosuggest from 'react-autosuggest';
 
 let styles = (theme) => {

@@ -17,11 +17,11 @@ var _propTypes = require('prop-types');
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _Grid2 = require('material-ui/Grid');
+var _Grid2 = require('@material-ui/core/Grid');
 
 var _Grid3 = _interopRequireDefault(_Grid2);
 
-var _styles = require('material-ui/styles');
+var _styles = require('@material-ui/core/styles');
 
 var _classnames = require('classnames');
 

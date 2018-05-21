@@ -1,12 +1,12 @@
 import React from 'react';
-import { withStyles } from 'material-ui/styles';
+import { withStyles } from '@material-ui/core/styles';
 import classnames from 'classnames';
-import Typography from 'material-ui/Typography';
+import Typography from '@material-ui/core/Typography';
 
 function calc_aspect_ratio(h, w) {
   let ration = .75; // 600/1000
 
-  return {height: h, width: w}
+  return {height: h, width: w};
 }
 
 let styles = (theme) => {

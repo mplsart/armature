@@ -3,14 +3,14 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
-import Typography from 'material-ui/Typography';
+import { withStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
 import classNames from 'classnames';
-import Icon from 'material-ui/Icon';
+import Icon from '@material-ui/core/Icon';
 // import { Link } from 'react-router';
 import ListItemActionButton from '../../ui/buttons/ListItemActionButton';
-import { CardMedia } from 'material-ui/Card';
-import { ListItemIcon } from 'material-ui/List';
+import CardMedia from '@material-ui/core/CardMedia';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
 
 import {build_google_map_url_for_venue, formatted_address} from '../../utils/location';
 
@@ -54,7 +54,7 @@ const styles = (theme) => {
   };
 };
 
-function PopoverRenderer({classes, resource}) {
+function CompactGalleryCard({classes, resource}) {
   if (!(resource && resource.resource_id)) {
     return null;
   }
@@ -114,17 +114,17 @@ function PopoverRenderer({classes, resource}) {
     <div className={classes.root}>
       <div className={classNames(classes.text)}>
           <Typography variant="subheading">{ primary_text }</Typography>
-          <Typography variant="cpation" className={classNames(classes.text)} >{secondary_text}</Typography>
+          <Typography variant="caption" className={classNames(classes.text)} >{secondary_text}</Typography>
       </div>
       {resource.is_premium_profile && imageNode }
     </div>
   );
 }
 
-PopoverRenderer.propTypes = {
+CompactGalleryCard.propTypes = {
   classes: PropTypes.object,
   theme: PropTypes.object,
   resource: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles, { withTheme: true })(PopoverRenderer);
+export default withStyles(styles, { withTheme: true })(CompactGalleryCard);

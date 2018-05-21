@@ -13,11 +13,11 @@ var _propTypes = require('prop-types');
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _IconButton = require('material-ui/IconButton');
+var _IconButton = require('@material-ui/core/IconButton');
 
 var _IconButton2 = _interopRequireDefault(_IconButton);
 
-var _styles = require('material-ui/styles');
+var _styles = require('@material-ui/core/styles');
 
 var _classnames = require('classnames');
 
