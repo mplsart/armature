@@ -16,9 +16,11 @@ var _propTypes = require('prop-types');
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _styles = require('material-ui/styles');
+var _styles = require('@material-ui/core/styles');
 
-var _List = require('material-ui/List');
+var _ListItem = require('@material-ui/core/ListItem');
+
+var _ListItem2 = _interopRequireDefault(_ListItem);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -45,7 +47,7 @@ var AppMenuItem = function AppMenuItem(_ref) {
       rest = _objectWithoutProperties(_ref, ['classes', 'children']);
 
   return _react2.default.createElement(
-    _List.ListItem,
+    _ListItem2.default,
     _extends({ button: true, className: classes.listItem }, rest, {
       __source: {
         fileName: _jsxFileName,

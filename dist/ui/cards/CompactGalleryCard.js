@@ -16,9 +16,9 @@ var _propTypes = require('prop-types');
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _styles = require('material-ui/styles');
+var _styles = require('@material-ui/core/styles');
 
-var _Typography = require('material-ui/Typography');
+var _Typography = require('@material-ui/core/Typography');
 
 var _Typography2 = _interopRequireDefault(_Typography);
 
@@ -26,7 +26,7 @@ var _classnames = require('classnames');
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _Icon = require('material-ui/Icon');
+var _Icon = require('@material-ui/core/Icon');
 
 var _Icon2 = _interopRequireDefault(_Icon);
 
@@ -34,9 +34,9 @@ var _ListItemActionButton = require('../../ui/buttons/ListItemActionButton');
 
 var _ListItemActionButton2 = _interopRequireDefault(_ListItemActionButton);
 
-var _Card = require('material-ui/Card');
+var _Card = require('@material-ui/core/Card');
 
-var _List = require('material-ui/List');
+var _List = require('@material-ui/core/List');
 
 var _location = require('../../utils/location');
 

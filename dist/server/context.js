@@ -14,7 +14,7 @@ var _jssPresetDefault2 = _interopRequireDefault(_jssPresetDefault);
 
 var _reactJss = require('react-jss');
 
-var _createGenerateClassName = require('material-ui/styles/createGenerateClassName');
+var _createGenerateClassName = require('@material-ui/core/styles/createGenerateClassName');
 
 var _createGenerateClassName2 = _interopRequireDefault(_createGenerateClassName);
 

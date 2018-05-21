@@ -1,8 +1,6 @@
 import React from 'react';
-import { withStyles } from 'material-ui/styles';
-import Popover from 'material-ui/Popover';
+import { withStyles } from '@material-ui/core/styles';
 import FlyoutBase from './FlyoutBase';
-import MenuItem from 'material-ui/Menu/MenuItem';
 import CompactGalleryCard from '../../../src/ui/cards/CompactGalleryCard';
 
 const styles = theme => {

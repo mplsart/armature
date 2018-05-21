@@ -4,9 +4,9 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
+import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
-import Drawer from 'material-ui/Drawer';
+import Drawer from '@material-ui/core/Drawer';
 
 // TODO: Run this off of the theme
 const drawerWidth = 300;

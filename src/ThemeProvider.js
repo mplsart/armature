@@ -1,10 +1,10 @@
 import React from 'react';
 import { JssProvider } from 'react-jss';
 import PropTypes from 'prop-types';
-import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import { getContext } from './server/context';
-import CssBaseline from 'material-ui/CssBaseline';
-import GlobalStyles from './GlobalStyles'
+import CssBaseline from '@material-ui/core/CssBaseline';
+import GlobalStyles from './GlobalStyles';
 import muiTheme from './theme';
 //See: https://material-ui-next.com/customization/themes/#configuration-variables for additional features
 

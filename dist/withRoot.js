@@ -18,9 +18,9 @@ var _propTypes = require('prop-types');
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _styles = require('material-ui/styles');
+var _styles = require('@material-ui/core/styles');
 
-var _CssBaseline = require('material-ui/CssBaseline');
+var _CssBaseline = require('@material-ui/core/CssBaseline');
 
 var _CssBaseline2 = _interopRequireDefault(_CssBaseline);
 

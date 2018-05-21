@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _styles = require('material-ui/styles');
+var _styles = require('@material-ui/core/styles');
 
 var _colors = require('./colors');
 

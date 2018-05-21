@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+
 import FrameworkAppBar from '../../../src/ui/layout/AppBar';
-import { withStyles } from 'material-ui/styles';
 import CoolLink from './CoolLink';
 
 const styles = theme => {

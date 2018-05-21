@@ -1,8 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types'
-import Input, { InputLabel } from 'material-ui/Input';
-import { FormControl } from 'material-ui/Form';
-import TextField from 'material-ui/TextField';
+import PropTypes from 'prop-types';
+import Input from '@material-ui/core/Input';
+import InputLabel from '@material-ui/core/InputLabel';
+import FormControl from '@material-ui/core/FormControl';
 import moment from 'moment';
 
 class DateTimeInput extends React.Component {

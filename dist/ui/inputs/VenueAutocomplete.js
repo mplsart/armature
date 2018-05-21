@@ -18,15 +18,15 @@ var _propTypes = require('prop-types');
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _styles = require('material-ui/styles');
+var _styles = require('@material-ui/core/styles');
 
-var _Input = require('material-ui/Input');
+var _Input = require('@material-ui/core/Input');
 
 var _Input2 = _interopRequireDefault(_Input);
 
-var _Form = require('material-ui/Form');
+var _Form = require('@material-ui/core/Form');
 
-var _Avatar = require('material-ui/Avatar');
+var _Avatar = require('@material-ui/core/Avatar');
 
 var _Avatar2 = _interopRequireDefault(_Avatar);
 
@@ -34,13 +34,13 @@ var _classnames = require('classnames');
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _Paper = require('material-ui/Paper');
+var _Paper = require('@material-ui/core/Paper');
 
 var _Paper2 = _interopRequireDefault(_Paper);
 
-var _Menu = require('material-ui/Menu');
+var _Menu = require('@material-ui/core/Menu');
 
-var _List = require('material-ui/List');
+var _List = require('@material-ui/core/List');
 
 var _reactAutosuggest = require('react-autosuggest');
 

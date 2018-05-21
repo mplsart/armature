@@ -13,13 +13,13 @@ var _propTypes = require('prop-types');
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _styles = require('material-ui/styles');
+var _styles = require('@material-ui/core/styles');
 
 var _classnames = require('classnames');
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _Drawer = require('material-ui/Drawer');
+var _Drawer = require('@material-ui/core/Drawer');
 
 var _Drawer2 = _interopRequireDefault(_Drawer);
 

@@ -18,12 +18,6 @@ var _propTypes = require('prop-types');
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _styles = require('material-ui/styles');
-
-var _classnames = require('classnames');
-
-var _classnames2 = _interopRequireDefault(_classnames);
-
 var _LegacyCardBase = require('./LegacyCardBase');
 
 var _LegacyCardBase2 = _interopRequireDefault(_LegacyCardBase);
@@ -51,9 +45,8 @@ var LegacyWrittenArticleCard = function (_React$Component) {
     key: 'render',
     value: function render() {
       var _props = this.props,
-          classes = _props.classes,
           resource = _props.resource,
-          rest = _objectWithoutProperties(_props, ['classes', 'resource']);
+          rest = _objectWithoutProperties(_props, ['resource']);
 
       var href = resource.permalink;
       return _react2.default.createElement(_LegacyCardBase2.default, _extends({}, rest, {
@@ -64,7 +57,7 @@ var LegacyWrittenArticleCard = function (_React$Component) {
           {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 17
+              lineNumber: 15
             }
           },
           resource.summary,
@@ -74,14 +67,14 @@ var LegacyWrittenArticleCard = function (_React$Component) {
             {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 17
+                lineNumber: 15
               }
             },
             _react2.default.createElement(
               this.props.linkClass,
               { to: href, __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 17
+                  lineNumber: 15
                 }
               },
               'Read More'
@@ -90,7 +83,7 @@ var LegacyWrittenArticleCard = function (_React$Component) {
         ),
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 13
+          lineNumber: 11
         }
       }));
     }
