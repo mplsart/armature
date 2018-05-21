@@ -35,6 +35,7 @@ const styles = (theme) => ({
 
   cardTitle: {
     ...theme.typography.body1,
+    fontFamily: theme.fontFamily.accent,
     'font-size': '18px',
     'font-weight':400,
     'line-height': '1.25em',
@@ -46,13 +47,15 @@ const styles = (theme) => ({
   },
   cardDetail: {
     ...theme.typography.body1,
-    'font-size': '14px',
-    'line-height': '1.45em',
-    'color': '#000',
-    'font-weight': 100,
+    fontFamily: theme.fontFamily.accent,
+    fontSize: '14px',
+    lineHeight: '1.45em',
+    color: '#000',
+    fontWeight: 100,
   },
   cardDetailLarge: {
-    'font-size': '16px',
+    fontFamily: theme.fontFamily.accent,
+    fontSize: '16px',
   },
 
   cardImage: {
@@ -65,7 +68,7 @@ const styles = (theme) => ({
       'height': '0',
       'overflow': 'hidden',
       'padding': '52.42% 0 0 0', /* Note padding-top is overridden via JS */
-      'background-color': '#eee',
+      'background-color': 'red',
       'width': '100%',
 
       // The Image Itself?

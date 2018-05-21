@@ -2,7 +2,7 @@ import React from 'react';
 import PageBase from '../../docs/src/layout/PageBase';
 import { withStyles } from 'material-ui/styles';
 import withRoot from '../../src/withRoot';
-import withRedux from '../../src/withRedux'
+import withRedux from '../../src/withRedux';
 import {initStore} from '../../src/store';
 import GalleryFlyout from '../../src/ui/flyouts/GalleryFlyout';
 
@@ -12,7 +12,7 @@ class Index extends React.Component {
       <PageBase>
 
         <h2>Gallery Popover</h2>
-        <pre>import SlideshowLightbox from 'armature/dist/ui/popovers/GalleryPopover';</pre>
+        <pre>import GalleryFlyout from 'armature/dist/ui/popovers/GalleryFlyout';</pre>
 
         <p>Lorem ipsum dolor sit amet, <GalleryFlyout>consectetur</GalleryFlyout> adipiscing elit. Pellentesque varius sollicitudin turpis et porta. Sed eu diam varius, aliquet orci in, congue mauris. Maecenas molestie eros sit amet diam lacinia.</p>
         <p>Maecenas aliquam lorem id purus pharetra elementum. Vestibulum eget massa sed nisl laoreet placerat vel vitae dolor. Integer gravida imperdiet ex. Sed porttitor enim in dolor blandit aliquet sed et metus. Phasellus porta ligula ac lorem tempus faucibus. In bibendum justo neque. Vestibulum nibh nisi, elementum quis risus in, vehicula iaculis magna. Suspendisse ut nisl placerat, tincidunt justo quis, aliquam massa. Aenean sed mi risus. Etiam odio ante, viverra vel auctor a, ultrices vel ligula. Pellentesque tempor sapien eu mattis cursus. Vestibulum pharetra tincidunt varius. Etiam dui augue, bibendum eget neque id, gravida consequat est. Curabitur porttitor nibh vel felis lacinia, nec dignissim tellus blandit. Mauris commodo odio at finibus ultrices. Donec rutrum lacus eget porta pulvinar.</p>
@@ -24,5 +24,4 @@ class Index extends React.Component {
     );
   }
 }
-//export default withRoot(withStyles({})(Index));
 export default withRedux(initStore, null, {})(withRoot(withStyles({})(Index)));

@@ -73,10 +73,11 @@ var styles = function styles(theme) {
     }),
 
     title: _defineProperty({
+      fontFamily: theme.fontFamily.accent,
       flex: 1,
       fontSize: '1.75rem',
       lineHeight: '1.75rem',
-      fontWeight: 100,
+      fontWeight: '100 !important',
       textAlign: 'left',
       color: '#dfdfdf',
       marginTop: '2px' }, theme.breakpoints.down('sm'), {
@@ -132,40 +133,40 @@ var AppBar = function (_React$Component) {
         'div',
         { className: classes.fixedRoot, __source: {
             fileName: _jsxFileName,
-            lineNumber: 80
+            lineNumber: 81
           }
         },
         _react2.default.createElement(
           _AppBar2.default,
           { position: 'fixed', className: classes.appBar, __source: {
               fileName: _jsxFileName,
-              lineNumber: 81
+              lineNumber: 82
             }
           },
           _react2.default.createElement(
             _grid.Grid,
             { fluid: fluid, className: classes.gridContainer, __source: {
                 fileName: _jsxFileName,
-                lineNumber: 82
+                lineNumber: 83
               }
             },
             _react2.default.createElement(
               _Toolbar2.default,
               { className: classes.toolBar, __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 83
+                  lineNumber: 84
                 }
               },
               _react2.default.createElement(_AppBarMenuIcon2.default, { active: menuActive, handleMenuToggle: this.handleClick.bind(this), __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 85
+                  lineNumber: 86
                 }
               }),
               _react2.default.createElement(
                 _Typography2.default,
                 { type: 'title', color: 'inherit', className: classes.title, __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 86
+                    lineNumber: 87
                   }
                 },
                 titleComponents

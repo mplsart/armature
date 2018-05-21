@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import MuiGrid from 'material-ui/Grid';
 import { withStyles } from 'material-ui/styles';
-import classNames from 'classnames';
+import classnames from 'classnames';
 
 const styles = (theme) => {
   return {
@@ -38,28 +38,28 @@ const styles = (theme) => {
     alignLeft: { marginLeft: 0 },
     typeContainer: {},
     typeItem : {}
-  }
-}
+  };
+};
 
 function _Grid({classes, align, theme, className, children, fluid, ...rest}) {
-  let classNamesX = [className];
+  let collectedClasses = [className];
 
   if (fluid) {
-    classNamesX.push(classes.fluidContainer);
+    collectedClasses.push(classes.fluidContainer);
   }
   else {
-    classNamesX.push(classes.legacyContainer);
+    collectedClasses.push(classes.legacyContainer);
 
     if (align) {
       if (align == 'right') {
-        classNamesX.push(classes.alignRight);
+        collectedClasses.push(classes.alignRight);
       }
       else if (align == 'left') {
-        classNamesX.push(classes.alignLeft);
+        collectedClasses.push(classes.alignLeft);
       }
     }
   }
-  return (<div className={classNames(classNamesX)} {...rest}>{ children }</div>)
+  return (<div className={classnames(collectedClasses)} {...rest}>{ children }</div>);
 }
 // prop definitions
 _Grid.propTypes = {
@@ -72,7 +72,7 @@ _Grid.propTypes = {
 
 
 function _Row({classes, theme, className, children, ...rest}) {
-  return (<MuiGrid spacing={Number(theme.spacing.unit * 2)} container={true} className={classNames(classes.typeContainer, className)} {...rest}>{ children }</MuiGrid>);
+  return (<MuiGrid spacing={Number(theme.spacing.unit * 2)} container={true} className={classnames(classes.typeContainer, className)} {...rest}>{ children }</MuiGrid>);
 }
 // prop definitions
 _Row.propTypes = {
@@ -84,7 +84,7 @@ _Row.propTypes = {
 
 function _Col(props) {
   let {classes, className, children, theme, ...rest} = props;
-  return (<MuiGrid item={true} {...rest} className={classNames(classes.typeItem, className)}>{ children }</MuiGrid>);
+  return (<MuiGrid item={true} {...rest} className={classnames(classes.typeItem, className)}>{ children }</MuiGrid>);
 }
 
 _Col.propTypes = {

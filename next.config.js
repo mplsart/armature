@@ -10,6 +10,7 @@ module.exports = {
       '/styles/typography': { page: '/styles/typography' },
       '/styles/colors': { page: '/styles/typography' },
       '/ui/buttons': { page: '/ui/buttons'},
+      '/ui/cards': { page: '/ui/cards'},
       '/ui/lightbox': { page: '/ui/lightbox'},
       '/ui/popovers': { page: '/ui/popovers'},
       '/ui/inputs/autocomplete': { page: '/ui/inputs/autocomplete'},

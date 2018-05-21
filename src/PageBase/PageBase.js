@@ -1,20 +1,17 @@
 // Base Wrapper for Pages
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { actionFactory } from '../redux';
 
-
 class PageBase extends React.Component{
-  componentWillMount() {
-    this.props.loadPage();
-  }
+  componentWillMount() { this.props.loadPage(); }
 
   render() {
     let {children} = this.props;
-    return (<div>{children}</div>);
+    return (
+      <div>{children}</div>);
   }
 }
 

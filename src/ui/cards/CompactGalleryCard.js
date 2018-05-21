@@ -55,6 +55,9 @@ const styles = (theme) => {
 };
 
 function PopoverRenderer({classes, resource}) {
+  if (!(resource && resource.resource_id)) {
+    return null;
+  }
 
   // Image
   //let imageUrl = 'https://storage.googleapis.com/cdn.mplsart.com/file_container/RmlsZUNvbnRhaW5lch4fMTUwNDAwMDE/thumb.png';
@@ -89,8 +92,9 @@ function PopoverRenderer({classes, resource}) {
       <br />
 
       {resource.is_premium_profile &&
-        (<ListItemActionButton variant="raised"
-                            color="primary"
+        (<ListItemActionButton
+            variant="raised"
+            color="primary"
                             /*
         // Figure out how to bind click handlers in google maps...
         component={({...props}) => {
@@ -100,28 +104,17 @@ function PopoverRenderer({classes, resource}) {
               }} {...props} />);
           }}
           */
-          href={`/galleries/${resource.slug}`}
-          target="_new">Profile</ListItemActionButton>
+            href={`/galleries/${resource.slug}`}
+            target="_new">Profile</ListItemActionButton>
         )
       }
     </span>);
 
   return (
     <div className={classes.root}>
-
       <div className={classNames(classes.text)}>
-          <Typography
-              variant="subheading"
-            >
-            { primary_text }
-          </Typography>
-
-          <Typography
-              variant="body1"
-              className={classNames(classes.text)}
-            >
-              {secondary_text}
-            </Typography>
+          <Typography variant="subheading">{ primary_text }</Typography>
+          <Typography variant="cpation" className={classNames(classes.text)} >{secondary_text}</Typography>
       </div>
       {resource.is_premium_profile && imageNode }
     </div>

@@ -76,24 +76,24 @@ function _Grid(_ref) {
       fluid = _ref.fluid,
       rest = _objectWithoutProperties(_ref, ['classes', 'align', 'theme', 'className', 'children', 'fluid']);
 
-  var classNamesX = [className];
+  var collectedClasses = [className];
 
   if (fluid) {
-    classNamesX.push(classes.fluidContainer);
+    collectedClasses.push(classes.fluidContainer);
   } else {
-    classNamesX.push(classes.legacyContainer);
+    collectedClasses.push(classes.legacyContainer);
 
     if (align) {
       if (align == 'right') {
-        classNamesX.push(classes.alignRight);
+        collectedClasses.push(classes.alignRight);
       } else if (align == 'left') {
-        classNamesX.push(classes.alignLeft);
+        collectedClasses.push(classes.alignLeft);
       }
     }
   }
   return _react2.default.createElement(
     'div',
-    _extends({ className: (0, _classnames2.default)(classNamesX) }, rest, {
+    _extends({ className: (0, _classnames2.default)(collectedClasses) }, rest, {
       __source: {
         fileName: _jsxFileName,
         lineNumber: 62

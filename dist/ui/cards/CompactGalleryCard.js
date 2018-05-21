@@ -86,6 +86,9 @@ function PopoverRenderer(_ref) {
   var classes = _ref.classes,
       resource = _ref.resource;
 
+  if (!(resource && resource.resource_id)) {
+    return null;
+  }
 
   // Image
   //let imageUrl = 'https://storage.googleapis.com/cdn.mplsart.com/file_container/RmlsZUNvbnRhaW5lch4fMTUwNDAwMDE/thumb.png';
@@ -102,7 +105,7 @@ function PopoverRenderer(_ref) {
       {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 70
+          lineNumber: 73
         }
       },
       _react2.default.createElement(_Card.CardMedia, {
@@ -111,7 +114,7 @@ function PopoverRenderer(_ref) {
         title: imageAltText,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 71
+          lineNumber: 74
         }
       })
     );
@@ -127,14 +130,14 @@ function PopoverRenderer(_ref) {
     {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 85
+        lineNumber: 88
       }
     },
     resource.summary && _react2.default.createElement(
       'span',
       { style: { display: 'block' }, __source: {
           fileName: _jsxFileName,
-          lineNumber: 86
+          lineNumber: 89
         }
       },
       _react2.default.createElement(
@@ -142,7 +145,7 @@ function PopoverRenderer(_ref) {
         {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 86
+            lineNumber: 89
           }
         },
         resource.summary
@@ -152,7 +155,7 @@ function PopoverRenderer(_ref) {
       _Icon2.default,
       { className: classes.iconStyle, __source: {
           fileName: _jsxFileName,
-          lineNumber: 87
+          lineNumber: 90
         }
       },
       'place'
@@ -162,14 +165,14 @@ function PopoverRenderer(_ref) {
       {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 88
+          lineNumber: 91
         }
       },
       _react2.default.createElement(
         'a',
         { href: (0, _location.build_google_map_url_for_venue)(resource), target: '_new', className: classes.mapLink, __source: {
             fileName: _jsxFileName,
-            lineNumber: 88
+            lineNumber: 91
           }
         },
         (0, _location.formatted_address)(resource)
@@ -178,12 +181,13 @@ function PopoverRenderer(_ref) {
     _react2.default.createElement('br', {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 89
+        lineNumber: 92
       }
     }),
     resource.is_premium_profile && _react2.default.createElement(
       _ListItemActionButton2.default,
-      { variant: 'raised',
+      {
+        variant: 'raised',
         color: 'primary'
         /*
         // Figure out how to bind click handlers in google maps...
@@ -197,7 +201,7 @@ function PopoverRenderer(_ref) {
         , href: '/galleries/' + resource.slug,
         target: '_new', __source: {
           fileName: _jsxFileName,
-          lineNumber: 92
+          lineNumber: 95
         }
       },
       'Profile'
@@ -208,35 +212,30 @@ function PopoverRenderer(_ref) {
     'div',
     { className: classes.root, __source: {
         fileName: _jsxFileName,
-        lineNumber: 110
+        lineNumber: 114
       }
     },
     _react2.default.createElement(
       'div',
       { className: (0, _classnames2.default)(classes.text), __source: {
           fileName: _jsxFileName,
-          lineNumber: 112
+          lineNumber: 115
         }
       },
       _react2.default.createElement(
         _Typography2.default,
-        {
-          variant: 'subheading',
-          __source: {
+        { variant: 'subheading', __source: {
             fileName: _jsxFileName,
-            lineNumber: 113
+            lineNumber: 116
           }
         },
         primary_text
       ),
       _react2.default.createElement(
         _Typography2.default,
-        {
-          variant: 'body1',
-          className: (0, _classnames2.default)(classes.text),
-          __source: {
+        { variant: 'cpation', className: (0, _classnames2.default)(classes.text), __source: {
             fileName: _jsxFileName,
-            lineNumber: 119
+            lineNumber: 117
           }
         },
         secondary_text
