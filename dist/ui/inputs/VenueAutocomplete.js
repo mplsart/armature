@@ -24,7 +24,17 @@ var _Input = require('@material-ui/core/Input');
 
 var _Input2 = _interopRequireDefault(_Input);
 
-var _Form = require('@material-ui/core/Form');
+var _InputLabel = require('@material-ui/core/InputLabel');
+
+var _InputLabel2 = _interopRequireDefault(_InputLabel);
+
+var _InputAdornment = require('@material-ui/core/InputAdornment');
+
+var _InputAdornment2 = _interopRequireDefault(_InputAdornment);
+
+var _FormControl = require('@material-ui/core/FormControl');
+
+var _FormControl2 = _interopRequireDefault(_FormControl);
 
 var _Avatar = require('@material-ui/core/Avatar');
 
@@ -38,9 +48,17 @@ var _Paper = require('@material-ui/core/Paper');
 
 var _Paper2 = _interopRequireDefault(_Paper);
 
-var _Menu = require('@material-ui/core/Menu');
+var _MenuItem = require('@material-ui/core/MenuItem');
 
-var _List = require('@material-ui/core/List');
+var _MenuItem2 = _interopRequireDefault(_MenuItem);
+
+var _ListItemText = require('@material-ui/core/ListItemText');
+
+var _ListItemText2 = _interopRequireDefault(_ListItemText);
+
+var _ListItemIcon = require('@material-ui/core/ListItemIcon');
+
+var _ListItemIcon2 = _interopRequireDefault(_ListItemIcon);
 
 var _reactAutosuggest = require('react-autosuggest');
 
@@ -166,12 +184,12 @@ var VenueAutocomplete = function (_React$Component) {
 
       if (this.state.isFocused) {
         footer = _react2.default.createElement(
-          _Menu.MenuItem,
+          _MenuItem2.default,
           { component: 'div', className: classes.suggestionListFooterItem, onClick: function onClick(e) {
               return console.log(e);
             }, __source: {
               fileName: _jsxFileName,
-              lineNumber: 91
+              lineNumber: 94
             }
           },
           _react2.default.createElement(
@@ -179,7 +197,7 @@ var VenueAutocomplete = function (_React$Component) {
             {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 91
+                lineNumber: 94
               }
             },
             'Not seeing what you are looking for?'
@@ -191,7 +209,7 @@ var VenueAutocomplete = function (_React$Component) {
                 return console.log(e);
               }, __source: {
                 fileName: _jsxFileName,
-                lineNumber: 91
+                lineNumber: 94
               }
             },
             ' Create new Venue'
@@ -203,7 +221,7 @@ var VenueAutocomplete = function (_React$Component) {
         _Paper2.default,
         _extends({}, containerProps, { square: true, __source: {
             fileName: _jsxFileName,
-            lineNumber: 95
+            lineNumber: 98
           }
         }),
         children,
@@ -226,7 +244,7 @@ var VenueAutocomplete = function (_React$Component) {
         var src = resource.primary_image_resource.versions.THUMB.url || null;
         avatar = _react2.default.createElement(_Avatar2.default, { className: (0, _classnames2.default)(classes.avatar, 'searchResult'), alt: resource.name, src: src, __source: {
             fileName: _jsxFileName,
-            lineNumber: 112
+            lineNumber: 115
           }
         });
       }
@@ -236,7 +254,7 @@ var VenueAutocomplete = function (_React$Component) {
           _Avatar2.default,
           { className: (0, _classnames2.default)(classes.avatar, resource.category, 'searchResult'), __source: {
               fileName: _jsxFileName,
-              lineNumber: 116
+              lineNumber: 119
             }
           },
           resource.name[0]
@@ -244,29 +262,29 @@ var VenueAutocomplete = function (_React$Component) {
       }
 
       return _react2.default.createElement(
-        _Menu.MenuItem,
+        _MenuItem2.default,
         { selected: isHighlighted, component: 'div', __source: {
             fileName: _jsxFileName,
-            lineNumber: 121
+            lineNumber: 124
           }
         },
         _react2.default.createElement(
-          _List.ListItemIcon,
+          _ListItemIcon2.default,
           { className: classes.icon, __source: {
               fileName: _jsxFileName,
-              lineNumber: 124
+              lineNumber: 127
             }
           },
           avatar
         ),
-        _react2.default.createElement(_List.ListItemText, {
+        _react2.default.createElement(_ListItemText2.default, {
           classes: { primary: classes.primary },
           primary: _react2.default.createElement(
             'span',
             {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 129
+                lineNumber: 132
               }
             },
             resource.name,
@@ -276,7 +294,7 @@ var VenueAutocomplete = function (_React$Component) {
               {
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 129
+                  lineNumber: 132
                 }
               },
               '(closed)'
@@ -287,7 +305,7 @@ var VenueAutocomplete = function (_React$Component) {
             {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 130
+                lineNumber: 133
               }
             },
             resource.category,
@@ -298,7 +316,7 @@ var VenueAutocomplete = function (_React$Component) {
           ),
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 127
+            lineNumber: 130
           }
         })
       );
@@ -399,7 +417,7 @@ var VenueAutocomplete = function (_React$Component) {
           var src = selectedResource.primary_image_resource.versions.THUMB.url || null;
           avatar = _react2.default.createElement(_Avatar2.default, { className: (0, _classnames2.default)(classes.avatar, 'inputAdornment'), alt: selectedResource.name, src: src, __source: {
               fileName: _jsxFileName,
-              lineNumber: 229
+              lineNumber: 232
             }
           });
         }
@@ -409,7 +427,7 @@ var VenueAutocomplete = function (_React$Component) {
             _Avatar2.default,
             { className: (0, _classnames2.default)(classes.avatar, selectedResource.category, 'inputAdornment'), __source: {
                 fileName: _jsxFileName,
-                lineNumber: 233
+                lineNumber: 236
               }
             },
             selectedResource.name[0]
@@ -417,10 +435,10 @@ var VenueAutocomplete = function (_React$Component) {
         }
 
         rest.startAdornment = _react2.default.createElement(
-          _Input.InputAdornment,
+          _InputAdornment2.default,
           { position: 'start', __source: {
               fileName: _jsxFileName,
-              lineNumber: 236
+              lineNumber: 239
             }
           },
           avatar
@@ -434,18 +452,18 @@ var VenueAutocomplete = function (_React$Component) {
             rest = _objectWithoutProperties(inputProps, ['label', 'classes']);
 
         return _react2.default.createElement(
-          _Form.FormControl,
+          _FormControl2.default,
           { className: classes.FormControl, fullWidth: true, required: true, __source: {
               fileName: _jsxFileName,
-              lineNumber: 244
+              lineNumber: 247
             }
           },
           _react2.default.createElement(
-            _Input.InputLabel,
+            _InputLabel2.default,
             {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 245
+                lineNumber: 248
               }
             },
             label
@@ -453,7 +471,7 @@ var VenueAutocomplete = function (_React$Component) {
           _react2.default.createElement(_Input2.default, _extends({}, rest, {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 246
+              lineNumber: 249
             }
           }))
         );
@@ -484,7 +502,7 @@ var VenueAutocomplete = function (_React$Component) {
         }),
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 252
+          lineNumber: 255
         }
       });
 
@@ -493,22 +511,22 @@ var VenueAutocomplete = function (_React$Component) {
         {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 279
+            lineNumber: 282
           }
         },
         _react2.default.createElement(
-          _Form.FormControl,
+          _FormControl2.default,
           { fullWidth: true, required: true, __source: {
               fileName: _jsxFileName,
-              lineNumber: 280
+              lineNumber: 283
             }
           },
           _react2.default.createElement(
-            _Input.InputLabel,
+            _InputLabel2.default,
             {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 281
+                lineNumber: 284
               }
             },
             label
@@ -516,7 +534,7 @@ var VenueAutocomplete = function (_React$Component) {
           _react2.default.createElement(_Input2.default, _extends({ onChange: this.handleTextChange.bind(this) }, rest, {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 282
+              lineNumber: 285
             }
           }))
         )
