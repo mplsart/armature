@@ -22,6 +22,10 @@ var _Input = require('@material-ui/core/Input');
 
 var _Input2 = _interopRequireDefault(_Input);
 
+var _InputLabel = require('@material-ui/core/InputLabel');
+
+var _InputLabel2 = _interopRequireDefault(_InputLabel);
+
 var _FormControl = require('@material-ui/core/FormControl');
 
 var _FormControl2 = _interopRequireDefault(_FormControl);
@@ -114,27 +118,27 @@ var DateTimeInput = function (_React$Component) {
         _FormControl2.default,
         { fullWidth: true, required: true, style: controlStyle, __source: {
             fileName: _jsxFileName,
-            lineNumber: 62
+            lineNumber: 63
           }
         },
         _react2.default.createElement(
-          _Input.InputLabel,
+          _InputLabel2.default,
           {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 63
+              lineNumber: 64
             }
           },
           label
         ),
         _react2.default.createElement(_Input2.default, _extends({}, rest, { value: this.cleanDate(value), onChange: this.handleDateChange.bind(this), style: { alignSelf: 'flex-end', width: '50%', 'fontSize': '14px' }, type: 'date', __source: {
             fileName: _jsxFileName,
-            lineNumber: 64
+            lineNumber: 65
           }
         })),
         _react2.default.createElement(_Input2.default, _extends({}, rest, { value: this.cleanTime(value), onChange: this.handleTimeChange.bind(this), inputProps: { step: 300 }, style: { alignSelf: 'flex-end', width: '45%', 'fontSize': '14px' }, type: 'time', __source: {
             fileName: _jsxFileName,
-            lineNumber: 65
+            lineNumber: 66
           }
         }))
       );

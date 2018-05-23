@@ -34,9 +34,13 @@ var _ListItemActionButton = require('../../ui/buttons/ListItemActionButton');
 
 var _ListItemActionButton2 = _interopRequireDefault(_ListItemActionButton);
 
-var _Card = require('@material-ui/core/Card');
+var _CardMedia = require('@material-ui/core/CardMedia');
 
-var _List = require('@material-ui/core/List');
+var _CardMedia2 = _interopRequireDefault(_CardMedia);
+
+var _ListItemIcon = require('@material-ui/core/ListItemIcon');
+
+var _ListItemIcon2 = _interopRequireDefault(_ListItemIcon);
 
 var _location = require('../../utils/location');
 
@@ -82,7 +86,7 @@ var styles = function styles(theme) {
   };
 };
 
-function PopoverRenderer(_ref) {
+function CompactGalleryCard(_ref) {
   var classes = _ref.classes,
       resource = _ref.resource;
 
@@ -101,14 +105,14 @@ function PopoverRenderer(_ref) {
   var imageNode = void 0;
   if (imageUrl) {
     imageNode = _react2.default.createElement(
-      _List.ListItemIcon,
+      _ListItemIcon2.default,
       {
         __source: {
           fileName: _jsxFileName,
           lineNumber: 73
         }
       },
-      _react2.default.createElement(_Card.CardMedia, {
+      _react2.default.createElement(_CardMedia2.default, {
         className: classes.image,
         image: imageUrl,
         title: imageAltText,
@@ -245,10 +249,10 @@ function PopoverRenderer(_ref) {
   );
 }
 
-PopoverRenderer.propTypes = {
+CompactGalleryCard.propTypes = {
   classes: _propTypes2.default.object,
   theme: _propTypes2.default.object,
   resource: _propTypes2.default.object.isRequired
 };
 
-exports.default = (0, _styles.withStyles)(styles, { withTheme: true })(PopoverRenderer);
+exports.default = (0, _styles.withStyles)(styles, { withTheme: true })(CompactGalleryCard);
