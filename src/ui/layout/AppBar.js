@@ -44,13 +44,13 @@ const styles = theme => ({
     flex: 1,
     fontSize: '1.75rem',
     lineHeight: '1.75rem',
-    fontWeight: '100 !important',
     textAlign:'left',
     color: '#dfdfdf',
     marginTop: '2px', // I wish we could get rid of this...?
     [theme.breakpoints.down('sm')]: {
       textAlign:'center',
-    }
+    },
+    '& a': { fontWeight: 100 }
   },
   loader: {
     height: '2px',

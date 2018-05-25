@@ -6,9 +6,9 @@ import withRedux from '../../src/withRedux';
 import {initStore} from '../../src/store';
 import Typography from '@material-ui/core/Typography';
 import {Col, Row} from '../../src/grid';
+import {MegaHeader, Lead, ContentTitle, ContentSubTitle} from '../../src/typography';
 
-
-const styles = (theme) => {
+const styles = () => {
   return {
     grid: {
       background:
@@ -101,6 +101,13 @@ class Index extends React.Component {
           </Col>
         </Row>
 
+
+        <MegaHeader>Mega Header</MegaHeader>
+        <ContentTitle>Content Header</ContentTitle>
+        <Lead>Lead In Text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean congue nulla id arcu molestie, vitae dapibus neque scelerisque. </Lead>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean congue nulla id arcu molestie, vitae dapibus neque scelerisque. Mauris et eleifend ligula, in faucibus purus. Duis vel tempus felis, non consequat ligula. Ut dolor tellus, dapibus at turpis rutrum, viverra placerat est. Vivamus eget pellentesque enim. Sed lacinia arcu dolor, vitae semper magna molestie vitae. Proin vitae ipsum sodales, dictum quam eu, posuere risus.</p>
+        <ContentSubTitle>Content Subtitle</ContentSubTitle>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean congue nulla id arcu molestie, vitae dapibus neque scelerisque. Mauris et eleifend ligula, in faucibus purus. Duis vel tempus felis, non consequat ligula. Ut dolor tellus, dapibus at turpis rutrum, viverra placerat est. Vivamus eget pellentesque enim. Sed lacinia arcu dolor, vitae semper magna molestie vitae. Proin vitae ipsum sodales, dictum quam eu, posuere risus.</p>
       </PageBase>
     );
   }

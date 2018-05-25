@@ -37,11 +37,6 @@ var styles = function styles(theme) {
   var _card;
 
   return {
-    root: {
-      border: '1px solid red',
-      fontSize: '48px'
-    },
-
     card: (_card = {
       // Old school card style
       'position': 'relative',
@@ -92,7 +87,6 @@ var styles = function styles(theme) {
         'height': '0',
         'overflow': 'hidden',
         'padding': '52.42% 0 0 0', /* Note padding-top is overridden via JS */
-        'background-color': 'red',
         'width': '100%',
 
         // The Image Itself?
@@ -143,12 +137,12 @@ var LegacyCardBase = function (_React$Component) {
           }, linkClassProps, {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 97
+              lineNumber: 91
             }
           }),
           _react2.default.createElement('img', { src: image_url, alt: title, __source: {
               fileName: _jsxFileName,
-              lineNumber: 100
+              lineNumber: 94
             }
           })
         );
@@ -167,12 +161,12 @@ var LegacyCardBase = function (_React$Component) {
             }, linkClassProps, {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 113
+                lineNumber: 107
               }
             }),
             _react2.default.createElement('img', { src: image_url, alt: title, __source: {
                 fileName: _jsxFileName,
-                lineNumber: 116
+                lineNumber: 110
               }
             })
           );
@@ -183,28 +177,28 @@ var LegacyCardBase = function (_React$Component) {
         'div',
         { className: (0, _classnames2.default)(rootClasses), __source: {
             fileName: _jsxFileName,
-            lineNumber: 124
+            lineNumber: 118
           }
         },
         _react2.default.createElement(
           'div',
           { className: classes.cardContainer, __source: {
               fileName: _jsxFileName,
-              lineNumber: 125
+              lineNumber: 119
             }
           },
           _react2.default.createElement(
             'div',
             { className: 'card-header', __source: {
                 fileName: _jsxFileName,
-                lineNumber: 126
+                lineNumber: 120
               }
             },
             _react2.default.createElement(
               'div',
               { className: classes.cardImage, __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 127
+                  lineNumber: 121
                 }
               },
               image
@@ -214,14 +208,14 @@ var LegacyCardBase = function (_React$Component) {
             'div',
             { className: classes.cardContent, __source: {
                 fileName: _jsxFileName,
-                lineNumber: 130
+                lineNumber: 124
               }
             },
             title && _react2.default.createElement(
               'div',
               { className: classes.cardTitle, __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 131
+                  lineNumber: 125
                 }
               },
               _react2.default.createElement(
@@ -229,7 +223,7 @@ var LegacyCardBase = function (_React$Component) {
                 _extends({}, linkClassProps, {
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 131
+                    lineNumber: 125
                   }
                 }),
                 title
@@ -239,7 +233,7 @@ var LegacyCardBase = function (_React$Component) {
               'div',
               { className: (0, _classnames2.default)(classes.cardDetail, variant == 'large' && classes.cardDetailLarge), __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 132
+                  lineNumber: 126
                 }
               },
               content

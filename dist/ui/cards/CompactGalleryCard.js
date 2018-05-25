@@ -237,7 +237,7 @@ function CompactGalleryCard(_ref) {
       ),
       _react2.default.createElement(
         _Typography2.default,
-        { variant: 'cpation', className: (0, _classnames2.default)(classes.text), __source: {
+        { variant: 'caption', className: (0, _classnames2.default)(classes.text), __source: {
             fileName: _jsxFileName,
             lineNumber: 117
           }

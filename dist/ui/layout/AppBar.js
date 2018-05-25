@@ -46,6 +46,8 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var styles = function styles(theme) {
+  var _title;
+
   return {
     fixedRoot: _defineProperty({ // Placeholder that pushesdown the content
       width: '100%',
@@ -72,17 +74,16 @@ var styles = function styles(theme) {
       minHeight: theme.appBarHeight.default
     }),
 
-    title: _defineProperty({
+    title: (_title = {
       fontFamily: theme.fontFamily.accent,
       flex: 1,
       fontSize: '1.75rem',
       lineHeight: '1.75rem',
-      fontWeight: '100 !important',
       textAlign: 'left',
       color: '#dfdfdf',
-      marginTop: '2px' }, theme.breakpoints.down('sm'), {
+      marginTop: '2px' }, _defineProperty(_title, theme.breakpoints.down('sm'), {
       textAlign: 'center'
-    }),
+    }), _defineProperty(_title, '& a', { fontWeight: 100 }), _title),
     loader: {
       height: '2px'
       //display:'none'

@@ -4,11 +4,6 @@ import { withStyles } from '@material-ui/core/styles';
 import classnames from 'classnames';
 
 const styles = (theme) => ({
-  root: {
-    border: '1px solid red',
-    fontSize: '48px'
-  },
-
   card: {
     // Old school card style
     'position':'relative',
@@ -68,7 +63,6 @@ const styles = (theme) => ({
       'height': '0',
       'overflow': 'hidden',
       'padding': '52.42% 0 0 0', /* Note padding-top is overridden via JS */
-      'background-color': 'red',
       'width': '100%',
 
       // The Image Itself?

@@ -23,7 +23,6 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var globalStyles = function globalStyles(theme) {
-  console.log(theme.typography);
 
   return {
     '@global': {
@@ -45,7 +44,6 @@ var globalStyles = function globalStyles(theme) {
       'h4': _extends({}, theme.typography.headline, { margin: '0 0 0.35em 0' }),
       'h5': _extends({}, theme.typography.subheading, { margin: '0 0 0.35em 0' }),
       'small': _extends({}, theme.typography.caption)
-      //'h1, h2, h3, h4': {color:'red', 'fontFamily': theme.fontFamily.accent},
     }
   };
 };

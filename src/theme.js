@@ -10,6 +10,7 @@ const muiTheme = createMuiTheme({
 
   typography: {
     fontFamily: defaultFontFamily,
+
     button: {
       fontWeight: 400,
       textTransform: 'none',

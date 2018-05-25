@@ -11,13 +11,13 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _styles = require('material-ui/styles');
+var _styles = require('@material-ui/core/styles');
 
 var _classnames = require('classnames');
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _Typography = require('material-ui/Typography');
+var _Typography = require('@material-ui/core/Typography');
 
 var _Typography2 = _interopRequireDefault(_Typography);
 

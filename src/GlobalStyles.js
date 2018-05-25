@@ -2,7 +2,6 @@ import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 
 const globalStyles = (theme) => {
-  console.log(theme.typography);
 
   return {
     '@global': {
@@ -25,7 +24,6 @@ const globalStyles = (theme) => {
       'h4': {...theme.typography.headline, margin: '0 0 0.35em 0'},
       'h5': {...theme.typography.subheading, margin: '0 0 0.35em 0'},
       'small': {...theme.typography.caption}
-      //'h1, h2, h3, h4': {color:'red', 'fontFamily': theme.fontFamily.accent},
     }
   };
 };

@@ -17,6 +17,7 @@ var muiTheme = (0, _styles.createMuiTheme)({
 
   typography: {
     fontFamily: defaultFontFamily,
+
     button: {
       fontWeight: 400,
       textTransform: 'none',
