@@ -4,13 +4,17 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; // Define Theme properties
+
+
 var _styles = require('@material-ui/core/styles');
 
 var _colors = require('./colors');
 
-// Define Theme properties
 var defaultFontFamily = '"Roboto", "Helvetica", "Arial", sans-serif';
 var accentFontFamily = '"Bryant", "Helvetica", "Arial", sans-serif';
+
+var headingBase = { letterSpacing: 0, color: '#000000' };
 
 var muiTheme = (0, _styles.createMuiTheme)({
   fontFamily: { default: defaultFontFamily, accent: accentFontFamily },
@@ -22,18 +26,19 @@ var muiTheme = (0, _styles.createMuiTheme)({
       fontWeight: 400,
       textTransform: 'none',
       fontSize: '1.25rem',
-      fontFamily: accentFontFamily
+      fontFamily: accentFontFamily,
+      letterSpacing: '1px'
     },
 
-    display4: { fontFamily: accentFontFamily, color: '#000000', fontSize: '4.8rem', lineHeight: '5.2rem' },
-    display3: { fontFamily: accentFontFamily, color: '#000000', fontSize: '42px', fontWeight: 100, lineHeight: '3.0rem', letterSpacing: 0 },
-    display2: { fontFamily: accentFontFamily, color: '#000000', fontSize: '30px', fontWeight: 100 },
+    display4: _extends({ fontFamily: accentFontFamily }, headingBase, { fontSize: '4.8rem', lineHeight: '5.2rem' }),
+    display3: _extends({ fontFamily: accentFontFamily }, headingBase, { fontSize: '42px', fontWeight: 100, lineHeight: '3.0rem', letterSpacing: 0 }),
+    display2: _extends({ fontFamily: accentFontFamily }, headingBase, { fontSize: '30px', fontWeight: 100 }),
     display1: { fontFamily: defaultFontFamily, color: '#000000', fontSize: '26px', fontWeight: 300 },
 
     // At the moment these are all the same visually TODO: Figure out where MUI uses them
-    headline: { fontFamily: accentFontFamily, color: '#000000', fontSize: '22px', fontWeight: 300 },
-    title: { fontFamily: accentFontFamily, color: '#000000', fontSize: '22px', fontWeight: 300 },
-    subheading: { fontFamily: accentFontFamily, color: '#000000', fontSize: '18px', fontWeight: 300 },
+    headline: _extends({ fontFamily: accentFontFamily }, headingBase, { fontSize: '22px', fontWeight: 300 }),
+    title: _extends({ fontFamily: accentFontFamily }, headingBase, { fontSize: '22px', fontWeight: 300 }),
+    subheading: _extends({ fontFamily: accentFontFamily }, headingBase, { fontSize: '18px', fontWeight: 300 }),
     body1: { fontFamily: defaultFontFamily, fontWeight: 300, fontSize: '18px' }, // Overline
     body2: { fontFamily: defaultFontFamily, fontWeight: 300, fontSize: '14px' }, // Default Body Copy
     caption: { fontFamily: defaultFontFamily, color: 'rgba(0, 0, 0, 0.54)', fontSize: '12px' }
