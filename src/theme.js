@@ -5,7 +5,7 @@ import { blue, pink, red } from './colors';
 const defaultFontFamily = '"Roboto", "Helvetica", "Arial", sans-serif';
 const accentFontFamily = '"Bryant", "Helvetica", "Arial", sans-serif';
 
-const headingBase = {letterSpacing: 0, color: '#000000',}
+const headingBase = {letterSpacing: 0, color: '#000000'};
 
 const muiTheme = createMuiTheme({
   fontFamily: { default: defaultFontFamily, accent: accentFontFamily },
