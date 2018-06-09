@@ -15,8 +15,8 @@ const styles = (theme) => {
       marginLeft: 'auto',
       width: '100%', // xs,sm
       flexGrow: 1,
-      paddingRight: theme.spacing.unit,
-      paddingLeft: theme.spacing.unit,
+      paddingRight: theme.gutterSpacing / 2,
+      paddingLeft: theme.gutterSpacing / 2,
 
       [theme.breakpoints.only('xs')]: {
         width: '100%'
@@ -41,7 +41,7 @@ const styles = (theme) => {
   };
 };
 
-function _Grid({classes, align, theme, className, children, fluid, ...rest}) {
+function _Grid({classes, align, className, children, fluid, ...rest}) {
   let collectedClasses = [className];
 
   if (fluid) {
@@ -71,8 +71,8 @@ _Grid.propTypes = {
 };
 
 
-function _Row({classes, theme, className, children, ...rest}) {
-  return (<MuiGrid spacing={Number(theme.spacing.unit * 2)} container={true} className={classnames(classes.typeContainer, className)} {...rest}>{ children }</MuiGrid>);
+function _Row({classes, className, theme, children, ...rest}) {
+  return (<MuiGrid spacing={Number(theme.gutterSpacing)} container={true} className={classnames(classes.typeContainer, className)} {...rest}>{ children }</MuiGrid>);
 }
 // prop definitions
 _Row.propTypes = {
@@ -83,7 +83,7 @@ _Row.propTypes = {
 
 
 function _Col(props) {
-  let {classes, className, children, theme, ...rest} = props;
+  let {classes, className, children, ...rest} = props;
   return (<MuiGrid item={true} {...rest} className={classnames(classes.typeItem, className)}>{ children }</MuiGrid>);
 }
 

@@ -8,13 +8,15 @@ module.exports = {
     return {
       '/': { page: '/' },
       '/styles/typography': { page: '/styles/typography' },
-      '/styles/colors': { page: '/styles/typography' },
+      '/styles/colors': { page: '/styles/colors' },
       '/ui/buttons': { page: '/ui/buttons'},
       '/ui/cards': { page: '/ui/cards'},
       '/ui/lightbox': { page: '/ui/lightbox'},
       '/ui/popovers': { page: '/ui/popovers'},
       '/ui/inputs/autocomplete': { page: '/ui/inputs/autocomplete'},
-      '/ui/inputs/datetime': { page: '/ui/inputs/datetime'}
+      '/ui/inputs/datetime': { page: '/ui/inputs/datetime'},
+      '/ui/alerts': { page: '/ui/alerts'},
+      '/mocks/homepage/v3': { page: '/mocks/homepage/v3'},
     }
   }
 }

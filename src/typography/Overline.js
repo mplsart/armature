@@ -4,28 +4,27 @@ import PropTypes from 'prop-types';
 import MUITypography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 
-const styles = (theme) => ({
-  root: {
-    margin:`${theme.spacing.unit * 2}px 0 0 0`,
-  }
+const styles = () => ({
+  root: { marginTop: '0.35em', fontWeight:100}
 });
 
-class SideBarHeader extends React.Component {
+class Overline extends React.Component {
   render() {
     let {classes, children, ...rest} = this.props;
-
     return (
       <MUITypography
-        component="h2"
-        variant="display2"
+        component="span"
+        variant="caption"
         className={classes.root}
+        gutterBottom
+        color="inherit"
         {...rest}>{children}</MUITypography>);
   }
 }
 
-SideBarHeader.propTypes = {
+Overline.propTypes = {
   children: PropTypes.any.isRequired,
   classes: PropTypes.object
 };
 
-export default withStyles(styles)(SideBarHeader);
+export default withStyles(styles)(Overline);

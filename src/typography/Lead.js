@@ -5,7 +5,7 @@ import MUITypography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = (theme) => ({
-    root: {fontSize:'1.2rem'}
+    root: {fontSize:'1.5rem', lineHeight:'1.9rem'}
 });
 
 class Lead extends React.Component {

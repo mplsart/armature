@@ -32,11 +32,25 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } // Common typography elements
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; } // Common typography elements
 
 
 var styles = function styles(theme) {
-  return {};
+  var _root;
+
+  return {
+    root: (_root = {}, _defineProperty(_root, theme.breakpoints.only('xs'), {
+      // Phones in portrait
+      fontSize: '2.5rem',
+      lineHeight: '2.6rem'
+    }), _defineProperty(_root, theme.breakpoints.only('sm'), {
+      // Ipad in portrait and phones in landscape
+      fontSize: '3.5rem',
+      lineHeight: '3.6rem'
+    }), _root)
+  };
 };
 
 var MegaHeader = function (_React$Component) {
@@ -67,7 +81,7 @@ var MegaHeader = function (_React$Component) {
         }, rest, {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 13
+            lineNumber: 26
           }
         }),
         children

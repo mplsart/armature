@@ -4,4 +4,5 @@ import ContentSubTitle from './ContentSubTitle';
 import Lead from './Lead';
 import MegaHeader from './MegaHeader';
 import SideBarHeader from './SideBarHeader';
-export {ContentTitle, ContentSubTitle, Lead, MegaHeader, SideBarHeader};
+import Overline from './Overline';
+export {ContentTitle, ContentSubTitle, Lead, MegaHeader, Overline, SideBarHeader};

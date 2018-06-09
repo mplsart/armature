@@ -37,7 +37,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var styles = function styles(theme) {
   return {
-    root: { fontSize: '1.2rem' }
+    root: { fontSize: '1.5rem', lineHeight: '1.9rem' }
   };
 };
 

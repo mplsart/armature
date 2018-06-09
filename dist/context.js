@@ -15,6 +15,11 @@ var _theme2 = _interopRequireDefault(_theme);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var poo = 1; // Material-UI context for use with JssProvider for SSR
+// Note: if you use `npm link <localpath>` => className missmatch thing. Use `npm install <localpath>`
+
+/* eslint-disable no-underscore-dangle */
+
 function createPageContext() {
   return {
     theme: _theme2.default,
@@ -25,10 +30,7 @@ function createPageContext() {
     // The standard class name generator.
     generateClassName: (0, _styles.createGenerateClassName)()
   };
-} // Material-UI context for use with JssProvider for SSR
-// Note: if you use `npm link <localpath>` => className missmatch thing. Use `npm install <localpath>`
-
-/* eslint-disable no-underscore-dangle */
+}
 
 function getPageContext() {
   // Make sure to create a new context for every server-side request so that data

@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var _jsxFileName = 'src/ui/cards/marquee/MarqueeCardBase.js';
+var _jsxFileName = 'src/ui/cards/marquee/MarqueeCardEvent.js';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -49,14 +49,12 @@ function calc_aspect_ratio(h, w) {
 }
 
 var styles = function styles(theme) {
-  var _primaryTitle;
-
-  console.log(theme);
+  //console.log(theme);
 
   return {
     root: {
       position: 'relative',
-
+      //margin: '0 16px 0px 16px',
       '&:hover': {
         '& a': {
           textDecoration: 'none'
@@ -64,78 +62,99 @@ var styles = function styles(theme) {
         '& .image': {
           transform: 'scale(1.1)'
         },
+
         '& .primaryTitle': {
           color: theme.palette.primary[500]
         }
       }
     },
+
     imageWrapper: {
       overflow: 'hidden'
     },
-    image: {
+    image: _defineProperty({
       backgroundPosition: 'center',
       backgroundSize: 'cover',
-      backgroundImage: 'url(https://storage.googleapis.com/cdn.mplsart.com/file_container/RmlsZUNvbnRhaW5lch4fMTQ2NzAwMDE/card_large.png)',
+      backgroundImage: 'url(https://storage.googleapis.com/cdn.mplsart.com/file_container/RmlsZUNvbnRhaW5lch4fMTA2NzAwMDI/card_large.png)',
+      backgroundRepeat: 'no-repeat',
       width: '100%',
       height: 0,
       display: 'block',
       padding: '60% 0 0 0',
       position: 'relative',
       overflow: 'hidden',
-      '-webkit-transition': '0.6s ease',
-      'transition': '0.6s ease',
+      '&.withShadow': {},
 
-      '&.withShadow': {}
-    },
-    contentContainer: _defineProperty({
-      position: 'absolute',
-      bottom: 0,
+      '-webkit-transition': '0.6s ease',
+      'transition': '0.6s ease'
+
+    }, theme.breakpoints.only('xs'), {
+      //padding:'30% 0 0 0',
+    }),
+
+    imageLink: {
+      display: 'block',
+      height: '100%',
       width: '100%',
-      //height:'50%',
-      height: '100%'
+      position: 'absolute',
+      top: 0,
+      left: 0
+    },
+
+    contentContainer: _defineProperty({
+      //position:'absolute',
+      //bottom:0,
+      width: '100%'
     }, theme.breakpoints.only('xs'), {
       // Phones in portrait
       //height:'60%',
     }),
     contentContainerContent: _defineProperty({
-      position: 'absolute',
+      //position:'absolute',
       bottom: 0,
-      color: '#fff',
-      padding: '32px',
-      background: 'linear-gradient(transparent, black)'
-
+      //color: '#fff',
+      padding: '0px'
     }, theme.breakpoints.only('xs'), {
       // Phones in portrait
-      padding: '16px'
+      padding: 8
     }),
     //citation: {
     //  color: '#fff'
     //},
 
-    primaryTitle: (_primaryTitle = {}, _defineProperty(_primaryTitle, theme.breakpoints.only('xs'), _extends({}, theme.typography.display1, {
+    primaryTitle: _extends({}, theme.typography.display2, {
       fontFamily: theme.fontFamily.accent,
-      marginTop: '0',
+      marginTop: '0.35em',
       fontSize: '1rem',
       lineHeight: '1.2rem',
       fontWeight: 400,
-      marginBottom: 0,
-      color: '#fafafa'
-    })), _defineProperty(_primaryTitle, theme.breakpoints.only('sm'), _extends({}, theme.typography.display2, {
-      fontFace: theme.fontFamily.accent,
-      marginTop: 0,
-      fontSize: '2.0rem',
-      lineHeight: '2.2rem',
-      fontWeight: 400,
-      marginBottom: 0,
-      color: '#fafafa'
-    })), _defineProperty(_primaryTitle, theme.breakpoints.up('md'), _extends({}, theme.typography.display3, {
-      fontFamily: theme.fontFamily.accent,
-      marginTop: 0,
-      lineHeight: '2.5rem',
-      fontWeight: 400,
-      marginBottom: 0,
-      color: '#fafafa'
-    })), _primaryTitle),
+      marginBottom: 0
+
+      //color: '#fafafa'
+      //},
+      /*
+      [theme.breakpoints.up('sm')]: {
+        // Ipad in portrait and phones in landscape
+        ...theme.typography.display2,
+        fontFace: theme.fontFamily.accent,
+        marginTop: '0.35em',
+        fontSize: '2.0rem',
+        lineHeight: '2.2rem',
+        fontWeight: 400,
+        marginBottom:0,
+        color: '#fafafa'
+      },
+      [theme.breakpoints.up('md')]: {
+        ...theme.typography.display3,
+        fontFace: theme.fontFamily.accent,
+        marginTop: '0.35em',
+        lineHeight: '2.75rem',
+        fontWeight: 400,
+        marginBottom:0,
+        color: '#fafafa'
+      },
+      */
+    }),
 
     byline: _defineProperty({
       display: 'inline-block',
@@ -144,26 +163,29 @@ var styles = function styles(theme) {
       left: 0,
       zIndex: 1000,
       backgroundColor: '#fafafa',
-      padding: '8px 16px 8px 8px'
+      padding: '8px 16px 8px 8px',
 
-    }, theme.breakpoints.only('xs'), {
+      //[theme.breakpoints.only('xs')]: {
       // Phones in portrait
-      fontSize: '14px',
-      padding: '0px 8px 0px 0px'
-    })
+      fontSize: '14px'
+    }, 'padding', '0px 8px 0px 0px'),
+    overline: {
+      paddingTop: 8,
+      color: '#000'
+    }
   };
 };
 
-var MarqueeCardBase = function (_React$Component) {
-  _inherits(MarqueeCardBase, _React$Component);
+var MarqueeCardEvent = function (_React$Component) {
+  _inherits(MarqueeCardEvent, _React$Component);
 
-  function MarqueeCardBase() {
-    _classCallCheck(this, MarqueeCardBase);
+  function MarqueeCardEvent() {
+    _classCallCheck(this, MarqueeCardEvent);
 
-    return _possibleConstructorReturn(this, (MarqueeCardBase.__proto__ || Object.getPrototypeOf(MarqueeCardBase)).apply(this, arguments));
+    return _possibleConstructorReturn(this, (MarqueeCardEvent.__proto__ || Object.getPrototypeOf(MarqueeCardEvent)).apply(this, arguments));
   }
 
-  _createClass(MarqueeCardBase, [{
+  _createClass(MarqueeCardEvent, [{
     key: 'render',
     value: function render() {
       var classes = this.props.classes;
@@ -176,68 +198,75 @@ var MarqueeCardBase = function (_React$Component) {
         'div',
         { className: classes.root, __source: {
             fileName: _jsxFileName,
-            lineNumber: 141
+            lineNumber: 164
           }
         },
         _react2.default.createElement(
           'div',
           { className: (0, _classnames2.default)(classes.byline), __source: {
               fileName: _jsxFileName,
-              lineNumber: 142
+              lineNumber: 165
             }
           },
-          _react2.default.createElement('i', { className: 'fa fa-newspaper-o', style: { marginRight: '8px' }, __source: {
+          _react2.default.createElement('i', { className: 'fa fa-calendar-o', style: { marginRight: '8px' }, __source: {
               fileName: _jsxFileName,
-              lineNumber: 143
+              lineNumber: 166
             }
           }),
-          'New Article'
+          'April 16th'
         ),
         _react2.default.createElement(
           'div',
           { className: (0, _classnames2.default)('imageWrapper', classes.imageWrapper), __source: {
               fileName: _jsxFileName,
-              lineNumber: 149
+              lineNumber: 173
             }
           },
-          _react2.default.createElement('div', { className: (0, _classnames2.default)('image', classes.image, 'withShadow'), __source: {
-              fileName: _jsxFileName,
-              lineNumber: 150
-            }
-          })
+          _react2.default.createElement(
+            'div',
+            { className: (0, _classnames2.default)('image', classes.image, 'withShadow'), __source: {
+                fileName: _jsxFileName,
+                lineNumber: 174
+              }
+            },
+            _react2.default.createElement('a', { href: 'google.com', className: classes.imageLink, __source: {
+                fileName: _jsxFileName,
+                lineNumber: 175
+              }
+            })
+          )
         ),
         _react2.default.createElement(
           'a',
           { href: 'google.com', className: classes.contentContainer, __source: {
               fileName: _jsxFileName,
-              lineNumber: 152
+              lineNumber: 178
             }
           },
           _react2.default.createElement(
             'div',
             { className: classes.contentContainerContent, __source: {
                 fileName: _jsxFileName,
-                lineNumber: 153
+                lineNumber: 179
               }
             },
             _react2.default.createElement(
               _Overline2.default,
-              {
-                __source: {
+              { className: (0, _classnames2.default)('overline', classes.overline), __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 154
+                  lineNumber: 180
                 }
               },
-              'Published March 5th, 2018 by Sheila Regan'
+              'Artist Talk @ SooVAC'
             ),
             _react2.default.createElement(
               _Typography2.default,
               { className: (0, _classnames2.default)('primaryTitle', classes.primaryTitle), __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 155
+                  lineNumber: 181
                 }
               },
-              'Between Boredom and the Body: Emmett Ramstad\'s Laying in Wait'
+              'The Things They Carried On: A new public art project humanizes immigration'
             )
           )
         )
@@ -245,7 +274,7 @@ var MarqueeCardBase = function (_React$Component) {
     }
   }]);
 
-  return MarqueeCardBase;
+  return MarqueeCardEvent;
 }(_react2.default.Component);
 
-exports.default = (0, _styles.withStyles)(styles)(MarqueeCardBase);
+exports.default = (0, _styles.withStyles)(styles)(MarqueeCardEvent);

@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.SideBarHeader = exports.MegaHeader = exports.Lead = exports.ContentSubTitle = exports.ContentTitle = undefined;
+exports.SideBarHeader = exports.Overline = exports.MegaHeader = exports.Lead = exports.ContentSubTitle = exports.ContentTitle = undefined;
 
 var _ContentTitle = require('./ContentTitle');
 
@@ -25,10 +25,16 @@ var _SideBarHeader = require('./SideBarHeader');
 
 var _SideBarHeader2 = _interopRequireDefault(_SideBarHeader);
 
+var _Overline = require('./Overline');
+
+var _Overline2 = _interopRequireDefault(_Overline);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+// Common typography elements
 exports.ContentTitle = _ContentTitle2.default;
 exports.ContentSubTitle = _ContentSubTitle2.default;
 exports.Lead = _Lead2.default;
 exports.MegaHeader = _MegaHeader2.default;
-exports.SideBarHeader = _SideBarHeader2.default; // Common typography elements
+exports.Overline = _Overline2.default;
+exports.SideBarHeader = _SideBarHeader2.default;

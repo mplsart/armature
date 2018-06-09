@@ -2,14 +2,29 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 import { blue, pink, red } from './colors';
 
+// Helper function glorked from material-ui code
+const fontSize = 14; // px
+// Tell Material-UI what's the font-size on the html element.
+// 16px is the default font-size used by browsers.
+const htmlFontSize = 16;
+const coef = fontSize / 14;
+
+function pxToRem(value) {
+  return `${(value / htmlFontSize) * coef}rem`;
+}
+function round(value) {
+  return Math.round(value * 1e5) / 1e5;
+}
+
 const defaultFontFamily = '"Roboto", "Helvetica", "Arial", sans-serif';
 const accentFontFamily = '"Bryant", "Helvetica", "Arial", sans-serif';
 
 const headingBase = {letterSpacing: 0, color: '#000000'};
+const gutterSpacing = 8 * 4; // 8 is theme.spacing.unit
 
 const muiTheme = createMuiTheme({
+  gutterSpacing: gutterSpacing, // 32px
   fontFamily: { default: defaultFontFamily, accent: accentFontFamily },
-
   typography: {
     fontFamily: defaultFontFamily,
 
@@ -21,18 +36,18 @@ const muiTheme = createMuiTheme({
       letterSpacing: '1px'
     },
 
-    display4: {fontFamily: accentFontFamily, ...headingBase, fontSize: '4.8rem', lineHeight: '5.2rem' },
-    display3: {fontFamily: accentFontFamily, ...headingBase, fontSize: '42px', fontWeight: 100, lineHeight: '3.0rem', letterSpacing: 0},
-    display2: {fontFamily: accentFontFamily, ...headingBase, fontSize: '30px', fontWeight: 100 },
-    display1: {fontFamily: defaultFontFamily, color: '#000000', fontSize: '26px', fontWeight: 300 },
+    display4: {fontFamily: accentFontFamily, ...headingBase, fontSize: pxToRem(80), lineHeight: '5.2rem' },
+    display3: {fontFamily: accentFontFamily, ...headingBase, fontSize: pxToRem(40), fontWeight: 100, lineHeight: '3.0rem', letterSpacing: 0},
+    display2: {fontFamily: accentFontFamily, ...headingBase, fontSize: pxToRem(32), fontWeight: 100 },
+    display1: {fontFamily: defaultFontFamily, color: '#000000', fontSize: pxToRem(26), fontWeight: 300 },
 
     // At the moment these are all the same visually TODO: Figure out where MUI uses them
-    headline: {fontFamily: accentFontFamily, ...headingBase, fontSize: '22px', fontWeight: 300 },
-    title: {fontFamily: accentFontFamily, ...headingBase, fontSize: '22px', fontWeight: 300 },
-    subheading: {fontFamily: accentFontFamily, ...headingBase, fontSize: '18px', fontWeight: 300 },
-    body1: {fontFamily: defaultFontFamily, fontWeight: 300, fontSize: '18px'}, // Overline
-    body2: {fontFamily: defaultFontFamily, fontWeight: 300, fontSize: '14px'}, // Default Body Copy
-    caption: {fontFamily: defaultFontFamily, color: 'rgba(0, 0, 0, 0.54)', fontSize: '12px'},
+    headline: {fontFamily: accentFontFamily, ...headingBase, fontSize: '1.375rem', fontWeight: 300 },
+    title: {fontFamily: accentFontFamily, ...headingBase, fontSize: '1.375rem', fontWeight: 300 },
+    subheading: {fontFamily: accentFontFamily, ...headingBase, fontSize: '1.125rem', fontWeight: 300 },
+    body1: {fontFamily: defaultFontFamily, fontWeight: 300, fontSize: '1.125rem'}, // Overline
+    body2: {fontFamily: defaultFontFamily, fontWeight: 300, fontSize: pxToRem(14)}, // Default Body Copy
+    caption: {fontFamily: defaultFontFamily, color: 'rgba(0, 0, 0, 0.54)', fontSize: pxToRem(12)},
   },
   palette: {
     contrastThreshold: 3,

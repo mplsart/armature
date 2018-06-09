@@ -8,7 +8,8 @@ const globalStyles = (theme) => {
       'body, html': {
         '-webkit-font-smoothing': 'unset',
         '-moz-osx-font-smoothing': 'unset',
-        ...theme.typography.body1
+        ...theme.typography.body1,
+        fontSize:'16px' // This is so we don't mess with rem sizing since body1 is in rem
       },
       'a': {
         color: theme.palette.primary[500],

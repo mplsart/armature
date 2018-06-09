@@ -4,7 +4,20 @@ import PropTypes from 'prop-types';
 import MUITypography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 
-const styles = (theme) => ({});
+const styles = (theme) => ({
+  root: {
+    [theme.breakpoints.only('xs')]: {
+      // Phones in portrait
+      fontSize:'2.5rem',
+      lineHeight:'2.6rem'
+    },
+    [theme.breakpoints.only('sm')]: {
+      // Ipad in portrait and phones in landscape
+      fontSize:'3.5rem',
+      lineHeight:'3.6rem'
+    },
+  }
+});
 
 class MegaHeader extends React.Component {
   render() {

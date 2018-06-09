@@ -18,6 +18,10 @@ var _propTypes = require('prop-types');
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
+var _classnames = require('classnames');
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
 var _Typography = require('@material-ui/core/Typography');
 
 var _Typography2 = _interopRequireDefault(_Typography);
@@ -35,9 +39,12 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } // Common typography elements
 
 
-var styles = function styles() {
+var styles = function styles(theme) {
   return {
-    root: { marginTop: '0.35em' }
+    root: {
+      marginTop: '0.35em',
+      lineHeight: '2.75rem'
+    }
   };
 };
 
@@ -55,21 +62,22 @@ var ContentTitle = function (_React$Component) {
     value: function render() {
       var _props = this.props,
           classes = _props.classes,
+          className = _props.className,
           children = _props.children,
-          rest = _objectWithoutProperties(_props, ['classes', 'children']);
+          rest = _objectWithoutProperties(_props, ['classes', 'className', 'children']);
 
       return _react2.default.createElement(
         _Typography2.default,
         _extends({
           component: 'h1',
           variant: 'display3',
-          className: classes.root,
+          className: (0, _classnames2.default)(className, classes.root),
           gutterBottom: true,
           color: 'inherit'
         }, rest, {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 15
+            lineNumber: 20
           }
         }),
         children

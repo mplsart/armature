@@ -38,7 +38,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var styles = function styles(theme) {
   return {
     root: {
-      margin: theme.spacing.unit * 3 + 'px 0 ' + theme.spacing.unit + 'px ' + theme.spacing.unit * 3 + 'px'
+      margin: theme.spacing.unit * 2 + 'px 0 0 0'
     }
   };
 };
@@ -69,7 +69,7 @@ var SideBarHeader = function (_React$Component) {
         }, rest, {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 17
+            lineNumber: 18
           }
         }),
         children

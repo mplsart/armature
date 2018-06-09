@@ -46,8 +46,8 @@ var styles = function styles(theme) {
       marginLeft: 'auto',
       width: '100%', // xs,sm
       flexGrow: 1,
-      paddingRight: theme.spacing.unit,
-      paddingLeft: theme.spacing.unit
+      paddingRight: theme.gutterSpacing / 2,
+      paddingLeft: theme.gutterSpacing / 2
 
     }, _defineProperty(_legacyContainer, theme.breakpoints.only('xs'), {
       width: '100%'
@@ -120,7 +120,7 @@ function _Row(_ref2) {
 
   return _react2.default.createElement(
     _Grid3.default,
-    _extends({ spacing: Number(theme.spacing.unit * 2), container: true, className: (0, _classnames2.default)(classes.typeContainer, className) }, rest, {
+    _extends({ spacing: Number(theme.gutterSpacing), container: true, className: (0, _classnames2.default)(classes.typeContainer, className) }, rest, {
       __source: {
         fileName: _jsxFileName,
         lineNumber: 75
