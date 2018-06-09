@@ -16,7 +16,7 @@ module.exports = {
       '/ui/inputs/autocomplete': { page: '/ui/inputs/autocomplete'},
       '/ui/inputs/datetime': { page: '/ui/inputs/datetime'},
       '/ui/alerts': { page: '/ui/alerts'},
-      '/mocks/homepage/v3': { page: '/mocks/homepage/v3'},
+      '/mocks/homepage/homepagev3': { page: '/mocks/homepage/homepagev3'}
     }
   }
 }
