@@ -80,10 +80,6 @@ class MegaBannerAd extends React.Component {
   render() {
     const {classes, width, adspotId, resource} = this.props;
 
-    console.log(adspotId);
-    console.log(resource);
-
-
     // Determine Image to use based on device/breakpoints
     let imageUrl, h, w;
 

@@ -41,7 +41,7 @@ const styles = (theme) => {
   };
 };
 
-function _Grid({classes, align, className, children, fluid, ...rest}) {
+function _Grid({classes, align, className, theme, children, fluid, ...rest}) {
   let collectedClasses = [className];
 
   if (fluid) {
@@ -83,7 +83,7 @@ _Row.propTypes = {
 
 
 function _Col(props) {
-  let {classes, className, children, ...rest} = props;
+  let {classes, className, theme, children, ...rest} = props;
   return (<MuiGrid item={true} {...rest} className={classnames(classes.typeItem, className)}>{ children }</MuiGrid>);
 }
 

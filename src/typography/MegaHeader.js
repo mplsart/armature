@@ -16,6 +16,12 @@ const styles = (theme) => ({
       fontSize:'3.5rem',
       lineHeight:'3.6rem'
     },
+    [theme.breakpoints.up('md')]: {
+      // Ipad in portrait and phones in landscape
+      fontSize:'4.0rem',
+      lineHeight:'3.6rem',
+      paddingTop:'8px'
+    },
   }
 });
 

@@ -49,6 +49,11 @@ var styles = function styles(theme) {
       // Ipad in portrait and phones in landscape
       fontSize: '3.5rem',
       lineHeight: '3.6rem'
+    }), _defineProperty(_root, theme.breakpoints.up('md'), {
+      // Ipad in portrait and phones in landscape
+      fontSize: '4.0rem',
+      lineHeight: '3.6rem',
+      paddingTop: '8px'
     }), _root)
   };
 };
@@ -81,7 +86,7 @@ var MegaHeader = function (_React$Component) {
         }, rest, {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 26
+            lineNumber: 32
           }
         }),
         children

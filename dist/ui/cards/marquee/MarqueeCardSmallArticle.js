@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _jsxFileName = 'src/ui/cards/marquee/MarqueeCardEvent.js';
+var _jsxFileName = 'src/ui/cards/marquee/MarqueeCardSmallArticle.js';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -18,15 +18,15 @@ var _propTypes = require('prop-types');
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
+var _styles = require('@material-ui/core/styles');
+
 var _moment = require('moment');
 
 var _moment2 = _interopRequireDefault(_moment);
 
-var _dates = require('../../../utils/dates');
+var _MarqueeCardSmallBase = require('./MarqueeCardSmallBase');
 
-var _MarqueeCardBase = require('./MarqueeCardBase');
-
-var _MarqueeCardBase2 = _interopRequireDefault(_MarqueeCardBase);
+var _MarqueeCardSmallBase2 = _interopRequireDefault(_MarqueeCardSmallBase);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -38,71 +38,55 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var MarqueeCardEvent = function (_React$Component) {
-  _inherits(MarqueeCardEvent, _React$Component);
+var MarqueeCardSmallArticle = function (_React$Component) {
+  _inherits(MarqueeCardSmallArticle, _React$Component);
 
-  function MarqueeCardEvent() {
-    _classCallCheck(this, MarqueeCardEvent);
+  function MarqueeCardSmallArticle() {
+    _classCallCheck(this, MarqueeCardSmallArticle);
 
-    return _possibleConstructorReturn(this, (MarqueeCardEvent.__proto__ || Object.getPrototypeOf(MarqueeCardEvent)).apply(this, arguments));
+    return _possibleConstructorReturn(this, (MarqueeCardSmallArticle.__proto__ || Object.getPrototypeOf(MarqueeCardSmallArticle)).apply(this, arguments));
   }
 
-  _createClass(MarqueeCardEvent, [{
+  _createClass(MarqueeCardSmallArticle, [{
     key: 'render',
     value: function render() {
       var _props = this.props,
           resource = _props.resource,
-          startingDateFilter = _props.startingDateFilter,
-          rest = _objectWithoutProperties(_props, ['resource', 'startingDateFilter']);
+          rest = _objectWithoutProperties(_props, ['resource']);
 
-      // Event Date
+      // Published Date
 
 
-      var target_event_date = (0, _dates.get_best_event_date)(resource, startingDateFilter, 'timed');
+      var publishedDate = (0, _moment2.default)(new Date(resource.published_date)).format('MMMM Do');
 
-      var byLineText = void 0;
-
-      // If it is ongoing - worst case scenario
-      if (target_event_date.category == 'ongoing') {
-        byLineText = (0, _moment2.default)(new Date(target_event_date.start)).format('MMM D') + ' - ' + (0, _moment2.default)(new Date(target_event_date.end)).format('MMM D');
-      } else {
-        // Else show the end
-        byLineText = (0, _moment2.default)(new Date(target_event_date.start)).format('MMM D');
-      }
-
-      // Venue
-      var venue_resource = target_event_date.venue;
-      var venue_name = venue_resource.name;
-      if (venue_resource.multiple_locations_label) {
-        venue_name = venue_resource.multiple_locations_label;
-      }
+      // Author Credit
+      var authorName = resource.author_resource.firstname + ' ' + resource.author_resource.lastname;
 
       // Overline
-      var overlineText = target_event_date.label + ' @ ' + venue_name;
+      var overlineText = 'By ' + authorName;
 
-      return _react2.default.createElement(_MarqueeCardBase2.default, _extends({
+      return _react2.default.createElement(_MarqueeCardSmallBase2.default, _extends({
         overlineText: overlineText,
-        title: resource.name,
-        byLineText: byLineText,
-        byLineIcon: 'fa-calendar-o',
+        title: resource.title,
+        byLineText: 'New Article',
+        byLineIcon: 'fa-newspaper-o',
         imageResource: resource.primary_image_resource
       }, rest, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 37
+          lineNumber: 24
         }
       }));
     }
   }]);
 
-  return MarqueeCardEvent;
+  return MarqueeCardSmallArticle;
 }(_react2.default.Component);
 
-MarqueeCardEvent.propTypes = {
+_MarqueeCardSmallBase2.default.propTypes = {
   resource: _propTypes2.default.object,
   linkClassProps: _propTypes2.default.object,
-  linkClass: _propTypes2.default.any, //PropTypes.func,
-  startingDateFilter: _propTypes2.default.any // a moment date
+  linkClass: _propTypes2.default.any //PropTypes.func,
 };
 
-exports.default = MarqueeCardEvent;
+exports.default = MarqueeCardSmallArticle;

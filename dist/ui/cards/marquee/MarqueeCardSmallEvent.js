@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _jsxFileName = 'src/ui/cards/marquee/MarqueeCardEvent.js';
+var _jsxFileName = 'src/ui/cards/marquee/MarqueeCardSmallEvent.js';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -24,9 +24,9 @@ var _moment2 = _interopRequireDefault(_moment);
 
 var _dates = require('../../../utils/dates');
 
-var _MarqueeCardBase = require('./MarqueeCardBase');
+var _MarqueeCardSmallBase = require('./MarqueeCardSmallBase');
 
-var _MarqueeCardBase2 = _interopRequireDefault(_MarqueeCardBase);
+var _MarqueeCardSmallBase2 = _interopRequireDefault(_MarqueeCardSmallBase);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -38,16 +38,16 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var MarqueeCardEvent = function (_React$Component) {
-  _inherits(MarqueeCardEvent, _React$Component);
+var MarqueeCardSmallEvent = function (_React$Component) {
+  _inherits(MarqueeCardSmallEvent, _React$Component);
 
-  function MarqueeCardEvent() {
-    _classCallCheck(this, MarqueeCardEvent);
+  function MarqueeCardSmallEvent() {
+    _classCallCheck(this, MarqueeCardSmallEvent);
 
-    return _possibleConstructorReturn(this, (MarqueeCardEvent.__proto__ || Object.getPrototypeOf(MarqueeCardEvent)).apply(this, arguments));
+    return _possibleConstructorReturn(this, (MarqueeCardSmallEvent.__proto__ || Object.getPrototypeOf(MarqueeCardSmallEvent)).apply(this, arguments));
   }
 
-  _createClass(MarqueeCardEvent, [{
+  _createClass(MarqueeCardSmallEvent, [{
     key: 'render',
     value: function render() {
       var _props = this.props,
@@ -80,7 +80,7 @@ var MarqueeCardEvent = function (_React$Component) {
       // Overline
       var overlineText = target_event_date.label + ' @ ' + venue_name;
 
-      return _react2.default.createElement(_MarqueeCardBase2.default, _extends({
+      return _react2.default.createElement(_MarqueeCardSmallBase2.default, _extends({
         overlineText: overlineText,
         title: resource.name,
         byLineText: byLineText,
@@ -89,20 +89,20 @@ var MarqueeCardEvent = function (_React$Component) {
       }, rest, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 37
+          lineNumber: 38
         }
       }));
     }
   }]);
 
-  return MarqueeCardEvent;
+  return MarqueeCardSmallEvent;
 }(_react2.default.Component);
 
-MarqueeCardEvent.propTypes = {
+MarqueeCardSmallEvent.propTypes = {
   resource: _propTypes2.default.object,
   linkClassProps: _propTypes2.default.object,
   linkClass: _propTypes2.default.any, //PropTypes.func,
   startingDateFilter: _propTypes2.default.any // a moment date
 };
 
-exports.default = MarqueeCardEvent;
+exports.default = MarqueeCardSmallEvent;

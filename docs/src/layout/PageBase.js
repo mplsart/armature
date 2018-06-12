@@ -8,7 +8,7 @@ import AppShell from './AppShell';
 
 const styles = theme => ({
   paddedContent: {
-    paddingTop: theme.spacing.unit * 3
+    paddingTop: theme.spacing.unit * 2
   }
 });
 

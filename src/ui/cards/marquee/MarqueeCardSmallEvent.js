@@ -3,11 +3,12 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 
 import {get_best_event_date} from '../../../utils/dates';
-import MarqueeCardBase from './MarqueeCardBase';
+import MarqueeCardSmallBase from './MarqueeCardSmallBase';
 
-class MarqueeCardEvent extends React.Component {
+class MarqueeCardSmallEvent extends React.Component {
   render() {
-    const { resource, startingDateFilter, ...rest} = this.props;
+
+    const {resource, startingDateFilter, ...rest} =  this.props;
 
     // Event Date
     let target_event_date = get_best_event_date(resource, startingDateFilter, 'timed');
@@ -34,7 +35,7 @@ class MarqueeCardEvent extends React.Component {
     let overlineText = target_event_date.label + ' @ ' + venue_name;
 
     return (
-      <MarqueeCardBase
+      <MarqueeCardSmallBase
         overlineText={overlineText}
         title={resource.name}
         byLineText={byLineText}
@@ -46,11 +47,11 @@ class MarqueeCardEvent extends React.Component {
   }
 }
 
-MarqueeCardEvent.propTypes = {
+MarqueeCardSmallEvent.propTypes = {
   resource: PropTypes.object,
   linkClassProps: PropTypes.object,
   linkClass: PropTypes.any, //PropTypes.func,
   startingDateFilter: PropTypes.any // a moment date
 };
 
-export default MarqueeCardEvent;
+export default MarqueeCardSmallEvent;

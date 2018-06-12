@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var _jsxFileName = 'src/ui/cards/marquee/MarqueeCardBase.js';
+var _jsxFileName = 'src/ui/cards/marquee/MarqueeCardSmallBase.js';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -27,7 +27,7 @@ var _Typography = require('@material-ui/core/Typography');
 
 var _Typography2 = _interopRequireDefault(_Typography);
 
-var _Overline = require('../../..//typography/Overline');
+var _Overline = require('../../../typography/Overline');
 
 var _Overline2 = _interopRequireDefault(_Overline);
 
@@ -42,12 +42,9 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var styles = function styles(theme) {
-  var _primaryTitle;
-
   return {
     root: {
       position: 'relative',
-
       '&:hover': {
         '& a': {
           textDecoration: 'none'
@@ -55,6 +52,7 @@ var styles = function styles(theme) {
         '& .image': {
           transform: 'scale(1.1)'
         },
+
         '& .primaryTitle': {
           color: theme.palette.primary[500]
         }
@@ -64,74 +62,53 @@ var styles = function styles(theme) {
     imageWrapper: {
       overflow: 'hidden'
     },
-    image: {
+    image: _defineProperty({
       backgroundPosition: 'center',
       backgroundSize: 'cover',
+      backgroundRepeat: 'no-repeat',
       width: '100%',
       height: 0,
       display: 'block',
-      padding: '52.42% 0 0 0', // 60% v 52.42
+      padding: '52.42% 0 0 0', // 60 v 52.42
       position: 'relative',
       overflow: 'hidden',
+      '&.withShadow': {},
+
       '-webkit-transition': '0.6s ease',
-      'transition': '0.6s ease',
+      'transition': '0.6s ease'
 
-      '&.withShadow': {}
-    },
-    contentContainer: _defineProperty({
-      position: 'absolute',
-      bottom: 0,
+    }, theme.breakpoints.only('xs'), {
+      //padding:'30% 0 0 0',
+    }),
+
+    imageLink: {
+      display: 'block',
+      height: '100%',
       width: '100%',
-      //height:'50%',
-      height: '100%'
-    }, theme.breakpoints.only('xs'), {
-      // Phones in portrait
-      //height:'60%',
-    }),
-    contentContainerContent: _defineProperty({
       position: 'absolute',
-      bottom: 0,
-      color: '#fff',
-      padding: '32px',
-      background: 'linear-gradient(transparent, black)',
-      width: '100%'
+      top: 0,
+      left: 0
+    },
 
+    contentContainer: _defineProperty({
+      width: '100%'
+    }, theme.breakpoints.only('xs'), {}),
+    contentContainerContent: _defineProperty({
+      bottom: 0,
+      padding: '0px'
     }, theme.breakpoints.only('xs'), {
       // Phones in portrait
-      padding: '16px'
+      padding: 8
     }),
-    //citation: {
-    //  color: '#fff'
-    //},
 
-    primaryTitle: (_primaryTitle = {}, _defineProperty(_primaryTitle, theme.breakpoints.only('xs'), _extends({}, theme.typography.display1, {
+    primaryTitle: _extends({}, theme.typography.display2, {
       fontFamily: theme.fontFamily.accent,
-      marginTop: '0',
-      //fontSize:theme.typography.pxToRem(18),
-      //lineHeight: theme.typography.pxToRem(18),
+      marginTop: '0.35em',
+      fontSize: theme.typography.pxToRem(18),
+      lineHeight: theme.typography.pxToRem(23), //1.46429em
       fontWeight: 400,
-      marginBottom: 0,
-      color: '#fafafa'
-    })), _defineProperty(_primaryTitle, theme.breakpoints.only('sm'), _extends({}, theme.typography.display2, {
-      fontFace: theme.fontFamily.accent,
-      marginTop: 0,
-      fontSize: '2.0rem',
-      lineHeight: '2.2rem',
-      fontWeight: 400,
-      marginBottom: 0,
-      color: '#fafafa'
-    })), _defineProperty(_primaryTitle, theme.breakpoints.up('md'), _extends({}, theme.typography.display3, {
-      fontFamily: theme.fontFamily.accent,
-      marginTop: 0,
-      lineHeight: '2.5rem',
-      fontWeight: 400,
-      marginBottom: 0,
-      color: '#fafafa'
-    })), _primaryTitle),
-
-    overlineText: _defineProperty({}, theme.breakpoints.up('md'), _extends({}, theme.typography.body2, {
-      color: '#fafafa'
-    })),
+      marginBottom: 0
+    }),
 
     byline: _defineProperty({
       display: 'inline-block',
@@ -140,30 +117,32 @@ var styles = function styles(theme) {
       left: 0,
       zIndex: 1000,
       backgroundColor: '#fafafa',
-      padding: '8px 16px 8px 8px'
+      padding: '8px 16px 8px 8px',
 
-    }, theme.breakpoints.only('xs'), {
-      // Phones in portrait
-      fontSize: '14px',
-      padding: '0px 8px 0px 0px'
-    }),
+      fontSize: '14px'
+    }, 'padding', '0px 8px 0px 0px'),
 
     byLineIcon: {
       marginRight: '8px'
+    },
+
+    overline: {
+      paddingTop: 8,
+      color: '#000'
     }
   };
 };
 
-var MarqueeCardBase = function (_React$Component) {
-  _inherits(MarqueeCardBase, _React$Component);
+var MarqueeCardSmallBase = function (_React$Component) {
+  _inherits(MarqueeCardSmallBase, _React$Component);
 
-  function MarqueeCardBase() {
-    _classCallCheck(this, MarqueeCardBase);
+  function MarqueeCardSmallBase() {
+    _classCallCheck(this, MarqueeCardSmallBase);
 
-    return _possibleConstructorReturn(this, (MarqueeCardBase.__proto__ || Object.getPrototypeOf(MarqueeCardBase)).apply(this, arguments));
+    return _possibleConstructorReturn(this, (MarqueeCardSmallBase.__proto__ || Object.getPrototypeOf(MarqueeCardSmallBase)).apply(this, arguments));
   }
 
-  _createClass(MarqueeCardBase, [{
+  _createClass(MarqueeCardSmallBase, [{
     key: 'render',
     value: function render() {
       var _props = this.props,
@@ -190,19 +169,19 @@ var MarqueeCardBase = function (_React$Component) {
         'div',
         { className: classes.root, __source: {
             fileName: _jsxFileName,
-            lineNumber: 153
+            lineNumber: 124
           }
         },
         _react2.default.createElement(
           'div',
           { className: (0, _classnames2.default)(classes.byline), __source: {
               fileName: _jsxFileName,
-              lineNumber: 155
+              lineNumber: 125
             }
           },
           _react2.default.createElement('i', { className: (0, _classnames2.default)('fa', byLineIcon, classes.byLineIcon), __source: {
               fileName: _jsxFileName,
-              lineNumber: 156
+              lineNumber: 126
             }
           }),
           byLineText
@@ -211,17 +190,32 @@ var MarqueeCardBase = function (_React$Component) {
           'div',
           { className: (0, _classnames2.default)('imageWrapper', classes.imageWrapper), __source: {
               fileName: _jsxFileName,
-              lineNumber: 160
+              lineNumber: 130
             }
           },
-          _react2.default.createElement('div', {
-            className: (0, _classnames2.default)('image', classes.image, 'withShadow'),
-            style: { backgroundImage: 'url(' + image_url + ')' },
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 161
-            }
-          })
+          _react2.default.createElement(
+            'div',
+            {
+              className: (0, _classnames2.default)('image', classes.image, 'withShadow'),
+              style: { backgroundImage: 'url(' + image_url + ')' },
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 131
+              }
+            },
+            _react2.default.createElement(
+              this.props.linkClass,
+              _extends({
+                title: title
+              }, linkClassProps, {
+                className: classes.imageLink, __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 135
+                }
+              }),
+              '\xA0'
+            )
+          )
         ),
         _react2.default.createElement(
           this.props.linkClass,
@@ -231,21 +225,21 @@ var MarqueeCardBase = function (_React$Component) {
             className: classes.contentContainer,
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 167
+              lineNumber: 142
             }
           }),
           _react2.default.createElement(
             'div',
             { className: classes.contentContainerContent, __source: {
                 fileName: _jsxFileName,
-                lineNumber: 172
+                lineNumber: 147
               }
             },
             _react2.default.createElement(
               _Overline2.default,
-              { className: classes.overlineText, __source: {
+              { className: (0, _classnames2.default)('overline', classes.overline), __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 173
+                  lineNumber: 148
                 }
               },
               overlineText
@@ -254,7 +248,7 @@ var MarqueeCardBase = function (_React$Component) {
               _Typography2.default,
               { className: (0, _classnames2.default)('primaryTitle', classes.primaryTitle), __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 174
+                  lineNumber: 149
                 }
               },
               title
@@ -265,10 +259,10 @@ var MarqueeCardBase = function (_React$Component) {
     }
   }]);
 
-  return MarqueeCardBase;
+  return MarqueeCardSmallBase;
 }(_react2.default.Component);
 
-MarqueeCardBase.propTypes = {
+MarqueeCardSmallBase.propTypes = {
   classes: _propTypes2.default.object,
   resource: _propTypes2.default.object,
   byLineIcon: _propTypes2.default.string,
@@ -280,4 +274,4 @@ MarqueeCardBase.propTypes = {
   imageResource: _propTypes2.default.object
 };
 
-exports.default = (0, _styles.withStyles)(styles)(MarqueeCardBase);
+exports.default = (0, _styles.withStyles)(styles)(MarqueeCardSmallBase);

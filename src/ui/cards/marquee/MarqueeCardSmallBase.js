@@ -1,16 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 
+import classnames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import Overline from '../../..//typography/Overline';
+
+import Overline from '../../../typography/Overline';
 
 let styles = (theme) => {
   return {
     root: {
       position: 'relative',
-
       '&:hover': {
         '& a': {
           textDecoration: 'none',
@@ -18,6 +18,7 @@ let styles = (theme) => {
         '& .image': {
           transform:'scale(1.1)'
         },
+
         '& .primaryTitle': {
           color: theme.palette.primary[500]
         }
@@ -30,85 +31,53 @@ let styles = (theme) => {
     image: {
       backgroundPosition:'center',
       backgroundSize:'cover',
+      backgroundRepeat: 'no-repeat',
       width:'100%',
       height:0,
       display:'block',
-      padding:'52.42% 0 0 0', // 60% v 52.42
+      padding:'52.42% 0 0 0', // 60 v 52.42
       position:'relative',
       overflow: 'hidden',
+      '&.withShadow': {},
+
       '-webkit-transition': '0.6s ease',
       'transition': '0.6s ease',
 
-      '&.withShadow': {
+      [theme.breakpoints.only('xs')]: {
+        //padding:'30% 0 0 0',
       }
     },
-    contentContainer: {
-      position:'absolute',
-      bottom:0,
-      width:'100%',
-      //height:'50%',
+
+    imageLink: {
+      display: 'block',
       height:'100%',
-      [theme.breakpoints.only('xs')]: {
-        // Phones in portrait
-        //height:'60%',
-      },
+      width:'100%',
+      position: 'absolute',
+      top:0,
+      left:0,
+    },
+
+    contentContainer: {
+      width:'100%',
+      [theme.breakpoints.only('xs')]: { },
     },
     contentContainerContent: {
-      position:'absolute',
       bottom:0,
-      color: '#fff',
-      padding: '32px',
-      background: 'linear-gradient(transparent, black)',
-      width:'100%',
-
+      padding: '0px',
       [theme.breakpoints.only('xs')]: {
         // Phones in portrait
-        padding: '16px',
+        padding: 8,
       },
     },
-    //citation: {
-    //  color: '#fff'
-    //},
 
     primaryTitle: {
-      [theme.breakpoints.only('xs')]: {
-        // Phones in portrait
-        ...theme.typography.display1,
-        fontFamily: theme.fontFamily.accent,
-        marginTop: '0',
-        //fontSize:theme.typography.pxToRem(18),
-        //lineHeight: theme.typography.pxToRem(18),
-        fontWeight: 400,
-        marginBottom:0,
-        color: '#fafafa'
-      },
-      [theme.breakpoints.only('sm')]: {
-        // Ipad in portrait and phones in landscape
-        ...theme.typography.display2,
-        fontFace: theme.fontFamily.accent,
-        marginTop: 0,
-        fontSize: '2.0rem',
-        lineHeight: '2.2rem',
-        fontWeight: 400,
-        marginBottom:0,
-        color: '#fafafa'
-      },
-      [theme.breakpoints.up('md')]: {
-        ...theme.typography.display3,
-        fontFamily: theme.fontFamily.accent,
-        marginTop: 0,
-        lineHeight: '2.5rem',
-        fontWeight: 400,
-        marginBottom:0,
-        color: '#fafafa'
-      },
-    },
-
-    overlineText: {
-      [theme.breakpoints.up('md')]: {
-        ...theme.typography.body2,
-        color: '#fafafa'
-      }
+      ...theme.typography.display2,
+      fontFamily: theme.fontFamily.accent,
+      marginTop: '0.35em',
+      fontSize: theme.typography.pxToRem(18),
+      lineHeight: theme.typography.pxToRem(23), //1.46429em
+      fontWeight: 400,
+      marginBottom:0,
     },
 
     byline: {
@@ -120,20 +89,22 @@ let styles = (theme) => {
       backgroundColor:'#fafafa',
       padding: '8px 16px 8px 8px',
 
-      [theme.breakpoints.only('xs')]: {
-        // Phones in portrait
-        fontSize: '14px',
-        padding: '0px 8px 0px 0px',
-      },
+      fontSize: '14px',
+      padding: '0px 8px 0px 0px',
     },
 
     byLineIcon: {
       marginRight: '8px'
+    },
+
+    overline: {
+      paddingTop:8,
+      color:'#000'
     }
   };
 };
 
-class MarqueeCardBase extends React.Component {
+class MarqueeCardSmallBase extends React.Component {
   render() {
 
     let {classes, byLineIcon, byLineText, title, overlineText, linkClassProps, imageResource} =  this.props;
@@ -151,7 +122,6 @@ class MarqueeCardBase extends React.Component {
 
     return (
       <div className={classes.root}>
-
         <div className={classnames(classes.byline)}>
           <i className={classnames('fa', byLineIcon, classes.byLineIcon)}></i>
           {byLineText}
@@ -161,7 +131,12 @@ class MarqueeCardBase extends React.Component {
           <div
             className={classnames('image', classes.image, 'withShadow')}
             style={{backgroundImage: 'url(' + image_url + ')'}}
-          ></div>
+          >
+            <this.props.linkClass
+              title={title}
+              {...linkClassProps}
+              className={classes.imageLink}>&nbsp;</this.props.linkClass>
+          </div>
         </div>
 
         <this.props.linkClass
@@ -170,8 +145,8 @@ class MarqueeCardBase extends React.Component {
           className={classes.contentContainer}
         >
           <div className={classes.contentContainerContent}>
-            <Overline className={classes.overlineText}>{overlineText}</Overline>
-            <Typography className={classnames('primaryTitle', classes.primaryTitle)}>{title}</Typography>
+            <Overline className={classnames('overline', classes.overline)}>{ overlineText }</Overline>
+            <Typography className={classnames('primaryTitle', classes.primaryTitle)}>{ title }</Typography>
           </div>
         </this.props.linkClass>
       </div>
@@ -179,7 +154,7 @@ class MarqueeCardBase extends React.Component {
   }
 }
 
-MarqueeCardBase.propTypes = {
+MarqueeCardSmallBase.propTypes = {
   classes: PropTypes.object,
   resource: PropTypes.object,
   byLineIcon: PropTypes.string,
@@ -191,4 +166,4 @@ MarqueeCardBase.propTypes = {
   imageResource: PropTypes.object
 };
 
-export default withStyles(styles)(MarqueeCardBase);
+export default withStyles(styles)(MarqueeCardSmallBase);

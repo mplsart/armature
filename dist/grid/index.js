@@ -70,11 +70,11 @@ var styles = function styles(theme) {
 function _Grid(_ref) {
   var classes = _ref.classes,
       align = _ref.align,
-      theme = _ref.theme,
       className = _ref.className,
+      theme = _ref.theme,
       children = _ref.children,
       fluid = _ref.fluid,
-      rest = _objectWithoutProperties(_ref, ['classes', 'align', 'theme', 'className', 'children', 'fluid']);
+      rest = _objectWithoutProperties(_ref, ['classes', 'align', 'className', 'theme', 'children', 'fluid']);
 
   var collectedClasses = [className];
 
@@ -113,10 +113,10 @@ _Grid.propTypes = {
 
 function _Row(_ref2) {
   var classes = _ref2.classes,
-      theme = _ref2.theme,
       className = _ref2.className,
+      theme = _ref2.theme,
       children = _ref2.children,
-      rest = _objectWithoutProperties(_ref2, ['classes', 'theme', 'className', 'children']);
+      rest = _objectWithoutProperties(_ref2, ['classes', 'className', 'theme', 'children']);
 
   return _react2.default.createElement(
     _Grid3.default,
@@ -139,9 +139,9 @@ _Row.propTypes = {
 function _Col(props) {
   var classes = props.classes,
       className = props.className,
-      children = props.children,
       theme = props.theme,
-      rest = _objectWithoutProperties(props, ['classes', 'className', 'children', 'theme']);
+      children = props.children,
+      rest = _objectWithoutProperties(props, ['classes', 'className', 'theme', 'children']);
 
   return _react2.default.createElement(
     _Grid3.default,

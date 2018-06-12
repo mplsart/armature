@@ -120,11 +120,8 @@ var MegaBannerAd = function (_React$Component) {
           adspotId = _props.adspotId,
           resource = _props.resource;
 
-
-      console.log(adspotId);
-      console.log(resource);
-
       // Determine Image to use based on device/breakpoints
+
       var imageUrl = void 0,
           h = void 0,
           w = void 0;
@@ -154,7 +151,7 @@ var MegaBannerAd = function (_React$Component) {
       }, linkClassProps, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 110
+          lineNumber: 106
         }
       }));
 
@@ -162,28 +159,28 @@ var MegaBannerAd = function (_React$Component) {
         'div',
         { className: (0, _classnames2.default)(classes.adContainer), __source: {
             fileName: _jsxFileName,
-            lineNumber: 118
+            lineNumber: 114
           }
         },
         _react2.default.createElement(
           'div',
           { className: (0, _classnames2.default)(classes.card), __source: {
               fileName: _jsxFileName,
-              lineNumber: 119
+              lineNumber: 115
             }
           },
           _react2.default.createElement(
             'div',
             { className: 'card-header', __source: {
                 fileName: _jsxFileName,
-                lineNumber: 120
+                lineNumber: 116
               }
             },
             _react2.default.createElement(
               'div',
               { className: classes.cardImage, __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 121
+                  lineNumber: 117
                 }
               },
               linkNode
@@ -192,7 +189,7 @@ var MegaBannerAd = function (_React$Component) {
               'div',
               { className: classes.sponsorText, __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 124
+                  lineNumber: 120
                 }
               },
               resource.advert_type_label || 'advertisement',
