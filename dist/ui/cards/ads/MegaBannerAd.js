@@ -21,15 +21,7 @@ var _classnames = require('classnames');
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _compose = require('recompose/compose');
-
-var _compose2 = _interopRequireDefault(_compose);
-
 var _styles = require('@material-ui/core/styles');
-
-var _withWidth = require('@material-ui/core/withWidth');
-
-var _withWidth2 = _interopRequireDefault(_withWidth);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -59,7 +51,6 @@ var styles = function styles(theme) {
       'marginBottom': theme.gutterSpacing / 2
 
     }, _defineProperty(_card, 'transition', 'box-shadow .25s'), _defineProperty(_card, '&:hover', {
-      //'box-shadow':'0 8px 17px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)'
       'box-shadow': '0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12)'
     }), _card),
 
@@ -78,8 +69,7 @@ var styles = function styles(theme) {
         'width': '100%',
 
         backgroundPosition: 'center',
-        backgroundSize: 'cover',
-        backgroundImage: 'url("https://storage.googleapis.com/cdn.mplsart.com/adverts/mocks/ad-1220px_wide.jpg")'
+        backgroundSize: 'cover'
       }, _defineProperty(_a, 'height', 0), _defineProperty(_a, 'display', 'block'), _defineProperty(_a, 'padding', '60% 0 0 0'), _defineProperty(_a, 'position', 'relative'), _defineProperty(_a, '& img', {
         'position': 'absolute',
         'top': '0',
@@ -95,8 +85,8 @@ var styles = function styles(theme) {
       'color': '#ffffff',
       'font-size': '12px',
       'line-height': '1.5em',
-      'padding-left': '16px',
-      paddingTop: '8px',
+      'padding-left': '8px',
+      paddingTop: '4px',
       'opacity': '0.8'
     })
   };
@@ -117,70 +107,76 @@ var MegaBannerAd = function (_React$Component) {
       var _props = this.props,
           classes = _props.classes,
           width = _props.width,
-          adspotId = _props.adspotId,
-          resource = _props.resource;
+          resource = _props.resource,
+          linkClassProps = _props.linkClassProps;
 
       // Determine Image to use based on device/breakpoints
 
-      var imageUrl = void 0,
+      var imageResource = void 0,
+          imageUrl = void 0,
           h = void 0,
           w = void 0;
 
-      h = 138;
-      w = 1220;
-      imageUrl = 'https://storage.googleapis.com/cdn.mplsart.com/adverts/mocks/ad-1220px_wide.jpg';
-
-      if (width == 'xs') {
-        h = 100;
-        w = 304;
-        imageUrl = 'https://storage.googleapis.com/cdn.mplsart.com/adverts/mocks/ad-304px_wide.jpg';
+      // Bail if we have an ad resource but it doesn't have images
+      if (!resource.image_resource) {
+        return null;
       }
 
-      var title = 'yolo';
+      if (width == 'xs' && resource.image_resource.versions.MOBILE) {
+        imageResource = resource.image_resource.versions.MOBILE;
+      }
+
+      if (!imageResource) {
+        imageResource = resource.image_resource.versions.DEFAULT;
+      }
+
+      h = imageResource.height;
+      w = imageResource.width;
+      imageUrl = imageResource.url;
+
       var scale_factor = Math.floor(100 * h / w * 100.00) / 100.00;
       var adImageStyles = {
         paddingTop: scale_factor + '%',
         backgroundImage: 'url("' + imageUrl + '")'
       };
 
-      var linkClassProps = { href: 'http://google.com', target: '_new' };
-
-      var linkNode = _react2.default.createElement('a', _extends({
-        title: title,
-        style: adImageStyles
-      }, linkClassProps, {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 106
-        }
-      }));
+      var linkNode = _react2.default.createElement(
+        this.props.linkClass,
+        _extends({}, linkClassProps, {
+          style: adImageStyles, __source: {
+            fileName: _jsxFileName,
+            lineNumber: 102
+          }
+        }),
+        '\xA0'
+      );
 
       return _react2.default.createElement(
         'div',
         { className: (0, _classnames2.default)(classes.adContainer), __source: {
             fileName: _jsxFileName,
-            lineNumber: 114
+            lineNumber: 109
           }
         },
         _react2.default.createElement(
           'div',
           { className: (0, _classnames2.default)(classes.card), __source: {
               fileName: _jsxFileName,
-              lineNumber: 115
+              lineNumber: 110
             }
           },
           _react2.default.createElement(
             'div',
             { className: 'card-header', __source: {
                 fileName: _jsxFileName,
-                lineNumber: 116
+                lineNumber: 111
               }
             },
             _react2.default.createElement(
               'div',
               { className: classes.cardImage, __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 117
+                  lineNumber: 112
                 }
               },
               linkNode
@@ -189,13 +185,10 @@ var MegaBannerAd = function (_React$Component) {
               'div',
               { className: classes.sponsorText, __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 120
+                  lineNumber: 115
                 }
               },
-              resource.advert_type_label || 'advertisement',
-              ' (',
-              width,
-              ')'
+              resource.advert_type_label || 'advertisement'
             )
           )
         )
@@ -212,6 +205,7 @@ exports.default = (0, _styles.withStyles)(styles)(MegaBannerAd);
 MegaBannerAd.propTypes = {
   classes: _propTypes2.default.object.isRequired,
   width: _propTypes2.default.string.isRequired,
-  adspotId: _propTypes2.default.string.isRequired,
-  resource: _propTypes2.default.object
+  resource: _propTypes2.default.object,
+  linkClassProps: _propTypes2.default.object,
+  linkClass: _propTypes2.default.func
 };

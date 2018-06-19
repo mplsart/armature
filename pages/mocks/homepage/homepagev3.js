@@ -19,12 +19,26 @@ import PageBase from '../../../docs/src/layout/PageBase';
 import MegaBannerAd from '../../../src/ui/cards/ads/MegaBannerAd';
 import featuredResources from './featuredResources';
 
-
 var ad = {
   resource_type: 'Advert',
-  advert_type_label: 'Local Sponsor',
+  advert_type_label: 'Sponsor',
   advert_label: 'WPT002_6mnthads_APRIL132018',
-  image_url: 'https://storage.googleapis.com/cdn.mplsart.com/adverts/temp/WPT002_6mnthads_2018_04_13.jpg',
+
+  image_resource: {
+    versions: {
+      MOBILE: {
+        height: 800,
+        width: 1000,
+        url: 'https://storage.googleapis.com/cdn.mplsart.com/adverts/mocks/mobile_XL_ad_1000x800px.jpg'
+      },
+      DEFAULT: {
+        height: 138,
+        width: 1220,
+        url: 'https://storage.googleapis.com/cdn.mplsart.com/adverts/mocks/ad-1220px_wide.jpg'
+      }
+    }
+  },
+
   goto_url: 'http://www.wetpaintart.com/?from=mplsart',
   advert_description: 'Wet Paint Artist\'s Materials & Framing',
   image_width: 700,
@@ -43,8 +57,15 @@ class _Marquee extends React.Component {
 
     // TODO: This needs to come from the reducer, etc
 
-    var adspotId = 'homepage_mock';
-    const adProps = {adspotId: adspotId, resource: adResource};
+    //var adspotId = 'homepage_mock';
+    const adProps = {
+      //adspotId: adspotId,
+      resource: adResource,
+      linkClass:'a',
+      linkClassProps: {
+        href: adResource.goto_url
+      }
+    };
 
     return (
       <Row>
@@ -56,7 +77,7 @@ class _Marquee extends React.Component {
             starting_date_filter={starting_date_filter}
           />
         </Col>
-        {(width == 'xs' || width == 'sm') && <Col xs={12}><MegaBannerAd width={width} {...adProps} /></Col>}
+        {(width == 'xs' || width == 'sm') && <Col xs={12} style={{padding: '0 16px 0 16px'}}><MegaBannerAd width={width} {...adProps} /></Col>}
         <Col xs={12} md={3}>
           <Row>
             <Col xs={12} sm={6} md={12}>

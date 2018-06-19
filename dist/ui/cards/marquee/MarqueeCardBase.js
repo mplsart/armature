@@ -42,7 +42,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var styles = function styles(theme) {
-  var _primaryTitle;
+  var _image, _primaryTitle;
 
   return {
     root: {
@@ -64,7 +64,7 @@ var styles = function styles(theme) {
     imageWrapper: {
       overflow: 'hidden'
     },
-    image: {
+    image: (_image = {
       backgroundPosition: 'center',
       backgroundSize: 'cover',
       width: '100%',
@@ -77,7 +77,12 @@ var styles = function styles(theme) {
       'transition': '0.6s ease',
 
       '&.withShadow': {}
-    },
+
+    }, _defineProperty(_image, theme.breakpoints.only('xs'), {
+      padding: '80% 0 0 0' // Card matches mobile marquee ad size theoretically
+    }), _defineProperty(_image, theme.breakpoints.only('md'), {
+      padding: '60% 0 0 0' // Card matches mobile marquee ad size theoretically
+    }), _image),
     contentContainer: _defineProperty({
       position: 'absolute',
       bottom: 0,
@@ -190,19 +195,19 @@ var MarqueeCardBase = function (_React$Component) {
         'div',
         { className: classes.root, __source: {
             fileName: _jsxFileName,
-            lineNumber: 153
+            lineNumber: 160
           }
         },
         _react2.default.createElement(
           'div',
           { className: (0, _classnames2.default)(classes.byline), __source: {
               fileName: _jsxFileName,
-              lineNumber: 155
+              lineNumber: 162
             }
           },
           _react2.default.createElement('i', { className: (0, _classnames2.default)('fa', byLineIcon, classes.byLineIcon), __source: {
               fileName: _jsxFileName,
-              lineNumber: 156
+              lineNumber: 163
             }
           }),
           byLineText
@@ -211,7 +216,7 @@ var MarqueeCardBase = function (_React$Component) {
           'div',
           { className: (0, _classnames2.default)('imageWrapper', classes.imageWrapper), __source: {
               fileName: _jsxFileName,
-              lineNumber: 160
+              lineNumber: 167
             }
           },
           _react2.default.createElement('div', {
@@ -219,7 +224,7 @@ var MarqueeCardBase = function (_React$Component) {
             style: { backgroundImage: 'url(' + image_url + ')' },
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 161
+              lineNumber: 168
             }
           })
         ),
@@ -231,21 +236,21 @@ var MarqueeCardBase = function (_React$Component) {
             className: classes.contentContainer,
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 167
+              lineNumber: 174
             }
           }),
           _react2.default.createElement(
             'div',
             { className: classes.contentContainerContent, __source: {
                 fileName: _jsxFileName,
-                lineNumber: 172
+                lineNumber: 179
               }
             },
             _react2.default.createElement(
               _Overline2.default,
               { className: classes.overlineText, __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 173
+                  lineNumber: 180
                 }
               },
               overlineText
@@ -254,7 +259,7 @@ var MarqueeCardBase = function (_React$Component) {
               _Typography2.default,
               { className: (0, _classnames2.default)('primaryTitle', classes.primaryTitle), __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 174
+                  lineNumber: 181
                 }
               },
               title

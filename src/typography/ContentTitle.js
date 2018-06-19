@@ -8,7 +8,7 @@ import { withStyles } from '@material-ui/core/styles';
 
 const styles = () => ({
   root: {
-    marginTop: '0.35em',
+    //marginTop: '0.35em',
     lineHeight: '2.75rem',
   }
 });

@@ -1,10 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import compose from 'recompose/compose';
-
 import { withStyles } from '@material-ui/core/styles';
-import withWidth from '@material-ui/core/withWidth';
 
 const styles = (theme) => ({
   adContainer: {
@@ -23,7 +20,6 @@ const styles = (theme) => ({
     // Hover state
     'transition':'box-shadow .25s',
     '&:hover': {
-      //'box-shadow':'0 8px 17px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)'
       'box-shadow': '0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12)',
     }
   },
@@ -42,10 +38,8 @@ const styles = (theme) => ({
       'background-color': '#eee',
       'width': '100%',
 
-
       backgroundPosition:'center',
       backgroundSize:'cover',
-      backgroundImage: 'url("https://storage.googleapis.com/cdn.mplsart.com/adverts/mocks/ad-1220px_wide.jpg")',
       height:0,
       display:'block',
       padding:'60% 0 0 0',
@@ -69,8 +63,8 @@ const styles = (theme) => ({
     'color': '#ffffff',
     'font-size': '12px',
     'line-height': '1.5em',
-    'padding-left':'16px',
-    paddingTop:'8px',
+    'padding-left':'8px',
+    paddingTop:'4px',
     'opacity': '0.8',
   }
 });
@@ -78,36 +72,37 @@ const styles = (theme) => ({
 
 class MegaBannerAd extends React.Component {
   render() {
-    const {classes, width, adspotId, resource} = this.props;
+    const {classes, width, resource, linkClassProps} = this.props;
 
     // Determine Image to use based on device/breakpoints
-    let imageUrl, h, w;
+    let imageResource, imageUrl, h, w;
 
-    h = 138;
-    w = 1220;
-    imageUrl = 'https://storage.googleapis.com/cdn.mplsart.com/adverts/mocks/ad-1220px_wide.jpg';
+    // Bail if we have an ad resource but it doesn't have images
+    if (!resource.image_resource) { return null; }
 
-    if (width == 'xs') {
-      h = 100;
-      w = 304;
-      imageUrl = 'https://storage.googleapis.com/cdn.mplsart.com/adverts/mocks/ad-304px_wide.jpg';
+    if (width == 'xs' && resource.image_resource.versions.MOBILE) {
+      imageResource = resource.image_resource.versions.MOBILE;
     }
 
-    let title = 'yolo';
+    if (!imageResource) {
+      imageResource = resource.image_resource.versions.DEFAULT;
+    }
+
+    h = imageResource.height;
+    w = imageResource.width;
+    imageUrl = imageResource.url;
+
     let scale_factor = Math.floor(100 * h/w * 100.00) /100.00;
     let adImageStyles = {
       paddingTop: `${scale_factor}%`,
       backgroundImage: `url("${imageUrl}")`
     };
 
-    let linkClassProps = { href: 'http://google.com', target: '_new'};
-
     let linkNode = (
-      <a
-        title={title}
-        style={adImageStyles}
-        {...linkClassProps}>
-      </a>
+      <this.props.linkClass
+        {...linkClassProps}
+        style={adImageStyles}>&nbsp;
+      </this.props.linkClass>
     );
 
     return (
@@ -118,7 +113,7 @@ class MegaBannerAd extends React.Component {
                 {linkNode}
               </div>
               <div className={classes.sponsorText}>
-                {resource.advert_type_label || 'advertisement'} ({width})</div>
+                {resource.advert_type_label || 'advertisement'}</div>
             </div>
         </div>
       </div>
@@ -132,6 +127,7 @@ export default withStyles(styles)(MegaBannerAd);
 MegaBannerAd.propTypes = {
   classes: PropTypes.object.isRequired,
   width: PropTypes.string.isRequired,
-  adspotId: PropTypes.string.isRequired,
   resource: PropTypes.object,
+  linkClassProps: PropTypes.object,
+  linkClass: PropTypes.func
 };

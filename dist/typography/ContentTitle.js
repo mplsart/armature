@@ -42,7 +42,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var styles = function styles() {
   return {
     root: {
-      marginTop: '0.35em',
+      //marginTop: '0.35em',
       lineHeight: '2.75rem'
     }
   };

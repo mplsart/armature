@@ -39,7 +39,14 @@ let styles = (theme) => {
       '-webkit-transition': '0.6s ease',
       'transition': '0.6s ease',
 
-      '&.withShadow': {
+      '&.withShadow': { },
+
+      [theme.breakpoints.only('xs')]: {
+        padding:'80% 0 0 0' // Card matches mobile marquee ad size theoretically
+      },
+
+      [theme.breakpoints.only('md')]: {
+        padding:'60% 0 0 0' // Card matches mobile marquee ad size theoretically
       }
     },
     contentContainer: {

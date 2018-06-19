@@ -23,6 +23,14 @@ var _classnames = require('classnames');
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
+var _withWidth = require('@material-ui/core/withWidth');
+
+var _withWidth2 = _interopRequireDefault(_withWidth);
+
+var _compose = require('recompose/compose');
+
+var _compose2 = _interopRequireDefault(_compose);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -108,7 +116,8 @@ var styles = function styles(theme) {
       'color': '#ffffff',
       'font-size': '14px',
       'line-height': '1.5em',
-      'padding-left': '10px',
+      'padding-left': '8px',
+      'padding-top': '4px',
       'opacity': '0.8'
     })
   };
@@ -132,86 +141,104 @@ var LegacyCardBase = function (_React$Component) {
           resource = _props.resource,
           imageResource = _props.imageResource,
           linkClassProps = _props.linkClassProps,
+          width = _props.width,
           variant = _props.variant;
 
       var rootClasses = [classes.card];
       var image = void 0,
           image_url = void 0;
-      var scale_factor = Math.floor(100 * resource.image_height / resource.image_width * 100.00) / 100.00;
 
+      if (!resource.image_resource) {
+        return null;
+      }
+
+      // TODO: This needs a better convention.
+      if (width == 'xs' && resource.image_resource.versions.MOBILE) {
+        imageResource = resource.image_resource.versions.MOBILE;
+      }
+
+      if (!imageResource) {
+        imageResource = resource.image_resource.versions.DEFAULT;
+      }
+
+      var scale_factor = Math.floor(100 * imageResource.height / imageResource.width * 100.00) / 100.00;
+      image_url = imageResource.url;
+      image = _react2.default.createElement(
+        this.props.linkClass,
+        _extends({
+          title: title,
+          style: { 'padding': scale_factor + '% 0 0 0' }
+        }, linkClassProps, {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 114
+          }
+        }),
+        _react2.default.createElement('img', { src: image_url, alt: title, __source: {
+            fileName: _jsxFileName,
+            lineNumber: 118
+          }
+        })
+      );
+
+      // TODO: This is cruft, but we need to determine if it was in use anywhere...
       // Determine Image
+      /*
       if (typeof imageResource == 'string') {
         image_url = imageResource;
-        image = _react2.default.createElement(
-          this.props.linkClass,
-          _extends({
-            title: title,
-            style: { 'padding': scale_factor + '% 0 0 0' }
-          }, linkClassProps, {
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 103
-            }
-          }),
-          _react2.default.createElement('img', { src: image_url, alt: title, __source: {
-              fileName: _jsxFileName,
-              lineNumber: 107
-            }
-          })
-        );
-      } else {
+        image = (<this.props.linkClass
+              title={title}
+              style={{'padding':`${scale_factor}% 0 0 0`}}
+              {...linkClassProps}>
+              <img src={image_url} alt={title} />
+            </this.props.linkClass>);
+      }
+      else {
         if (variant == 'large' && imageResource.versions.CARD_LARGE) {
           image_url = imageResource.versions.CARD_LARGE.url;
-        } else if (imageResource.versions.CARD_SMALL) {
+        }
+        else if (imageResource.versions.CARD_SMALL) {
           image_url = imageResource.versions.CARD_SMALL.url;
         }
         if (image_url) {
-          image = _react2.default.createElement(
-            this.props.linkClass,
-            _extends({
-              title: title,
-              style: { 'padding': scale_factor + '% 0 0 0' }
-            }, linkClassProps, {
-              __source: {
-                fileName: _jsxFileName,
-                lineNumber: 119
-              }
-            }),
-            _react2.default.createElement('img', { src: image_url, alt: title, __source: {
-                fileName: _jsxFileName,
-                lineNumber: 123
-              }
-            })
+          image = (
+            <this.props.linkClass
+              title={title}
+              style={{'padding':`${scale_factor}% 0 0 0`}}
+              {...linkClassProps}>
+              <img src={image_url} alt={title} />
+            </this.props.linkClass>
           );
         }
       }
+      */
 
       return _react2.default.createElement(
         'div',
         { className: (0, _classnames2.default)(rootClasses), __source: {
             fileName: _jsxFileName,
-            lineNumber: 131
+            lineNumber: 155
           }
         },
         _react2.default.createElement(
           'div',
           { className: classes.cardContainer, __source: {
               fileName: _jsxFileName,
-              lineNumber: 132
+              lineNumber: 156
             }
           },
           _react2.default.createElement(
             'div',
             { className: 'card-header', __source: {
                 fileName: _jsxFileName,
-                lineNumber: 133
+                lineNumber: 157
               }
             },
             _react2.default.createElement(
               'div',
               { className: classes.cardImage, __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 134
+                  lineNumber: 158
                 }
               },
               image
@@ -220,7 +247,7 @@ var LegacyCardBase = function (_React$Component) {
               'div',
               { className: classes.sponsorText, __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 135
+                  lineNumber: 159
                 }
               },
               resource.advert_type_label || 'advertisement'
@@ -250,4 +277,5 @@ LegacyCardBase.defaultProps = {
   variant: 'small'
 };
 
-exports.default = (0, _styles.withStyles)(styles)(LegacyCardBase);
+exports.default = (0, _compose2.default)((0, _withWidth2.default)(), (0, _styles.withStyles)(styles))(LegacyCardBase);
+//export default withStyles(styles)(LegacyCardBase);
