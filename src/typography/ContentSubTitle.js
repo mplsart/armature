@@ -4,13 +4,23 @@ import PropTypes from 'prop-types';
 import MUITypography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 
-const styles = () => ({
-  root: { marginTop: '0.35em'}
+const styles = (theme) => ({
+  root: { marginTop: '0.35em'},
+  iconContainer: {
+    paddingRight: theme.gutterSpacing / 2,
+    display: 'inline-block'
+  }
 });
 
 class ContentSubTitle extends React.Component {
   render() {
-    let {classes, children, ...rest} = this.props;
+    let {classes, children, icon, ...rest} = this.props;
+
+    let iconNode;
+    if (icon) {
+      iconNode = (<div className={classes.iconContainer}>{icon}</div>);
+    }
+
     return (
       <MUITypography
         component="h2"
@@ -18,13 +28,17 @@ class ContentSubTitle extends React.Component {
         className={classes.root}
         gutterBottom
         color="inherit"
-        {...rest}>{children}</MUITypography>);
+        {...rest}>
+        {iconNode}
+        {children}
+        </MUITypography>);
   }
 }
 
 ContentSubTitle.propTypes = {
   children: PropTypes.any.isRequired,
-  classes: PropTypes.object
+  classes: PropTypes.object,
+  icon: PropTypes.func
 };
 
 export default withStyles(styles)(ContentSubTitle);

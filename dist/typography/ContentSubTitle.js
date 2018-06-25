@@ -35,9 +35,13 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } // Common typography elements
 
 
-var styles = function styles() {
+var styles = function styles(theme) {
   return {
-    root: { marginTop: '0.35em' }
+    root: { marginTop: '0.35em' },
+    iconContainer: {
+      paddingRight: theme.gutterSpacing / 2,
+      display: 'inline-block'
+    }
   };
 };
 
@@ -56,7 +60,21 @@ var ContentSubTitle = function (_React$Component) {
       var _props = this.props,
           classes = _props.classes,
           children = _props.children,
-          rest = _objectWithoutProperties(_props, ['classes', 'children']);
+          icon = _props.icon,
+          rest = _objectWithoutProperties(_props, ['classes', 'children', 'icon']);
+
+      var iconNode = void 0;
+      if (icon) {
+        iconNode = _react2.default.createElement(
+          'div',
+          { className: classes.iconContainer, __source: {
+              fileName: _jsxFileName,
+              lineNumber: 21
+            }
+          },
+          icon
+        );
+      }
 
       return _react2.default.createElement(
         _Typography2.default,
@@ -69,9 +87,10 @@ var ContentSubTitle = function (_React$Component) {
         }, rest, {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 15
+            lineNumber: 25
           }
         }),
+        iconNode,
         children
       );
     }
@@ -82,7 +101,8 @@ var ContentSubTitle = function (_React$Component) {
 
 ContentSubTitle.propTypes = {
   children: _propTypes2.default.any.isRequired,
-  classes: _propTypes2.default.object
+  classes: _propTypes2.default.object,
+  icon: _propTypes2.default.func
 };
 
 exports.default = (0, _styles.withStyles)(styles)(ContentSubTitle);

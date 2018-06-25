@@ -99,15 +99,25 @@ class Index extends React.Component {
               <p>Lorem ipsum <b>dolor sit amet</b>, consectetur <em>adipiscing elit</em>. Aenean congue <a href="#">nulla id</a> arcu molestie, vitae dapibus neque scelerisque. <b><em>Mauris et eleifend ligula</em></b>, in faucibus purus. Duis vel tempus felis, non consequat ligula. Ut dolor tellus, dapibus at turpis rutrum, viverra placerat est. Vivamus eget pellentesque enim. Sed lacinia arcu dolor, vitae semper magna molestie vitae. Proin vitae ipsum sodales, dictum quam eu, posuere risus.</p>
             </div>
           </Col>
+          <Col md={6}>
+            <MegaHeader>Mega Header</MegaHeader>
+            <ContentTitle>Content Header</ContentTitle>
+            <Lead>Lead In Text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean congue nulla id arcu molestie, vitae dapibus neque scelerisque. </Lead>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean congue nulla id arcu molestie, vitae dapibus neque scelerisque. Mauris et eleifend ligula, in faucibus purus. Duis vel tempus felis, non consequat ligula. Ut dolor tellus, dapibus at turpis rutrum, viverra placerat est. Vivamus eget pellentesque enim. Sed lacinia arcu dolor, vitae semper magna molestie vitae. Proin vitae ipsum sodales, dictum quam eu, posuere risus.</p>
+            <ContentSubTitle>Content Subtitle</ContentSubTitle>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean congue nulla id arcu molestie, vitae dapibus neque scelerisque. Mauris et eleifend ligula, in faucibus purus. Duis vel tempus felis, non consequat ligula. Ut dolor tellus, dapibus at turpis rutrum, viverra placerat est. Vivamus eget pellentesque enim. Sed lacinia arcu dolor, vitae semper magna molestie vitae. Proin vitae ipsum sodales, dictum quam eu, posuere risus.</p>
+          </Col>
+
+          <Col md={6}>
+            <MegaHeader>Mega Header</MegaHeader>
+            <ContentTitle>Content Header</ContentTitle>
+            <Lead>Lead In Text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean congue nulla id arcu molestie, vitae dapibus neque scelerisque. </Lead>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean congue nulla id arcu molestie, vitae dapibus neque scelerisque. Mauris et eleifend ligula, in faucibus purus. Duis vel tempus felis, non consequat ligula. Ut dolor tellus, dapibus at turpis rutrum, viverra placerat est. Vivamus eget pellentesque enim. Sed lacinia arcu dolor, vitae semper magna molestie vitae. Proin vitae ipsum sodales, dictum quam eu, posuere risus.</p>
+            <ContentSubTitle icon={(<i className="far fa-calendar" />)}>Content Subtitle</ContentSubTitle>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean congue nulla id arcu molestie, vitae dapibus neque scelerisque. Mauris et eleifend ligula, in faucibus purus. Duis vel tempus felis, non consequat ligula. Ut dolor tellus, dapibus at turpis rutrum, viverra placerat est. Vivamus eget pellentesque enim. Sed lacinia arcu dolor, vitae semper magna molestie vitae. Proin vitae ipsum sodales, dictum quam eu, posuere risus.</p>
+          </Col>
+
         </Row>
-
-
-        <MegaHeader>Mega Header</MegaHeader>
-        <ContentTitle>Content Header</ContentTitle>
-        <Lead>Lead In Text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean congue nulla id arcu molestie, vitae dapibus neque scelerisque. </Lead>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean congue nulla id arcu molestie, vitae dapibus neque scelerisque. Mauris et eleifend ligula, in faucibus purus. Duis vel tempus felis, non consequat ligula. Ut dolor tellus, dapibus at turpis rutrum, viverra placerat est. Vivamus eget pellentesque enim. Sed lacinia arcu dolor, vitae semper magna molestie vitae. Proin vitae ipsum sodales, dictum quam eu, posuere risus.</p>
-        <ContentSubTitle>Content Subtitle</ContentSubTitle>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean congue nulla id arcu molestie, vitae dapibus neque scelerisque. Mauris et eleifend ligula, in faucibus purus. Duis vel tempus felis, non consequat ligula. Ut dolor tellus, dapibus at turpis rutrum, viverra placerat est. Vivamus eget pellentesque enim. Sed lacinia arcu dolor, vitae semper magna molestie vitae. Proin vitae ipsum sodales, dictum quam eu, posuere risus.</p>
       </PageBase>
     );
   }

@@ -30,11 +30,13 @@ class Index extends React.Component {
         <p><GiantActionButton>Giant Action Button</GiantActionButton></p>
         <p><ListItemActionButton>List Item Action Button</ListItemActionButton></p>
 
-
         <h2>Social Buttons</h2>
         <p><SocialButton href="http://www.twitter.com/mplsart" service="twitter" target="_blank"/></p>
         <p><SocialButton href="http://www.facebook.com/mplsart" service="facebook" target="_blank"/></p>
         <p><SocialButton href="http://www.youtube.com/u/mplsart" service="youtube" target="_blank"/></p>
+        <p><SocialButton href="http://www.instagram.com/mplsart" service="instagram" target="_blank"/></p>
+        <p><SocialButton href="http://www.tumblr.com/mplsart" service="tumblr" target="_blank"/></p>
+        <p><SocialButton href="https://www.mplsart.com" service="link" target="_blank"/></p>
         <br />
         <br />
         <br />
