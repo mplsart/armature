@@ -53,6 +53,23 @@ const styles = (theme) => ({
   contentContainer: {
     display: 'inline-block',
     verticalAlign: 'middle'
+  },
+
+  icon: {
+    fontSize: '65px',
+    lineHeight: '65px',
+    [theme.breakpoints.only('md')]: {
+    fontSize: '45px',
+    lineHeight: '45px',
+    }
+  },
+  text: {
+    fontSize: '30px',
+    lineHeight: '40px',
+    [theme.breakpoints.only('md')]: {
+      fontSize: '20px',
+      lineHeight: '25px'
+    }
   }
 });
 
@@ -61,13 +78,10 @@ function PromoCardGalleryGuide({classes, linkClass, linkClassProps}) {
   return (
     <div className={classes.root}>
       <div className={classes.contentContainer}>
+        <p><i className={classnames('fa', 'fa-map-marker', classes.icon)}></i></p>
 
-
-          {/* <p><Icon style={{fontSize: '60px'}}>place</Icon></p> */}
-          <p><i style={{fontSize: '65px', lineHeight: '65px'}} className={classnames('fa', 'fa-map-marker')}></i></p>
-
-          <p style={{fontSize: '30px', lineHeight: '40px'}}>Find all <br />the local art</p>
-          <ListItemActionButton linkClass={linkClass} linkClassProps={linkClassProps}>Gallery Guide</ListItemActionButton>
+        <p className={classes.text}>Find all <br />the local art</p>
+        <ListItemActionButton linkClass={linkClass} linkClassProps={linkClassProps}>Gallery Guide</ListItemActionButton>
       </div>
     </div>
   );

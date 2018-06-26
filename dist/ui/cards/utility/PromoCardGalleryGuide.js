@@ -36,6 +36,8 @@ var _Button2 = _interopRequireDefault(_Button);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
 // Style Overrides for the button
@@ -102,7 +104,22 @@ var styles = function styles(theme) {
     contentContainer: {
       display: 'inline-block',
       verticalAlign: 'middle'
-    }
+    },
+
+    icon: _defineProperty({
+      fontSize: '65px',
+      lineHeight: '65px'
+    }, theme.breakpoints.only('md'), {
+      fontSize: '45px',
+      lineHeight: '45px'
+    }),
+    text: _defineProperty({
+      fontSize: '30px',
+      lineHeight: '40px'
+    }, theme.breakpoints.only('md'), {
+      fontSize: '20px',
+      lineHeight: '25px'
+    })
   };
 };
 
@@ -115,14 +132,14 @@ function PromoCardGalleryGuide(_ref) {
     'div',
     { className: classes.root, __source: {
         fileName: _jsxFileName,
-        lineNumber: 62
+        lineNumber: 79
       }
     },
     _react2.default.createElement(
       'div',
       { className: classes.contentContainer, __source: {
           fileName: _jsxFileName,
-          lineNumber: 63
+          lineNumber: 80
         }
       },
       _react2.default.createElement(
@@ -130,27 +147,27 @@ function PromoCardGalleryGuide(_ref) {
         {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 67
+            lineNumber: 81
           }
         },
-        _react2.default.createElement('i', { style: { fontSize: '65px', lineHeight: '65px' }, className: (0, _classnames2.default)('fa', 'fa-map-marker'), __source: {
+        _react2.default.createElement('i', { className: (0, _classnames2.default)('fa', 'fa-map-marker', classes.icon), __source: {
             fileName: _jsxFileName,
-            lineNumber: 67
+            lineNumber: 81
           }
         })
       ),
       _react2.default.createElement(
         'p',
-        { style: { fontSize: '30px', lineHeight: '40px' }, __source: {
+        { className: classes.text, __source: {
             fileName: _jsxFileName,
-            lineNumber: 69
+            lineNumber: 83
           }
         },
         'Find all ',
         _react2.default.createElement('br', {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 69
+            lineNumber: 83
           }
         }),
         'the local art'
@@ -159,7 +176,7 @@ function PromoCardGalleryGuide(_ref) {
         ListItemActionButton,
         { linkClass: linkClass, linkClassProps: linkClassProps, __source: {
             fileName: _jsxFileName,
-            lineNumber: 70
+            lineNumber: 84
           }
         },
         'Gallery Guide'

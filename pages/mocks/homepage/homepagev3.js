@@ -146,12 +146,11 @@ class Slice2 extends React.Component {
       }
     };
 
-
     return (
       <Row style={{marginTop: '16px'}}>
-        <Col xs={12} md={6}><PromoCardVenue linkClass={'a'} linkClassProps={{'href': '/galleries/gamut'}} resource={gamutResource}/></Col>
-        <Col xs={12} md={3}><PromoCardGalleryGuide linkClass={'a'} linkClassProps={{'href': '/galleries/guide'}} /></Col>
-        <Col xs={12} md={3}><CardAd width={this.props.width} {...adProps2}/></Col>
+        <Col xs={12} sm={12} md={6}><PromoCardVenue linkClass={'a'} linkClassProps={{'href': '/galleries/gamut'}} resource={gamutResource}/></Col>
+        <Col xs={12} sm={6} md={3}><CardAd width={this.props.width} {...adProps2}/></Col>
+        <Col xs={12} sm={6} md={3}><PromoCardGalleryGuide linkClass={'a'} linkClassProps={{'href': '/galleries/guide' + this.props.width}} /></Col>
       </Row>
     );
   }
