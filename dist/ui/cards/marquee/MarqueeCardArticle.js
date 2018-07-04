@@ -58,10 +58,17 @@ var MarqueeCardArticle = function (_React$Component) {
       var publishedDate = (0, _moment2.default)(new Date(resource.published_date)).format('MMMM Do, YYYY');
 
       // Author Credit
-      var authorName = resource.author_resource.firstname + ' ' + resource.author_resource.lastname;
+      var extraOverline = '';
+
+      // Author resource is can be verbose only
+      if (resource.author_name) {
+        extraOverline = ' by ' + resource.author_name;
+      } else if (resource.author_resource) {
+        extraOverline = ' by ' + resource.author_resource.firstname + ' ' + resource.author_resource.lastname;
+      }
 
       // Overline
-      var overlineText = 'Published ' + publishedDate + ' by ' + authorName;
+      var overlineText = 'Published ' + publishedDate + extraOverline;
 
       return _react2.default.createElement(_MarqueeCardBase2.default, _extends({
         overlineText: overlineText,
@@ -72,7 +79,7 @@ var MarqueeCardArticle = function (_React$Component) {
       }, rest, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 21
+          lineNumber: 29
         }
       }));
     }
@@ -84,7 +91,7 @@ var MarqueeCardArticle = function (_React$Component) {
 MarqueeCardArticle.propTypes = {
   resource: _propTypes2.default.object,
   linkClassProps: _propTypes2.default.object,
-  linkClass: _propTypes2.default.any //PropTypes.func,
+  linkClass: _propTypes2.default.oneOfType([_propTypes2.default.func, _propTypes2.default.string])
 };
 
 exports.default = MarqueeCardArticle;

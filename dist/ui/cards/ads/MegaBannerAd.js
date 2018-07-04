@@ -207,5 +207,5 @@ MegaBannerAd.propTypes = {
   width: _propTypes2.default.string.isRequired,
   resource: _propTypes2.default.object,
   linkClassProps: _propTypes2.default.object,
-  linkClass: _propTypes2.default.func
+  linkClass: _propTypes2.default.oneOfType([_propTypes2.default.func, _propTypes2.default.string])
 };

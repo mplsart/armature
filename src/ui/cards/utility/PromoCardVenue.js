@@ -168,7 +168,7 @@ PromoCardVenue.propTypes = {
   classes: PropTypes.object,
   resource: PropTypes.object,
   linkClassProps: PropTypes.object,
-  linkClass: PropTypes.func,
+  linkClass: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
 };
 
 export default withStyles(styles)(PromoCardVenue);

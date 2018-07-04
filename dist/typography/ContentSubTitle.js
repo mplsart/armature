@@ -102,7 +102,7 @@ var ContentSubTitle = function (_React$Component) {
 ContentSubTitle.propTypes = {
   children: _propTypes2.default.any.isRequired,
   classes: _propTypes2.default.object,
-  icon: _propTypes2.default.func
+  icon: _propTypes2.default.oneOfType([_propTypes2.default.func, _propTypes2.default.object])
 };
 
 exports.default = (0, _styles.withStyles)(styles)(ContentSubTitle);

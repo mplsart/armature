@@ -167,7 +167,7 @@ MarqueeCardSmallBase.propTypes = {
   title: PropTypes.string,
   overlineText: PropTypes.node,
   linkClassProps: PropTypes.object,
-  linkClass: PropTypes.any, //PropTypes.func,
+  linkClass: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   imageResource: PropTypes.object
 };
 

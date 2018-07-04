@@ -11,14 +11,16 @@ class MarqueeCardSmallArticle extends React.Component {
 
     const {resource, ...rest} =  this.props;
 
-    // Published Date
-    let publishedDate = moment(new Date(resource.published_date)).format('MMMM Do');
-
     // Author Credit
-    let authorName = resource.author_resource.firstname + ' ' + resource.author_resource.lastname;
+    let overlineText = '';
 
-    // Overline
-    let overlineText = 'By ' + authorName;
+    // Author resource is can be verbose only
+    if (resource.author_name) {
+      overlineText = ' by ' + resource.author_name;
+    }
+    else if (resource.author_resource) {
+      overlineText = ' by ' + resource.author_resource.firstname + ' ' + resource.author_resource.lastname;
+    }
 
     return (
       <MarqueeCardSmallBase
@@ -33,10 +35,10 @@ class MarqueeCardSmallArticle extends React.Component {
   }
 }
 
-MarqueeCardSmallBase.propTypes = {
+MarqueeCardSmallArticle.propTypes = {
   resource: PropTypes.object,
   linkClassProps: PropTypes.object,
-  linkClass: PropTypes.any, //PropTypes.func,
+  linkClass: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
 };
 
 export default MarqueeCardSmallArticle;

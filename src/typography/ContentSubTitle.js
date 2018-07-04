@@ -38,7 +38,7 @@ class ContentSubTitle extends React.Component {
 ContentSubTitle.propTypes = {
   children: PropTypes.any.isRequired,
   classes: PropTypes.object,
-  icon: PropTypes.func
+  icon: PropTypes.oneOfType([PropTypes.func, PropTypes.object])
 };
 
 export default withStyles(styles)(ContentSubTitle);

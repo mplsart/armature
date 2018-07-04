@@ -136,7 +136,7 @@ LegacyCardBase.propTypes = {
   variant: PropTypes.oneOf(['large', 'small']),
   title: PropTypes.string,
   content: PropTypes.node,
-  linkClass: PropTypes.func,
+  linkClass: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   linkClassProps: PropTypes.object,
   //href: PropTypes.string,
   imageResource: PropTypes.oneOfType([PropTypes.string, PropTypes.object, PropTypes.node]),

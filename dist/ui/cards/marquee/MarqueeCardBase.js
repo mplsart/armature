@@ -281,7 +281,7 @@ MarqueeCardBase.propTypes = {
   title: _propTypes2.default.string,
   overlineText: _propTypes2.default.node,
   linkClassProps: _propTypes2.default.object,
-  linkClass: _propTypes2.default.any, //PropTypes.func,
+  linkClass: _propTypes2.default.oneOfType([_propTypes2.default.func, _propTypes2.default.string]),
   imageResource: _propTypes2.default.object
 };
 

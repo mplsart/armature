@@ -12,10 +12,18 @@ class MarqueeCardArticle extends React.Component {
     let publishedDate = moment(new Date(resource.published_date)).format('MMMM Do, YYYY');
 
     // Author Credit
-    let authorName = resource.author_resource.firstname + ' ' + resource.author_resource.lastname;
+    let extraOverline = '';
+
+    // Author resource is can be verbose only
+    if (resource.author_name) {
+      extraOverline = ' by ' + resource.author_name;
+    }
+    else if (resource.author_resource) {
+      extraOverline = ' by ' + resource.author_resource.firstname + ' ' + resource.author_resource.lastname;
+    }
 
     // Overline
-    let overlineText = 'Published ' + publishedDate + ' by ' + authorName;
+    let overlineText = 'Published ' + publishedDate + extraOverline;
 
     return (
       <MarqueeCardBase
@@ -34,7 +42,7 @@ class MarqueeCardArticle extends React.Component {
 MarqueeCardArticle.propTypes = {
   resource: PropTypes.object,
   linkClassProps: PropTypes.object,
-  linkClass: PropTypes.any, //PropTypes.func,
+  linkClass: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
 };
 
 export default MarqueeCardArticle;

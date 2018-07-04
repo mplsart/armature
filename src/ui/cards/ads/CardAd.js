@@ -129,5 +129,5 @@ CardAd.propTypes = {
   width: PropTypes.string.isRequired,
   resource: PropTypes.object,
   linkClassProps: PropTypes.object,
-  linkClass: PropTypes.func
+  linkClass: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
 };

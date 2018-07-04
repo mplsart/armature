@@ -49,7 +49,7 @@ class MarqueeCardEvent extends React.Component {
 MarqueeCardEvent.propTypes = {
   resource: PropTypes.object,
   linkClassProps: PropTypes.object,
-  linkClass: PropTypes.any, //PropTypes.func,
+  linkClass: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   startingDateFilter: PropTypes.any // a moment date
 };
 

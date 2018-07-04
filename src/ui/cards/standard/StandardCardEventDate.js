@@ -51,7 +51,7 @@ StandardCardEventDate.propTypes = {
   event_resource: PropTypes.object,
   event_date_resource: PropTypes.object,
   linkClassProps: PropTypes.object,
-  linkClass: PropTypes.any, //PropTypes.func,
+  linkClass: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   startingDateFilter: PropTypes.any // a moment date
 };
 
