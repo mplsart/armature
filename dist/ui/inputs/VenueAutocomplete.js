@@ -60,6 +60,10 @@ var _ListItemIcon = require('@material-ui/core/ListItemIcon');
 
 var _ListItemIcon2 = _interopRequireDefault(_ListItemIcon);
 
+var _Typography = require('@material-ui/core/Typography');
+
+var _Typography2 = _interopRequireDefault(_Typography);
+
 var _reactAutosuggest = require('react-autosuggest');
 
 var _reactAutosuggest2 = _interopRequireDefault(_reactAutosuggest);
@@ -73,6 +77,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var styles = function styles(theme) {
   return {
@@ -94,13 +100,15 @@ var styles = function styles(theme) {
     suggestionsContainerOpen: {
       position: 'absolute',
       zIndex: 1,
-      marginTop: theme.spacing.unit,
+      marginTop: 0, //theme.spacing.unit,
       left: 0,
       right: 0
     },
     suggestion: {
-      display: 'block'
+      display: 'block',
+      borderBottom: '1px solid ' + theme.palette.grey[100]
     },
+
     suggestionsList: {
       margin: 0,
       padding: 0,
@@ -108,7 +116,10 @@ var styles = function styles(theme) {
     },
 
     suggestionListFooterItem: {
-      backgroundColor: theme.palette.grey[100]
+      backgroundColor: theme.palette.grey[100],
+      '& aside': _defineProperty({}, theme.breakpoints.only('xs'), {
+        fontSize: '12px'
+      })
     }
   };
 };
@@ -126,11 +137,21 @@ var VenueAutocomplete = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (VenueAutocomplete.__proto__ || Object.getPrototypeOf(VenueAutocomplete)).call(this, props));
 
     _this.handleSuggestionsFetchRequested = function (_ref) {
-      var value = _ref.value;
+      var value = _ref.value,
+          reason = _ref.reason;
 
+      var suggestedResources = _this.getSuggestions(value);
+
+      if (reason == 'suggestions-revealed') {
+        // arrow key, for example
+        if (_this.state.selectedResource && suggestedResources.length == 0) {
+          suggestedResources.push(_this.state.selectedResource);
+        }
+      }
 
       _this.setState({
-        suggestedResources: _this.getSuggestions(value)
+        suggestedResources: suggestedResources,
+        isFocused: true
       });
     };
 
@@ -182,46 +203,87 @@ var VenueAutocomplete = function (_React$Component) {
       var footer = void 0;
       var classes = this.props.classes;
 
+
       if (this.state.isFocused) {
-        footer = _react2.default.createElement(
-          _MenuItem2.default,
-          { component: 'div', className: classes.suggestionListFooterItem, onClick: function onClick(e) {
-              return console.log(e);
-            }, __source: {
-              fileName: _jsxFileName,
-              lineNumber: 94
-            }
-          },
-          _react2.default.createElement(
-            'span',
-            {
-              __source: {
-                fileName: _jsxFileName,
-                lineNumber: 94
-              }
-            },
-            'Not seeing what you are looking for?'
-          ),
-          ' \xA0 ',
-          _react2.default.createElement(
-            'a',
-            { onClick: function onClick(e) {
+
+        if (this.state.textValue == '') {
+          footer = _react2.default.createElement(
+            _MenuItem2.default,
+            { component: 'div', className: classes.suggestionListFooterItem, onClick: function onClick(e) {
                 return console.log(e);
               }, __source: {
                 fileName: _jsxFileName,
-                lineNumber: 94
+                lineNumber: 104
               }
             },
-            ' Create new Venue'
-          )
-        );
+            _react2.default.createElement(
+              _Typography2.default,
+              { variant: 'body2', __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 104
+                }
+              },
+              _react2.default.createElement(
+                'span',
+                {
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 104
+                  }
+                },
+                'Start typing to search...'
+              )
+            )
+          );
+        } else {
+          footer = _react2.default.createElement(
+            _MenuItem2.default,
+            { component: 'div', className: classes.suggestionListFooterItem, onClick: function onClick(e) {
+                return console.log(e);
+              }, __source: {
+                fileName: _jsxFileName,
+                lineNumber: 107
+              }
+            },
+            _react2.default.createElement(
+              _Typography2.default,
+              { variant: 'body2', __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 107
+                }
+              },
+              _react2.default.createElement(
+                'span',
+                {
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 107
+                  }
+                },
+                'Not seeing what you are looking for?'
+              ),
+              ' \xA0 ',
+              _react2.default.createElement(
+                'a',
+                { onClick: function onClick(e) {
+                    return console.log(e);
+                  }, __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 107
+                  }
+                },
+                ' Create new Venue'
+              )
+            )
+          );
+        }
       }
 
       return _react2.default.createElement(
         _Paper2.default,
         _extends({}, containerProps, { square: true, __source: {
             fileName: _jsxFileName,
-            lineNumber: 98
+            lineNumber: 112
           }
         }),
         children,
@@ -244,7 +306,7 @@ var VenueAutocomplete = function (_React$Component) {
         var src = resource.primary_image_resource.versions.THUMB.url || null;
         avatar = _react2.default.createElement(_Avatar2.default, { className: (0, _classnames2.default)(classes.avatar, 'searchResult'), alt: resource.name, src: src, __source: {
             fileName: _jsxFileName,
-            lineNumber: 115
+            lineNumber: 129
           }
         });
       }
@@ -254,25 +316,24 @@ var VenueAutocomplete = function (_React$Component) {
           _Avatar2.default,
           { className: (0, _classnames2.default)(classes.avatar, resource.category, 'searchResult'), __source: {
               fileName: _jsxFileName,
-              lineNumber: 119
+              lineNumber: 133
             }
           },
           resource.name[0]
         );
       }
-
       return _react2.default.createElement(
         _MenuItem2.default,
         { selected: isHighlighted, component: 'div', __source: {
             fileName: _jsxFileName,
-            lineNumber: 124
+            lineNumber: 136
           }
         },
         _react2.default.createElement(
           _ListItemIcon2.default,
           { className: classes.icon, __source: {
               fileName: _jsxFileName,
-              lineNumber: 127
+              lineNumber: 137
             }
           },
           avatar
@@ -280,43 +341,59 @@ var VenueAutocomplete = function (_React$Component) {
         _react2.default.createElement(_ListItemText2.default, {
           classes: { primary: classes.primary },
           primary: _react2.default.createElement(
-            'span',
-            {
-              __source: {
+            _Typography2.default,
+            { variant: 'body2', component: 'span', __source: {
                 fileName: _jsxFileName,
-                lineNumber: 132
+                lineNumber: 142
               }
             },
-            resource.name,
-            ' ',
-            resource.is_closed && _react2.default.createElement(
+            _react2.default.createElement(
               'span',
               {
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 132
+                  lineNumber: 142
                 }
               },
-              '(closed)'
+              resource.name,
+              ' ',
+              resource.is_closed && _react2.default.createElement(
+                'span',
+                {
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 142
+                  }
+                },
+                '(closed)'
+              )
             )
           ),
           secondary: _react2.default.createElement(
-            'span',
-            {
-              __source: {
+            _Typography2.default,
+            { variant: 'body2', component: 'span', __source: {
                 fileName: _jsxFileName,
-                lineNumber: 133
+                lineNumber: 143
               }
             },
-            resource.category,
-            ' - ',
-            resource.address,
-            ' - ',
-            resource.city
+            _react2.default.createElement(
+              'span',
+              {
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 143
+                }
+              },
+              resource.category,
+              ' - ',
+              resource.address,
+              ' - ',
+              resource.city
+            )
           ),
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 130
+            lineNumber: 140
           }
         })
       );
@@ -361,7 +438,7 @@ var VenueAutocomplete = function (_React$Component) {
       var suggestion = _ref4.suggestion;
 
       var resource = suggestion;
-      this.setState({ isSelected: true, selectedResource: resource, textValue: resource.name, suggestedResources: [resource] });
+      this.setState({ isSelected: true, isFocused: false, selectedResource: resource, textValue: resource.name, suggestedResources: [] });
       this.props.onChange(resource);
     }
   }, {
@@ -376,7 +453,19 @@ var VenueAutocomplete = function (_React$Component) {
     }
   }, {
     key: 'handleTextChange',
-    value: function handleTextChange(e) {
+    value: function handleTextChange(e, _ref5) {
+      var newValue = _ref5.newValue,
+          method = _ref5.method;
+
+      if (method == 'enter') return;
+      if (method == 'escape') {
+        this.setState({
+          suggestedResources: [],
+          isFocused: false
+        });
+        return;
+      };
+
       // Called when the user types
       var newState = { textValue: e.target.value };
 
@@ -417,7 +506,7 @@ var VenueAutocomplete = function (_React$Component) {
           var src = selectedResource.primary_image_resource.versions.THUMB.url || null;
           avatar = _react2.default.createElement(_Avatar2.default, { className: (0, _classnames2.default)(classes.avatar, 'inputAdornment'), alt: selectedResource.name, src: src, __source: {
               fileName: _jsxFileName,
-              lineNumber: 232
+              lineNumber: 259
             }
           });
         }
@@ -427,7 +516,7 @@ var VenueAutocomplete = function (_React$Component) {
             _Avatar2.default,
             { className: (0, _classnames2.default)(classes.avatar, selectedResource.category, 'inputAdornment'), __source: {
                 fileName: _jsxFileName,
-                lineNumber: 236
+                lineNumber: 263
               }
             },
             selectedResource.name[0]
@@ -438,7 +527,7 @@ var VenueAutocomplete = function (_React$Component) {
           _InputAdornment2.default,
           { position: 'start', __source: {
               fileName: _jsxFileName,
-              lineNumber: 239
+              lineNumber: 266
             }
           },
           avatar
@@ -455,7 +544,7 @@ var VenueAutocomplete = function (_React$Component) {
           _FormControl2.default,
           { className: classes.FormControl, fullWidth: true, required: true, __source: {
               fileName: _jsxFileName,
-              lineNumber: 247
+              lineNumber: 274
             }
           },
           _react2.default.createElement(
@@ -463,7 +552,7 @@ var VenueAutocomplete = function (_React$Component) {
             {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 248
+                lineNumber: 275
               }
             },
             label
@@ -471,7 +560,7 @@ var VenueAutocomplete = function (_React$Component) {
           _react2.default.createElement(_Input2.default, _extends({}, rest, {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 249
+              lineNumber: 276
             }
           }))
         );
@@ -502,43 +591,9 @@ var VenueAutocomplete = function (_React$Component) {
         }),
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 255
+          lineNumber: 282
         }
       });
-
-      return _react2.default.createElement(
-        'div',
-        {
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 282
-          }
-        },
-        _react2.default.createElement(
-          _FormControl2.default,
-          { fullWidth: true, required: true, __source: {
-              fileName: _jsxFileName,
-              lineNumber: 283
-            }
-          },
-          _react2.default.createElement(
-            _InputLabel2.default,
-            {
-              __source: {
-                fileName: _jsxFileName,
-                lineNumber: 284
-              }
-            },
-            label
-          ),
-          _react2.default.createElement(_Input2.default, _extends({ onChange: this.handleTextChange.bind(this) }, rest, {
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 285
-            }
-          }))
-        )
-      );
     }
   }]);
 

@@ -11,6 +11,7 @@ import Paper from '@material-ui/core/Paper';
 import MenuItem from '@material-ui/core/MenuItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
+import Typography from '@material-ui/core/Typography';
 import Autosuggest from 'react-autosuggest';
 
 let styles = (theme) => {
@@ -33,13 +34,15 @@ let styles = (theme) => {
     suggestionsContainerOpen: {
       position: 'absolute',
       zIndex: 1,
-      marginTop: theme.spacing.unit,
+      marginTop: 0, //theme.spacing.unit,
       left: 0,
       right: 0,
     },
     suggestion: {
       display: 'block',
+      borderBottom: `1px solid ${theme.palette.grey[100]}`,
     },
+
     suggestionsList: {
       margin: 0,
       padding: 0,
@@ -47,7 +50,12 @@ let styles = (theme) => {
     },
 
     suggestionListFooterItem: {
-      backgroundColor: theme.palette.grey[100]
+      backgroundColor: theme.palette.grey[100],
+      '& aside': {
+        [theme.breakpoints.only('xs')]: {
+          fontSize:'12px'
+        }
+      }
     }
   };
 };
@@ -86,12 +94,18 @@ class VenueAutocomplete extends React.Component {
     console.log(e);
   }
 
-
   renderSuggestionsContainer({ containerProps, children, query}) {
     let footer;
     let {classes} = this.props;
+
     if (this.state.isFocused) {
-      footer = (<MenuItem component="div" className={classes.suggestionListFooterItem} onClick={(e)=> (console.log(e))}><span>Not seeing what you are looking for?</span> &nbsp; <a onClick={(e)=> (console.log(e))}> Create new Venue</a></MenuItem>);
+
+      if (this.state.textValue == '') {
+        footer = (<MenuItem component="div" className={classes.suggestionListFooterItem} onClick={(e)=> (console.log(e))}><Typography variant="body2"><span>Start typing to search...</span></Typography></MenuItem>);
+      }
+      else {
+        footer = (<MenuItem component="div" className={classes.suggestionListFooterItem} onClick={(e)=> (console.log(e))}><Typography variant="body2"><span>Not seeing what you are looking for?</span> &nbsp; <a onClick={(e)=> (console.log(e))}> Create new Venue</a></Typography></MenuItem>);
+      }
     }
 
     return (
@@ -118,19 +132,15 @@ class VenueAutocomplete extends React.Component {
   if (!avatar) {
     avatar = (<Avatar className={classNames(classes.avatar, resource.category, 'searchResult')}>{resource.name[0]}</Avatar>);
   }
-
-
   return (
     <MenuItem selected={isHighlighted} component="div">
-
-
       <ListItemIcon className={classes.icon}>
         {avatar}
       </ListItemIcon>
       <ListItemText
         classes={{ primary: classes.primary }}
-        primary={(<span>{resource.name} {resource.is_closed && (<span>(closed)</span>)}</span>)}
-        secondary={(<span>{resource.category} - {resource.address} - {resource.city}</span>)}
+        primary={(<Typography variant="body2" component="span"><span>{resource.name} {resource.is_closed && (<span>(closed)</span>)}</span></Typography>)}
+        secondary={(<Typography variant="body2" component="span"><span>{resource.category} - {resource.address} - {resource.city}</span></Typography>)}
         />
     </MenuItem>
   );
@@ -167,7 +177,7 @@ class VenueAutocomplete extends React.Component {
 
   handleSelection(e, {suggestion}) {
     let resource  = suggestion;
-    this.setState({isSelected: true, selectedResource: resource, textValue: resource.name, suggestedResources: [resource]});
+    this.setState({isSelected: true, isFocused:false, selectedResource: resource, textValue: resource.name, suggestedResources: []});
     this.props.onChange(resource);
   }
 
@@ -179,7 +189,16 @@ class VenueAutocomplete extends React.Component {
     this.setState({isFocused: false});
   }
 
-  handleTextChange(e) {
+  handleTextChange(e, {newValue, method}) {
+    if (method == 'enter') return;
+    if (method == 'escape') {
+      this.setState({
+      suggestedResources: [],
+      isFocused:false,
+    });
+      return
+    };
+
     // Called when the user types
     let newState = {textValue: e.target.value};
 
@@ -195,10 +214,18 @@ class VenueAutocomplete extends React.Component {
     this.setState(newState);
   }
 
-  handleSuggestionsFetchRequested = ({ value }) => {
+  handleSuggestionsFetchRequested = ({ value, reason}) => {
+    let suggestedResources = this.getSuggestions(value);
+
+    if (reason == 'suggestions-revealed') { // arrow key, for example
+      if (this.state.selectedResource && suggestedResources.length == 0) {
+        suggestedResources.push(this.state.selectedResource);
+      }
+    }
 
     this.setState({
-      suggestedResources: this.getSuggestions(value),
+      suggestedResources: suggestedResources,
+      isFocused:true,
     });
   };
 
@@ -276,15 +303,6 @@ class VenueAutocomplete extends React.Component {
           onBlur: this.handleTextBlur.bind(this)
         }}
       />
-    );
-
-    return (
-      <div>
-        <FormControl fullWidth required>
-          <InputLabel>{label}</InputLabel>
-          <Input onChange={this.handleTextChange.bind(this)} {...rest}  />
-        </FormControl>
-      </div>
     );
   }
 }

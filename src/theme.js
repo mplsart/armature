@@ -12,6 +12,7 @@ const coef = fontSize / 14;
 function pxToRem(value) {
   return `${(value / htmlFontSize) * coef}rem`;
 }
+
 function round(value) {
   return Math.round(value * 1e5) / 1e5;
 }

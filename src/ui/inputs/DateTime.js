@@ -39,6 +39,13 @@ class DateTimeInput extends React.Component {
     let dateValue = event.target.value;
     let internalValue = this.state.internalValue;
     internalValue = moment(dateValue + 'T' + internalValue.format('HH:mm:ss'));
+
+    // Desktop Chrome will allow you to scroll to dates like 2/30 which are invalid...
+    if (!internalValue.isValid()) {
+      // TODO: Detect if it is up/down arrow keys and delta day
+      internalValue = this.state.internalValue;
+    }
+
     this.setState({internalValue});
     this.props.onChange(internalValue.format('YYYY-MM-DDTHH:mm:ss'));
   }
@@ -47,6 +54,13 @@ class DateTimeInput extends React.Component {
     let timeValue = event.target.value;
     let internalValue = this.state.internalValue;
     internalValue = moment(internalValue.format('YYYY-MM-DD') + 'T' + timeValue);
+
+    // Desktop Chrome will allow you to scroll to dates like 2/30 which are invalid...
+    if (!internalValue.isValid()) {
+      // TODO: Detect if it is up/down arrow keys and delta day
+      internalValue = this.state.internalValue;
+    }
+
     this.setState({internalValue});
     this.props.onChange(internalValue.format('YYYY-MM-DDTHH:mm:ss'));
   }

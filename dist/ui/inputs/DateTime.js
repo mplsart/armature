@@ -87,6 +87,13 @@ var DateTimeInput = function (_React$Component) {
       var dateValue = event.target.value;
       var internalValue = this.state.internalValue;
       internalValue = (0, _moment2.default)(dateValue + 'T' + internalValue.format('HH:mm:ss'));
+
+      // Desktop Chrome will allow you to scroll to dates like 2/30 which are invalid...
+      if (!internalValue.isValid()) {
+        // TODO: Detect if it is up/down arrow keys and delta day
+        internalValue = this.state.internalValue;
+      }
+
       this.setState({ internalValue: internalValue });
       this.props.onChange(internalValue.format('YYYY-MM-DDTHH:mm:ss'));
     }
@@ -96,6 +103,13 @@ var DateTimeInput = function (_React$Component) {
       var timeValue = event.target.value;
       var internalValue = this.state.internalValue;
       internalValue = (0, _moment2.default)(internalValue.format('YYYY-MM-DD') + 'T' + timeValue);
+
+      // Desktop Chrome will allow you to scroll to dates like 2/30 which are invalid...
+      if (!internalValue.isValid()) {
+        // TODO: Detect if it is up/down arrow keys and delta day
+        internalValue = this.state.internalValue;
+      }
+
       this.setState({ internalValue: internalValue });
       this.props.onChange(internalValue.format('YYYY-MM-DDTHH:mm:ss'));
     }
@@ -118,7 +132,7 @@ var DateTimeInput = function (_React$Component) {
         _FormControl2.default,
         { fullWidth: true, required: true, style: controlStyle, __source: {
             fileName: _jsxFileName,
-            lineNumber: 63
+            lineNumber: 77
           }
         },
         _react2.default.createElement(
@@ -126,19 +140,19 @@ var DateTimeInput = function (_React$Component) {
           {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 64
+              lineNumber: 78
             }
           },
           label
         ),
         _react2.default.createElement(_Input2.default, _extends({}, rest, { value: this.cleanDate(value), onChange: this.handleDateChange.bind(this), style: { alignSelf: 'flex-end', width: '50%', 'fontSize': '14px' }, type: 'date', __source: {
             fileName: _jsxFileName,
-            lineNumber: 65
+            lineNumber: 79
           }
         })),
         _react2.default.createElement(_Input2.default, _extends({}, rest, { value: this.cleanTime(value), onChange: this.handleTimeChange.bind(this), inputProps: { step: 300 }, style: { alignSelf: 'flex-end', width: '45%', 'fontSize': '14px' }, type: 'time', __source: {
             fileName: _jsxFileName,
-            lineNumber: 66
+            lineNumber: 80
           }
         }))
       );
