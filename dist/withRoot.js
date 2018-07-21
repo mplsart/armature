@@ -32,14 +32,6 @@ var _GlobalStyles = require('./GlobalStyles');
 
 var _GlobalStyles2 = _interopRequireDefault(_GlobalStyles);
 
-var _MuiPickersUtilsProvider = require('material-ui-pickers/utils/MuiPickersUtilsProvider');
-
-var _MuiPickersUtilsProvider2 = _interopRequireDefault(_MuiPickersUtilsProvider);
-
-var _momentUtils = require('material-ui-pickers/utils/moment-utils');
-
-var _momentUtils2 = _interopRequireDefault(_momentUtils);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -84,35 +76,27 @@ function withRoot(Component) {
             sheetsManager: this.pageContext.sheetsManager,
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 31
+              lineNumber: 29
             }
           },
           _react2.default.createElement(_CssBaseline2.default, {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 35
+              lineNumber: 33
             }
           }),
           _react2.default.createElement(_GlobalStyles2.default, {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 36
+              lineNumber: 34
             }
           }),
-          _react2.default.createElement(
-            _MuiPickersUtilsProvider2.default,
-            { utils: _momentUtils2.default, __source: {
-                fileName: _jsxFileName,
-                lineNumber: 37
-              }
-            },
-            _react2.default.createElement(Component, _extends({}, this.props, {
-              __source: {
-                fileName: _jsxFileName,
-                lineNumber: 38
-              }
-            }))
-          )
+          _react2.default.createElement(Component, _extends({}, this.props, {
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 35
+            }
+          }))
         );
       }
     }]);
