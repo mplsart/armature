@@ -5,7 +5,7 @@ import withRoot from '../../../src/withRoot';
 import withRedux from '../../../src/withRedux';
 import {initStore} from '../../../src/store';
 import DateTimeInput from '../../../src/ui/inputs/DateTime';
-import DateTimeInputMaterial from '../../../src/ui/inputs/DateTimeInputMaterial';
+//import DateTimeInputMaterial from '../../../src/ui/inputs/DateTimeInputMaterial';
 import moment from 'moment';
 
 class Index extends React.Component {
@@ -32,7 +32,7 @@ class Index extends React.Component {
         <h1>Date & Time Input</h1>
         <p>...</p>
 
-
+        {/*
         <h2>DateTime Input with Material-UI Picker Controls</h2>
         <pre>import DateTimeInput from ... </pre>
 
@@ -41,6 +41,7 @@ class Index extends React.Component {
           <DateTimeInputMaterial id="start" label="Start" value={this.cleanDate(null)} defaultValue={defaultValue} onChange={(value) => this.handleDateTimeChange('start')(value)} fullWidth margin="dense" required />
         </div>
         <br />
+        */}
 
         <h2>DateTime Input with Native Controls</h2>
         <pre>import DateTimeInput from ... </pre>
