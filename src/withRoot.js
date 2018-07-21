@@ -4,6 +4,8 @@ import { MuiThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import getPageContext from './context';
 import GlobalStyles from './GlobalStyles';
+import MuiPickersUtilsProvider from 'material-ui-pickers/utils/MuiPickersUtilsProvider';
+import MomentUtils from 'material-ui-pickers/utils/moment-utils';
 
 function withRoot(Component) {
   class WithRoot extends React.Component {
@@ -32,7 +34,9 @@ function withRoot(Component) {
         >
           <CssBaseline />
           <GlobalStyles />
-          <Component {...this.props} />
+          <MuiPickersUtilsProvider utils={MomentUtils}>
+            <Component {...this.props} />
+          </MuiPickersUtilsProvider>
         </MuiThemeProvider>
       );
     }
