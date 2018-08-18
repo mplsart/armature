@@ -11,6 +11,7 @@ module.exports = {
       '/styles/colors': { page: '/styles/colors' },
       '/ui/buttons': { page: '/ui/buttons'},
       '/ui/cards': { page: '/ui/cards'},
+      '/ui/lists': { page: '/ui/lists'},
       '/ui/lightbox': { page: '/ui/lightbox'},
       '/ui/popovers': { page: '/ui/popovers'},
       '/ui/inputs/autocomplete': { page: '/ui/inputs/autocomplete'},

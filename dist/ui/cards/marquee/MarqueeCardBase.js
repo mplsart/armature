@@ -27,7 +27,7 @@ var _Typography = require('@material-ui/core/Typography');
 
 var _Typography2 = _interopRequireDefault(_Typography);
 
-var _Overline = require('../../..//typography/Overline');
+var _Overline = require('../../../typography/Overline');
 
 var _Overline2 = _interopRequireDefault(_Overline);
 

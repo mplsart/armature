@@ -11,6 +11,8 @@ const styles = (theme) => ({
     height: '100%',
     backgroundColor: theme.palette.secondary[500],
     color: '#ffffff',
+    display: 'block',
+    fontWeight:100,
     '&:before': {
       content: '"" ""',
       display: 'inline-block',
@@ -26,14 +28,18 @@ const styles = (theme) => ({
 });
 
 
-function PromoCardInstagram({classes, resource, linkClassProps, ...props}) {
+function PromoCardInstagram({classes, resource, linkClassProps, linkClass, ...props}) {
+  let derp = {linkClass};
+
   return (
-    <div className={classes.root}>
-      <div className={classes.contentContainer}>
-        <p><i className="fa fa-instagram" style={{fontSize: '120px'}}></i></p>
-        <p style={{fontSize: '30px', lineHeight: '40px'}}>Follow along.</p>
-      </div>
-    </div>
+    <derp.linkClass {...linkClassProps}>
+      <span className={classes.root}>
+        <span className={classes.contentContainer}>
+          <p><i className="fa fa-instagram" style={{fontSize: '120px'}}></i></p>
+          <p style={{fontSize: '30px', lineHeight: '40px'}}>Follow along.</p>
+        </span>
+      </span>
+    </derp.linkClass>
   );
 }
 

@@ -8,7 +8,11 @@ exports.build_google_map_url_for_venue = build_google_map_url_for_venue;
 //build_google_map_url_for_venue
 //formatted_address
 function formatted_address(venue) {
-  var output = venue.address + ' ' + venue.address2;
+  var output = venue.address;
+
+  if (venue.address2) {
+    output += ' ' + venue.address2;
+  }
 
   if (venue.city == 'Minneapolis') {
     output += ', Mpls';

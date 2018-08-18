@@ -3,6 +3,9 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _jsxFileName = 'src/ui/cards/utility/PromoCardInstagram.js';
 
 var _react = require('react');
@@ -29,6 +32,8 @@ var styles = function styles(theme) {
       height: '100%',
       backgroundColor: theme.palette.secondary[500],
       color: '#ffffff',
+      display: 'block',
+      fontWeight: 100,
       '&:before': {
         content: '"" ""',
         display: 'inline-block',
@@ -48,44 +53,56 @@ function PromoCardInstagram(_ref) {
   var classes = _ref.classes,
       resource = _ref.resource,
       linkClassProps = _ref.linkClassProps,
-      props = _objectWithoutProperties(_ref, ['classes', 'resource', 'linkClassProps']);
+      linkClass = _ref.linkClass,
+      props = _objectWithoutProperties(_ref, ['classes', 'resource', 'linkClassProps', 'linkClass']);
+
+  var derp = { linkClass: linkClass };
 
   return _react2.default.createElement(
-    'div',
-    { className: classes.root, __source: {
+    derp.linkClass,
+    _extends({}, linkClassProps, {
+      __source: {
         fileName: _jsxFileName,
-        lineNumber: 31
+        lineNumber: 35
       }
-    },
+    }),
     _react2.default.createElement(
-      'div',
-      { className: classes.contentContainer, __source: {
+      'span',
+      { className: classes.root, __source: {
           fileName: _jsxFileName,
-          lineNumber: 32
+          lineNumber: 36
         }
       },
       _react2.default.createElement(
-        'p',
-        {
-          __source: {
+        'span',
+        { className: classes.contentContainer, __source: {
             fileName: _jsxFileName,
-            lineNumber: 33
+            lineNumber: 37
           }
         },
-        _react2.default.createElement('i', { className: 'fa fa-instagram', style: { fontSize: '120px' }, __source: {
-            fileName: _jsxFileName,
-            lineNumber: 33
-          }
-        })
-      ),
-      _react2.default.createElement(
-        'p',
-        { style: { fontSize: '30px', lineHeight: '40px' }, __source: {
-            fileName: _jsxFileName,
-            lineNumber: 34
-          }
-        },
-        'Follow along.'
+        _react2.default.createElement(
+          'p',
+          {
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 38
+            }
+          },
+          _react2.default.createElement('i', { className: 'fa fa-instagram', style: { fontSize: '120px' }, __source: {
+              fileName: _jsxFileName,
+              lineNumber: 38
+            }
+          })
+        ),
+        _react2.default.createElement(
+          'p',
+          { style: { fontSize: '30px', lineHeight: '40px' }, __source: {
+              fileName: _jsxFileName,
+              lineNumber: 39
+            }
+          },
+          'Follow along.'
+        )
       )
     )
   );

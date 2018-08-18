@@ -160,7 +160,7 @@ class Slice4 extends React.Component {
   render() {
     return (
       <Row style={{marginTop: '16px'}}>
-        <Col xs={12} md={6}><PromoCardInstagram /></Col>
+        <Col xs={12} md={6}><PromoCardInstagram linkClass={'a'} linkClassProps={{'href': '/instagram'}}/></Col>
         <Col xs={12} md={3}>
           <Row>
             <Col xs={12}><Paper style={{padding:'32px'}}>Event</Paper></Col>

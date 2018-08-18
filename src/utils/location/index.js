@@ -1,7 +1,11 @@
 //build_google_map_url_for_venue
 //formatted_address
 export function formatted_address(venue) {
-  let output = venue.address + ' ' + venue.address2;
+  let output = venue.address;
+
+  if (venue.address2) {
+    output += ' ' + venue.address2;
+  }
 
   if (venue.city == 'Minneapolis') {
     output += ', Mpls';

@@ -4,7 +4,7 @@ import classnames from 'classnames';
 
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import Overline from '../../..//typography/Overline';
+import Overline from '../../../typography/Overline';
 
 let styles = (theme) => {
   return {

@@ -48,9 +48,9 @@ class Index extends React.Component {
             event_date_resource={resource}
             startingDateFilter={startingDateFilter}
             linkClassProps={
-                {'data-ga-category': 'event-pod-click',
-                  to:'/events/' + resource.event_resource.slug
-                }}
+              {'data-ga-category': 'event-pod-click',
+                to:'/events/' + resource.event_resource.slug
+              }}
             linkClass={'a'}
           />
           <br />
