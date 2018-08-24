@@ -77,7 +77,7 @@ function CardListItemBase(props) {
       divider={divider}
       {...rest}
     >
-      { imageFloat == 'right' && imageNode }
+      { imageFloat == 'left' && imageNode }
 
       <ListItemText
         classes={{root:classnames(classes.text, highlightPrimary ? 'highlightPrimary' : '')}}
@@ -86,7 +86,7 @@ function CardListItemBase(props) {
         disableTypography
       />
 
-      { imageFloat == 'left' && imageNode }
+      { imageFloat == 'right' && imageNode }
 
     </ListItem>
   );

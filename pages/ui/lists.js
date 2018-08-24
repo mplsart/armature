@@ -39,7 +39,7 @@ class Index extends React.Component {
   render() {
 
     let listItemClickHandler = (/*e*/) => {
-      console.log('Spork yo!?!?!');
+      console.log('Clicked!?!?!');
     };
 
     return (
@@ -58,13 +58,13 @@ class Index extends React.Component {
             <h3>Playground</h3>
               <CardListItemBase onClick={listItemClickHandler} divider button imageFloat="right" imageUrl="https://storage.googleapis.com/cdn.mplsart.com/file_container/RmlsZUNvbnRhaW5lch4fMzIwMjAwMDE/thumb.png" primaryText="Totally Awesome" secondaryText="Super bomb" overlineText="Apr 1 - May 3" />
               <CardListItemBase
-                linkClassProps={
-                    {'data-ga-category': 'event-pod-click',
-                      href:'/eventsX/' + resource.event_resource.slug
-                    }}
+                linkClassProps={{
+                  'data-ga-category': 'event-pod-click',
+                  href:'/events/' + resource.event_resource.slug
+                }}
               linkClass={'a'}
               divider button imageFloat="left" imageUrl="https://storage.googleapis.com/cdn.mplsart.com/file_container/RmlsZUNvbnRhaW5lch4fMzIwMjAwMDE/thumb.png" primaryText="Totally Awesome" secondaryText="Super bomb" underlineText="Apr 1 - May 3" />
-              <CardListItemBase highlightPrimary divider button primaryText="Totally Awesome" secondaryText="Super bomb" />
+              <CardListItemBase imageFloat="right" highlightPrimary divider button primaryText="Totally Awesome" secondaryText="Super bomb" />
               <CardListItemBase divider button imageUrl="https://storage.googleapis.com/cdn.mplsart.com/file_container/RmlsZUNvbnRhaW5lch4fMzIwMjAwMDE/thumb.png" primaryText="Totally Awesome" secondaryText="Super bomb" />
               <CardListItemBase divider button imageUrl="https://storage.googleapis.com/cdn.mplsart.com/file_container/RmlsZUNvbnRhaW5lch4fMzIwMjAwMDE/thumb.png" primaryText="Totally Awesome" secondaryText="Super bomb" />
             </List>
