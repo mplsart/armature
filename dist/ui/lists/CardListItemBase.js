@@ -208,7 +208,7 @@ function CardListItemBase(props) {
         lineNumber: 74
       }
     }),
-    imageFloat == 'right' && imageNode,
+    imageFloat == 'left' && imageNode,
     _react2.default.createElement(_ListItemText2.default, {
       classes: { root: (0, _classnames2.default)(classes.text, highlightPrimary ? 'highlightPrimary' : '') },
       primary: primaryText,
@@ -219,7 +219,7 @@ function CardListItemBase(props) {
         lineNumber: 82
       }
     }),
-    imageFloat == 'left' && imageNode
+    imageFloat == 'right' && imageNode
   );
 }
 
