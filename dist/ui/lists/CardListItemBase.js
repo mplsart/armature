@@ -63,7 +63,8 @@ var styles = function styles(theme) {
       '& h3': {
         fontSize: theme.typography.pxToRem(18),
         lineHeight: theme.typography.pxToRem(18),
-        marginBottom: '4px'
+        marginBottom: '4px',
+        fontWeight: 400
       },
       '&.highlightPrimary h3': {
         color: theme.palette.primary['500']
@@ -102,7 +103,7 @@ function CardListItemBase(props) {
       {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 45
+          lineNumber: 46
         }
       },
       _react2.default.createElement(_CardMedia2.default, {
@@ -111,7 +112,7 @@ function CardListItemBase(props) {
         title: imageAltText,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 46
+          lineNumber: 47
         }
       })
     );
@@ -124,7 +125,7 @@ function CardListItemBase(props) {
       {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 57
+          lineNumber: 58
         }
       },
       overlineText
@@ -137,7 +138,7 @@ function CardListItemBase(props) {
       {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 61
+          lineNumber: 62
         }
       },
       underlineText
@@ -149,7 +150,7 @@ function CardListItemBase(props) {
     {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 64
+        lineNumber: 65
       }
     },
     overlineNode,
@@ -157,7 +158,7 @@ function CardListItemBase(props) {
       _Typography2.default,
       { variant: 'subheading', __source: {
           fileName: _jsxFileName,
-          lineNumber: 64
+          lineNumber: 65
         }
       },
       primaryText
@@ -169,14 +170,14 @@ function CardListItemBase(props) {
     {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 65
+        lineNumber: 66
       }
     },
     _react2.default.createElement(
       _Typography2.default,
       { variant: 'body2', __source: {
           fileName: _jsxFileName,
-          lineNumber: 65
+          lineNumber: 66
         }
       },
       secondaryText
@@ -190,7 +191,7 @@ function CardListItemBase(props) {
       return _react2.default.createElement(derp.linkClass, _extends({}, linkClassProps, props, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 70
+          lineNumber: 71
         }
       }));
     };
@@ -205,7 +206,7 @@ function CardListItemBase(props) {
     }, rest, {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 74
+        lineNumber: 75
       }
     }),
     imageFloat == 'left' && imageNode,
@@ -216,7 +217,7 @@ function CardListItemBase(props) {
       disableTypography: true,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 82
+        lineNumber: 83
       }
     }),
     imageFloat == 'right' && imageNode

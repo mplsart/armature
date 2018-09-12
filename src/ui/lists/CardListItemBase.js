@@ -24,6 +24,7 @@ const styles = (theme) => ({
       fontSize: theme.typography.pxToRem(18),
       lineHeight: theme.typography.pxToRem(18),
       marginBottom:'4px',
+      fontWeight: 400,
     },
     '&.highlightPrimary h3': {
       color: theme.palette.primary['500'],

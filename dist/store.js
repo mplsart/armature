@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.initStore = exports.addCount = exports.startClock = exports.serverRenderClock = exports.reducer = exports.actionTypes = undefined;
+exports.initStore = exports.reducer = exports.actionTypes = undefined;
 
 var _redux = require('redux');
 
@@ -42,27 +42,20 @@ var actionTypes = exports.actionTypes = {
   }
 };
 
+/*
 // ACTIONS
-var serverRenderClock = exports.serverRenderClock = function serverRenderClock(isServer) {
-  return function (dispatch) {
-    return dispatch({ type: actionTypes.TICK, light: !isServer, ts: Date.now() });
-  };
-};
+export const serverRenderClock = (isServer) => dispatch => {
+  return dispatch({ type: actionTypes.TICK, light: !isServer, ts: Date.now() })
+}
 
-var startClock = exports.startClock = function startClock() {
-  return function (dispatch) {
-    return setInterval(function () {
-      return dispatch({ type: actionTypes.TICK, light: true, ts: Date.now() });
-    }, 1000);
-  };
-};
+export const startClock = () => dispatch => {
+  return setInterval(() => dispatch({ type: actionTypes.TICK, light: true, ts: Date.now() }), 1000)
+}
 
-var addCount = exports.addCount = function addCount() {
-  return function (dispatch) {
-    return dispatch({ type: actionTypes.ADD });
-  };
-};
-
+export const addCount = () => dispatch => {
+  return dispatch({ type: actionTypes.ADD })
+}
+*/
 var initStore = exports.initStore = function initStore() {
   var initialState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : exampleInitialState;
 
