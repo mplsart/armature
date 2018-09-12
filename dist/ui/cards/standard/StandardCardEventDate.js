@@ -22,8 +22,6 @@ var _moment = require('moment');
 
 var _moment2 = _interopRequireDefault(_moment);
 
-var _dates = require('../../../utils/dates');
-
 var _StandardCardBase = require('./StandardCardBase');
 
 var _StandardCardBase2 = _interopRequireDefault(_StandardCardBase);
@@ -53,11 +51,9 @@ var StandardCardEventDate = function (_React$Component) {
       var _props = this.props,
           event_resource = _props.event_resource,
           event_date_resource = _props.event_date_resource,
-          startingDateFilter = _props.startingDateFilter,
-          rest = _objectWithoutProperties(_props, ['event_resource', 'event_date_resource', 'startingDateFilter']);
+          rest = _objectWithoutProperties(_props, ['event_resource', 'event_date_resource']);
 
       // Event Date
-      //let target_event_date = get_best_event_date(event_resource, startingDateFilter, 'timed');
 
 
       var target_event_date = event_date_resource;
@@ -67,13 +63,13 @@ var StandardCardEventDate = function (_React$Component) {
       if (target_event_date.category == 'ongoing') {
         byLineText = (0, _moment2.default)(new Date(target_event_date.start)).format('MMM D') + ' - ' + (0, _moment2.default)(new Date(target_event_date.end)).format('MMM D');
       } else {
-        // Else show the end
-        byLineText = (0, _moment2.default)(new Date(target_event_date.start)).format('MMM D');
+        // Else show the start
+        byLineText = (0, _moment2.default)(new Date(target_event_date.start)).format('ddd MMM D');
       }
 
       // Venue
       var venue_resource = target_event_date.venue_resource;
-      var venue_name = venue_resource.name;
+      var venue_name = venue_resource.nickname || venue_resource.name;
       if (venue_resource.multiple_locations_label) {
         venue_name = venue_resource.multiple_locations_label;
       }
@@ -90,7 +86,7 @@ var StandardCardEventDate = function (_React$Component) {
       }, rest, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 38
+          lineNumber: 35
         }
       }));
     }

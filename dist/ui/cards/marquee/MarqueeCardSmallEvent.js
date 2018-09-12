@@ -59,20 +59,19 @@ var MarqueeCardSmallEvent = function (_React$Component) {
 
 
       var target_event_date = (0, _dates.get_best_event_date)(resource, startingDateFilter, 'timed');
-
       var byLineText = void 0;
 
       // If it is ongoing - worst case scenario
       if (target_event_date.category == 'ongoing') {
         byLineText = (0, _moment2.default)(new Date(target_event_date.start)).format('MMM D') + ' - ' + (0, _moment2.default)(new Date(target_event_date.end)).format('MMM D');
       } else {
-        // Else show the end
-        byLineText = (0, _moment2.default)(new Date(target_event_date.start)).format('MMM D');
+        // Else show the start
+        byLineText = (0, _moment2.default)(new Date(target_event_date.start)).format('ddd MMM D');
       }
 
       // Venue
       var venue_resource = target_event_date.venue;
-      var venue_name = venue_resource.name;
+      var venue_name = venue_resource.nickname || venue_resource.name;
       if (venue_resource.multiple_locations_label) {
         venue_name = venue_resource.multiple_locations_label;
       }
@@ -89,7 +88,7 @@ var MarqueeCardSmallEvent = function (_React$Component) {
       }, rest, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 38
+          lineNumber: 37
         }
       }));
     }

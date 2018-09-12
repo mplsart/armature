@@ -19,10 +19,10 @@ export default function CardListItemArticle({resource, divider, ...rest}) {
 
   // Author resource is can be verbose only
   if (resource.author_name) {
-    overlineText = '  ' + resource.author_name;
+    overlineText = 'By  ' + resource.author_name;
   }
   else if (resource.author_resource) {
-    overlineText = '  ' + resource.author_resource.firstname + ' ' + resource.author_resource.lastname;
+    overlineText = 'By  ' + resource.author_resource.firstname + ' ' + resource.author_resource.lastname;
   }
 
   return (
@@ -30,9 +30,7 @@ export default function CardListItemArticle({resource, divider, ...rest}) {
       divider={divider}
       button
       primaryText={truncate(resource.title, 55)}
-      //secondaryText={formatted_address(resource)}
-      underlineText={overlineText}
-      //underlineText={resource.summary}
+      overlineText={overlineText}
       imageUrl={imageUrl}
       imageAltText={imageAltText}
       {...rest}

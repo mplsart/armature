@@ -45,24 +45,26 @@ function CardListItemEventDate(_ref) {
   }
 
   var byLineText = '';
+  var edLabel = '';
   // If it is ongoing - worst case scenario
   if (target_event_date.category == 'ongoing') {
     byLineText = (0, _moment2.default)(new Date(target_event_date.start)).format('MMM D') + ' - ' + (0, _moment2.default)(new Date(target_event_date.end)).format('MMM D');
   } else {
     // Else show the end
-    byLineText = (0, _moment2.default)(new Date(target_event_date.start)).format('MMM D');
+    byLineText = (0, _moment2.default)(new Date(target_event_date.start)).format('ddd MMM D');
+    edLabel = target_event_date.label;
   }
 
   var overlineText = '';
 
   var venue_resource = resource.venue_resource;
-  var venue_name = venue_resource.name;
+  var venue_name = venue_resource.nickname || venue_resource.name;
   if (venue_resource.multiple_locations_label) {
     venue_name = venue_resource.multiple_locations_label;
   }
 
   // Overline
-  overlineText = /* target_event_date.label +  */' @ ' + venue_name;
+  overlineText = edLabel + ' @ ' + venue_name;
 
   return _react2.default.createElement(_CardListItemBase2.default, _extends({
     divider: divider,
@@ -76,7 +78,7 @@ function CardListItemEventDate(_ref) {
   }, rest, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 41
+      lineNumber: 43
     }
   }));
 }

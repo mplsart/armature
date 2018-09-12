@@ -11,7 +11,6 @@ class MarqueeCardEvent extends React.Component {
 
     // Event Date
     let target_event_date = get_best_event_date(resource, startingDateFilter, 'timed');
-
     let byLineText;
 
     // If it is ongoing - worst case scenario
@@ -25,7 +24,7 @@ class MarqueeCardEvent extends React.Component {
 
     // Venue
     let venue_resource = target_event_date.venue;
-    let venue_name = venue_resource.name;
+    let venue_name = venue_resource.nickname || venue_resource.name;
     if (venue_resource.multiple_locations_label) {
       venue_name = venue_resource.multiple_locations_label;
     }

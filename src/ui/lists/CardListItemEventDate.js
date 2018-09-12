@@ -16,25 +16,27 @@ export default function CardListItemEventDate({resource, divider, ...rest}) {
   }
 
   let byLineText = '';
+  let edLabel = '';
   // If it is ongoing - worst case scenario
   if (target_event_date.category == 'ongoing') {
     byLineText = moment(new Date(target_event_date.start)).format('MMM D') + ' - ' + moment(new Date(target_event_date.end)).format('MMM D');
   }
   else {
     // Else show the end
-    byLineText = moment(new Date(target_event_date.start)).format('MMM D');
+    byLineText = moment(new Date(target_event_date.start)).format('ddd MMM D');
+    edLabel = target_event_date.label;
   }
 
   let overlineText = '';
 
   let venue_resource = resource.venue_resource;
-  let venue_name = venue_resource.name;
+  let venue_name = venue_resource.nickname || venue_resource.name;
   if (venue_resource.multiple_locations_label) {
     venue_name = venue_resource.multiple_locations_label;
   }
 
   // Overline
-  overlineText = /* target_event_date.label +  */ ' @ ' + venue_name;
+  overlineText = edLabel + ' @ ' + venue_name;
 
 
   return (
