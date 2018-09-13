@@ -7,7 +7,7 @@ import withRoot from '../../src/withRoot';
 import withRedux from '../../src/withRedux';
 import {initStore} from '../../src/store';
 import {Row, Col} from '../../src/grid';
-import LegacyEventCard from '../../src/ui/cards/legacy/LegacyEventCard';
+
 import CompactGalleryCard from '../../src/ui/cards/CompactGalleryCard';
 import MarqueeCardArticle from '../../src/ui/cards/marquee/MarqueeCardArticle';
 import MarqueeCardEvent from '../../src/ui/cards/marquee/MarqueeCardEvent';
@@ -174,28 +174,15 @@ class Index extends React.Component {
         </Col>
       </Row>
 
-      <h2>Legacy Cards</h2>
-      <pre>import LegacyEventCard from 'armature/dist/ui/cards/legacy/LegacyEventCard';</pre>
-      <Row>
-        <Col xs={3}>
-          <LegacyEventCard
-            event_resource={resource.event_resource}
-            event_date_resource={resource}
-            imageResource={resource.event_resource.primary_image_resource}
-            linkClassProps={{'data-ga-category': "event-pod-click", to:'/events/' + resource.event_resource.slug}}
-            linkClass={'a'}
-            />
-          </Col>
-      </Row>
-
-      <h2>Compact List Cards</h2>
-      <pre>import CompactGalleryCard from 'armature/dist/ui/cards/legacy/CompactGalleryCard';</pre>
-      <Row>
-        <Col xs={3}>
-          <CompactGalleryCard resource={resource.venue_resource} />
+        <Row>
+          <Col xs={12}>
+            <h2>Compact List Cards</h2>
+            <pre>import CompactGalleryCard from 'armature/dist/ui/cards/legacy/CompactGalleryCard';</pre>
         </Col>
-      </Row>
-
+          <Col xs={3}>
+            <CompactGalleryCard resource={resource.venue_resource} />
+          </Col>
+        </Row>
       </PageBase>
     );
   }
