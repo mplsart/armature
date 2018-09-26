@@ -14,6 +14,10 @@ class DateTimeInput extends React.Component {
       internalValue =  moment(new Date(props.defaultValue));
     }
 
+    if (props.excludeTime) {
+      internalValue = internalValue.hour(0).minute(0).second(0);
+    }
+
     this.state = {
       internalValue: internalValue
     };
@@ -66,7 +70,7 @@ class DateTimeInput extends React.Component {
   }
 
   render() {
-    let {onChange, defaultValue, label, ...rest} = this.props;
+    let {onChange, defaultValue, label, excludeTime, ...rest} = this.props;
     let value = this.state.internalValue;
     let controlStyle = {
       justifyContent: 'start',
@@ -77,7 +81,7 @@ class DateTimeInput extends React.Component {
       <FormControl fullWidth required style={controlStyle}>
         <InputLabel>{label}</InputLabel>
         <Input {...rest} value={this.cleanDate(value)} onChange={this.handleDateChange.bind(this)} style={{alignSelf: 'flex-end', width:'50%', 'fontSize': '14px'}} type="date"/>
-        <Input {...rest} value={this.cleanTime(value)} onChange={this.handleTimeChange.bind(this)} inputProps={{step: 300}} style={{alignSelf: 'flex-end', width:'45%', 'fontSize': '14px'}} type="time"/>
+        {!excludeTime && (<Input {...rest} value={this.cleanTime(value)} onChange={this.handleTimeChange.bind(this)} inputProps={{step: 300}} style={{alignSelf: 'flex-end', width:'45%', 'fontSize': '14px'}} type="time"/>)}
       </FormControl>
     );
   }
@@ -89,5 +93,6 @@ DateTimeInput.defaultProps = { defaultValue: moment() };
 DateTimeInput.propTypes = {
   onChange: PropTypes.func,
   value: PropTypes.string, //'UTC: ISO: YYYY-MM-DDTHH:mm:ssZ'
-  defaultValue: PropTypes.string //'UTC: ISO: YYYY-MM-DDTHH:mm:ssZ'
+  defaultValue: PropTypes.string, //'UTC: ISO: YYYY-MM-DDTHH:mm:ssZ'
+  excludeTime: PropTypes.bool
 };

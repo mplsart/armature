@@ -14,7 +14,7 @@ class Index extends React.Component {
     // Assume in native browser time... and cast to UTC
     var date_obj = moment(new Date(value)); // TODO: As add as locale..
     date_obj = date_obj.utc();
-    console.log(date_obj.format('YYYY-MM-DD[T]HH:mm:ss[Z]'));
+    console.log([name, i, date_obj.format('YYYY-MM-DD[T]HH:mm:ss[Z]')]);
   };
 
   // Utility
@@ -50,6 +50,12 @@ class Index extends React.Component {
           <h3>Basic</h3>
           <DateTimeInput id="start" label="Start" value={this.cleanDate(null)} defaultValue={defaultValue} onChange={(value) => this.handleDateTimeChange('start')(value)} fullWidth margin="dense" required />
         </div>
+
+        <div>
+          <h3>No Time</h3>
+          <DateTimeInput id="start" label="Start" excludeTime value={this.cleanDate(null)} defaultValue={defaultValue} onChange={(value) => this.handleDateTimeChange('start')(value)} fullWidth margin="dense" required />
+        </div>
+
 
       </PageBase>
     );

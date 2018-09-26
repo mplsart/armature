@@ -57,6 +57,10 @@ var DateTimeInput = function (_React$Component) {
       internalValue = (0, _moment2.default)(new Date(props.defaultValue));
     }
 
+    if (props.excludeTime) {
+      internalValue = internalValue.hour(0).minute(0).second(0);
+    }
+
     _this.state = {
       internalValue: internalValue
     };
@@ -120,7 +124,8 @@ var DateTimeInput = function (_React$Component) {
           onChange = _props.onChange,
           defaultValue = _props.defaultValue,
           label = _props.label,
-          rest = _objectWithoutProperties(_props, ['onChange', 'defaultValue', 'label']);
+          excludeTime = _props.excludeTime,
+          rest = _objectWithoutProperties(_props, ['onChange', 'defaultValue', 'label', 'excludeTime']);
 
       var value = this.state.internalValue;
       var controlStyle = {
@@ -132,7 +137,7 @@ var DateTimeInput = function (_React$Component) {
         _FormControl2.default,
         { fullWidth: true, required: true, style: controlStyle, __source: {
             fileName: _jsxFileName,
-            lineNumber: 77
+            lineNumber: 81
           }
         },
         _react2.default.createElement(
@@ -140,19 +145,19 @@ var DateTimeInput = function (_React$Component) {
           {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 78
+              lineNumber: 82
             }
           },
           label
         ),
         _react2.default.createElement(_Input2.default, _extends({}, rest, { value: this.cleanDate(value), onChange: this.handleDateChange.bind(this), style: { alignSelf: 'flex-end', width: '50%', 'fontSize': '14px' }, type: 'date', __source: {
             fileName: _jsxFileName,
-            lineNumber: 79
+            lineNumber: 83
           }
         })),
-        _react2.default.createElement(_Input2.default, _extends({}, rest, { value: this.cleanTime(value), onChange: this.handleTimeChange.bind(this), inputProps: { step: 300 }, style: { alignSelf: 'flex-end', width: '45%', 'fontSize': '14px' }, type: 'time', __source: {
+        !excludeTime && _react2.default.createElement(_Input2.default, _extends({}, rest, { value: this.cleanTime(value), onChange: this.handleTimeChange.bind(this), inputProps: { step: 300 }, style: { alignSelf: 'flex-end', width: '45%', 'fontSize': '14px' }, type: 'time', __source: {
             fileName: _jsxFileName,
-            lineNumber: 80
+            lineNumber: 84
           }
         }))
       );
@@ -170,5 +175,6 @@ DateTimeInput.defaultProps = { defaultValue: (0, _moment2.default)() };
 DateTimeInput.propTypes = {
   onChange: _propTypes2.default.func,
   value: _propTypes2.default.string, //'UTC: ISO: YYYY-MM-DDTHH:mm:ssZ'
-  defaultValue: _propTypes2.default.string //'UTC: ISO: YYYY-MM-DDTHH:mm:ssZ'
+  defaultValue: _propTypes2.default.string, //'UTC: ISO: YYYY-MM-DDTHH:mm:ssZ'
+  excludeTime: _propTypes2.default.bool
 };

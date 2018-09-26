@@ -125,6 +125,10 @@ var styles = function styles(theme) {
 };
 
 function getSuggestionValue(suggestion) {
+  if (!suggestion) {
+    return '';
+  };
+
   return suggestion.name;
 }
 
@@ -166,6 +170,24 @@ var VenueAutocomplete = function (_React$Component) {
       });
     };
 
+    _this.onSuggestionHighlighted = function (_ref2) {
+      var suggestion = _ref2.suggestion;
+
+      var resource = suggestion;
+
+      // Case - no resource selected, return
+      if (!resource) return;
+
+      // Case - Selection is same as stored one, return - saves infinite loop on render
+      if (_this.state.selectedResource && _this.state.selectedResource.name == resource.name) {
+        return;
+      }
+
+      // Case: New Selection
+      _this.setState({ isSelected: true, isFocused: true, selectedResource: resource /* textValue: resource.name, suggestedResources: []*/ });
+      _this.props.onChange(resource);
+    };
+
     var state = {
       suggestedResources: [],
       isFocused: false,
@@ -195,10 +217,10 @@ var VenueAutocomplete = function (_React$Component) {
     }
   }, {
     key: 'renderSuggestionsContainer',
-    value: function renderSuggestionsContainer(_ref2) {
-      var containerProps = _ref2.containerProps,
-          children = _ref2.children,
-          query = _ref2.query;
+    value: function renderSuggestionsContainer(_ref3) {
+      var containerProps = _ref3.containerProps,
+          children = _ref3.children,
+          query = _ref3.query;
 
       var footer = void 0;
       var classes = this.props.classes;
@@ -213,14 +235,14 @@ var VenueAutocomplete = function (_React$Component) {
                 return console.log(e);
               }, __source: {
                 fileName: _jsxFileName,
-                lineNumber: 104
+                lineNumber: 106
               }
             },
             _react2.default.createElement(
               _Typography2.default,
               { variant: 'body2', __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 104
+                  lineNumber: 106
                 }
               },
               _react2.default.createElement(
@@ -228,7 +250,7 @@ var VenueAutocomplete = function (_React$Component) {
                 {
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 104
+                    lineNumber: 106
                   }
                 },
                 'Start typing to search...'
@@ -242,14 +264,14 @@ var VenueAutocomplete = function (_React$Component) {
                 return console.log(e);
               }, __source: {
                 fileName: _jsxFileName,
-                lineNumber: 107
+                lineNumber: 109
               }
             },
             _react2.default.createElement(
               _Typography2.default,
               { variant: 'body2', __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 107
+                  lineNumber: 109
                 }
               },
               _react2.default.createElement(
@@ -257,7 +279,7 @@ var VenueAutocomplete = function (_React$Component) {
                 {
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 107
+                    lineNumber: 109
                   }
                 },
                 'Not seeing what you are looking for?'
@@ -269,7 +291,7 @@ var VenueAutocomplete = function (_React$Component) {
                     return console.log(e);
                   }, __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 107
+                    lineNumber: 109
                   }
                 },
                 ' Create new Venue'
@@ -283,7 +305,7 @@ var VenueAutocomplete = function (_React$Component) {
         _Paper2.default,
         _extends({}, containerProps, { square: true, __source: {
             fileName: _jsxFileName,
-            lineNumber: 112
+            lineNumber: 114
           }
         }),
         children,
@@ -292,9 +314,9 @@ var VenueAutocomplete = function (_React$Component) {
     }
   }, {
     key: 'renderSuggestion',
-    value: function renderSuggestion(resource, _ref3) {
-      var query = _ref3.query,
-          isHighlighted = _ref3.isHighlighted;
+    value: function renderSuggestion(resource, _ref4) {
+      var query = _ref4.query,
+          isHighlighted = _ref4.isHighlighted;
 
       //const matches = match(suggestion.label, query);
       //const parts = parse(suggestion.label, matches);
@@ -306,7 +328,7 @@ var VenueAutocomplete = function (_React$Component) {
         var src = resource.primary_image_resource.versions.THUMB.url || null;
         avatar = _react2.default.createElement(_Avatar2.default, { className: (0, _classnames2.default)(classes.avatar, 'searchResult'), alt: resource.name, src: src, __source: {
             fileName: _jsxFileName,
-            lineNumber: 129
+            lineNumber: 131
           }
         });
       }
@@ -316,7 +338,7 @@ var VenueAutocomplete = function (_React$Component) {
           _Avatar2.default,
           { className: (0, _classnames2.default)(classes.avatar, resource.category, 'searchResult'), __source: {
               fileName: _jsxFileName,
-              lineNumber: 133
+              lineNumber: 135
             }
           },
           resource.name[0]
@@ -326,14 +348,14 @@ var VenueAutocomplete = function (_React$Component) {
         _MenuItem2.default,
         { selected: isHighlighted, component: 'div', __source: {
             fileName: _jsxFileName,
-            lineNumber: 136
+            lineNumber: 138
           }
         },
         _react2.default.createElement(
           _ListItemIcon2.default,
           { className: classes.icon, __source: {
               fileName: _jsxFileName,
-              lineNumber: 137
+              lineNumber: 139
             }
           },
           avatar
@@ -344,7 +366,7 @@ var VenueAutocomplete = function (_React$Component) {
             _Typography2.default,
             { variant: 'body2', component: 'span', __source: {
                 fileName: _jsxFileName,
-                lineNumber: 142
+                lineNumber: 144
               }
             },
             _react2.default.createElement(
@@ -352,7 +374,7 @@ var VenueAutocomplete = function (_React$Component) {
               {
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 142
+                  lineNumber: 144
                 }
               },
               resource.name,
@@ -362,7 +384,7 @@ var VenueAutocomplete = function (_React$Component) {
                 {
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 142
+                    lineNumber: 144
                   }
                 },
                 '(closed)'
@@ -373,7 +395,7 @@ var VenueAutocomplete = function (_React$Component) {
             _Typography2.default,
             { variant: 'body2', component: 'span', __source: {
                 fileName: _jsxFileName,
-                lineNumber: 143
+                lineNumber: 145
               }
             },
             _react2.default.createElement(
@@ -381,7 +403,7 @@ var VenueAutocomplete = function (_React$Component) {
               {
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 143
+                  lineNumber: 145
                 }
               },
               resource.category,
@@ -393,7 +415,7 @@ var VenueAutocomplete = function (_React$Component) {
           ),
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 140
+            lineNumber: 142
           }
         })
       );
@@ -434,8 +456,8 @@ var VenueAutocomplete = function (_React$Component) {
     }
   }, {
     key: 'handleSelection',
-    value: function handleSelection(e, _ref4) {
-      var suggestion = _ref4.suggestion;
+    value: function handleSelection(e, _ref5) {
+      var suggestion = _ref5.suggestion;
 
       var resource = suggestion;
       this.setState({ isSelected: true, isFocused: false, selectedResource: resource, textValue: resource.name, suggestedResources: [] });
@@ -453,11 +475,11 @@ var VenueAutocomplete = function (_React$Component) {
     }
   }, {
     key: 'handleTextChange',
-    value: function handleTextChange(e, _ref5) {
-      var newValue = _ref5.newValue,
-          method = _ref5.method;
+    value: function handleTextChange(e, _ref6) {
+      var newValue = _ref6.newValue,
+          method = _ref6.method;
 
-      if (method == 'enter') return;
+      if (method == 'enter' || method == 'down' || method == 'up') return;
       if (method == 'escape') {
         this.setState({
           suggestedResources: [],
@@ -484,6 +506,8 @@ var VenueAutocomplete = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
+      var _this2 = this;
+
       var _props = this.props,
           classes = _props.classes,
           apiHost = _props.apiHost,
@@ -506,7 +530,7 @@ var VenueAutocomplete = function (_React$Component) {
           var src = selectedResource.primary_image_resource.versions.THUMB.url || null;
           avatar = _react2.default.createElement(_Avatar2.default, { className: (0, _classnames2.default)(classes.avatar, 'inputAdornment'), alt: selectedResource.name, src: src, __source: {
               fileName: _jsxFileName,
-              lineNumber: 259
+              lineNumber: 277
             }
           });
         }
@@ -516,7 +540,7 @@ var VenueAutocomplete = function (_React$Component) {
             _Avatar2.default,
             { className: (0, _classnames2.default)(classes.avatar, selectedResource.category, 'inputAdornment'), __source: {
                 fileName: _jsxFileName,
-                lineNumber: 263
+                lineNumber: 281
               }
             },
             selectedResource.name[0]
@@ -527,7 +551,7 @@ var VenueAutocomplete = function (_React$Component) {
           _InputAdornment2.default,
           { position: 'start', __source: {
               fileName: _jsxFileName,
-              lineNumber: 266
+              lineNumber: 284
             }
           },
           avatar
@@ -544,7 +568,7 @@ var VenueAutocomplete = function (_React$Component) {
           _FormControl2.default,
           { className: classes.FormControl, fullWidth: true, required: true, __source: {
               fileName: _jsxFileName,
-              lineNumber: 274
+              lineNumber: 292
             }
           },
           _react2.default.createElement(
@@ -552,7 +576,7 @@ var VenueAutocomplete = function (_React$Component) {
             {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 275
+                lineNumber: 293
               }
             },
             label
@@ -560,19 +584,24 @@ var VenueAutocomplete = function (_React$Component) {
           _react2.default.createElement(_Input2.default, _extends({}, rest, {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 276
+              lineNumber: 294
             }
           }))
         );
       };
 
       return _react2.default.createElement(_reactAutosuggest2.default, {
+        ref: function ref(el) {
+          return _this2.input = el;
+        },
+
         theme: {
           container: classes.container,
           suggestionsContainerOpen: classes.suggestionsContainerOpen,
           suggestionsList: classes.suggestionsList,
           suggestion: classes.suggestion
         },
+        onSuggestionHighlighted: this.onSuggestionHighlighted.bind(this),
         renderInputComponent: renderInput,
         suggestions: this.state.suggestedResources,
         onSuggestionsFetchRequested: this.handleSuggestionsFetchRequested,
@@ -591,7 +620,7 @@ var VenueAutocomplete = function (_React$Component) {
         }),
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 282
+          lineNumber: 300
         }
       });
     }

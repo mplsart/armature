@@ -62,6 +62,8 @@ let styles = (theme) => {
 
 
 function getSuggestionValue(suggestion) {
+  if (!suggestion) { return ''; };
+
   return suggestion.name;
 }
 
@@ -117,34 +119,34 @@ class VenueAutocomplete extends React.Component {
   }
 
   renderSuggestion(resource, { query, isHighlighted }) {
-  //const matches = match(suggestion.label, query);
-  //const parts = parse(suggestion.label, matches);
+    //const matches = match(suggestion.label, query);
+    //const parts = parse(suggestion.label, matches);
 
-  let {classes} = this.props;
-  let avatar;
-  if (resource.primary_image_resource
-    && resource.primary_image_resource.versions
-    && resource.primary_image_resource.versions.THUMB.url) {
-    let src = resource.primary_image_resource.versions.THUMB.url || null;
-    avatar = (<Avatar className={classNames(classes.avatar, 'searchResult')} alt={resource.name} src={src} />);
-  }
+    let {classes} = this.props;
+    let avatar;
+    if (resource.primary_image_resource
+      && resource.primary_image_resource.versions
+      && resource.primary_image_resource.versions.THUMB.url) {
+      let src = resource.primary_image_resource.versions.THUMB.url || null;
+      avatar = (<Avatar className={classNames(classes.avatar, 'searchResult')} alt={resource.name} src={src} />);
+    }
 
-  if (!avatar) {
-    avatar = (<Avatar className={classNames(classes.avatar, resource.category, 'searchResult')}>{resource.name[0]}</Avatar>);
-  }
-  return (
-    <MenuItem selected={isHighlighted} component="div">
-      <ListItemIcon className={classes.icon}>
-        {avatar}
-      </ListItemIcon>
-      <ListItemText
-        classes={{ primary: classes.primary }}
-        primary={(<Typography variant="body2" component="span"><span>{resource.name} {resource.is_closed && (<span>(closed)</span>)}</span></Typography>)}
-        secondary={(<Typography variant="body2" component="span"><span>{resource.category} - {resource.address} - {resource.city}</span></Typography>)}
-        />
-    </MenuItem>
-  );
-}
+    if (!avatar) {
+      avatar = (<Avatar className={classNames(classes.avatar, resource.category, 'searchResult')}>{resource.name[0]}</Avatar>);
+    }
+    return (
+      <MenuItem selected={isHighlighted} component="div">
+        <ListItemIcon className={classes.icon}>
+          {avatar}
+        </ListItemIcon>
+        <ListItemText
+          classes={{ primary: classes.primary }}
+          primary={(<Typography variant="body2" component="span"><span>{resource.name} {resource.is_closed && (<span>(closed)</span>)}</span></Typography>)}
+          secondary={(<Typography variant="body2" component="span"><span>{resource.category} - {resource.address} - {resource.city}</span></Typography>)}
+          />
+      </MenuItem>
+    );
+    }
 
   getSuggestions(value) {
     return this.state.suggestedResources;
@@ -190,13 +192,13 @@ class VenueAutocomplete extends React.Component {
   }
 
   handleTextChange(e, {newValue, method}) {
-    if (method == 'enter') return;
+    if (method == 'enter' || method == 'down' || method == 'up') return;
     if (method == 'escape') {
       this.setState({
-      suggestedResources: [],
-      isFocused:false,
-    });
-      return
+        suggestedResources: [],
+        isFocused:false,
+      });
+      return;
     };
 
     // Called when the user types
@@ -240,6 +242,22 @@ class VenueAutocomplete extends React.Component {
     });
   };
 
+  onSuggestionHighlighted = ({ suggestion }) => {
+    let resource  = suggestion;
+
+    // Case - no resource selected, return
+    if (!resource) return;
+
+    // Case - Selection is same as stored one, return - saves infinite loop on render
+    if (this.state.selectedResource && this.state.selectedResource.name == resource.name) {
+      return;
+    }
+
+    // Case: New Selection
+    this.setState({isSelected: true, isFocused:true, selectedResource: resource, /* textValue: resource.name, suggestedResources: []*/});
+    this.props.onChange(resource);
+  }
+
   render() {
     let {classes, apiHost, ...rest} = this.props;
     let {isSelected, selectedResource, textValue} = this.state;
@@ -280,12 +298,15 @@ class VenueAutocomplete extends React.Component {
 
     return (
       <Autosuggest
+        ref={el => this.input = el}
+
         theme={{
           container: classes.container,
           suggestionsContainerOpen: classes.suggestionsContainerOpen,
           suggestionsList: classes.suggestionsList,
           suggestion: classes.suggestion,
         }}
+        onSuggestionHighlighted={this.onSuggestionHighlighted.bind(this)}
         renderInputComponent={renderInput}
         suggestions={this.state.suggestedResources}
         onSuggestionsFetchRequested={this.handleSuggestionsFetchRequested}
@@ -300,7 +321,7 @@ class VenueAutocomplete extends React.Component {
           ...rest,
           onChange: this.handleTextChange.bind(this),
           onFocus: this.handleTextFocus.bind(this),
-          onBlur: this.handleTextBlur.bind(this)
+          onBlur: this.handleTextBlur.bind(this),
         }}
       />
     );
