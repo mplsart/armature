@@ -68,9 +68,8 @@ function getSuggestionValue(suggestion) {
 }
 
 class VenueAutocomplete extends React.Component {
-  constructor(props) {
-    super(props);
 
+  getNewStateFromProps(props) {
     let state = {
       suggestedResources: [],
       isFocused: false,
@@ -80,15 +79,21 @@ class VenueAutocomplete extends React.Component {
     };
 
     // If there is an initial value, populate that
-    if (props.value && this.props.value.resource_id) {
-      let resource = this.props.value;
+    if (props.value && props.value.resource_id) {
+      let resource = props.value;
+
       state.suggestedResources = [resource];
       state.selectedResource = resource;
       state.isSelected = true;
       state.textValue = resource.name;
     }
+    return state;
+  }
 
-    this.state = state;
+  constructor(props) {
+    // Note: Doing things this way forces us to not really be controlled - refactor...
+    super(props);
+    this.state = this.getNewStateFromProps(props);
   }
 
   handleSearchError(e) {
@@ -256,6 +261,22 @@ class VenueAutocomplete extends React.Component {
     // Case: New Selection
     this.setState({isSelected: true, isFocused:true, selectedResource: resource, /* textValue: resource.name, suggestedResources: []*/});
     this.props.onChange(resource);
+  }
+
+
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    // This is a "hack" to allow external components set the value of the component while still
+    // allowing the component to maintain internal state.
+    // TODO: This flow will be deprecated in future versions of react... figure out a new plan
+
+    if (nextProps.value && this.props.value && nextProps.value.resource_id == this.props.value.resource_id) {
+      // If resourceId didn't change, don't update state
+      return nextProps;
+    }
+
+    let newState = this.getNewStateFromProps(nextProps);
+    this.setState(newState);
+    return nextProps;
   }
 
   render() {
